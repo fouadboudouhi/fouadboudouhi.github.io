@@ -564,3 +564,32 @@ footer.footer a:hover { color: var(--fg); }
   .projektseite .zahl:first-child .w { font-size: var(--fs-zahl); }
 }
 .projektseite .alle { margin-bottom: var(--sp-7); }
+
+/* ------------------------------------------------- Teststufen (Projektseite) */
+/* Vier Balken, unten der breiteste: Menge unten, Urteil oben. Als HTML statt SVG,
+   damit die Beschriftung auf dem Handy lesbar bleibt und einfach umbricht. */
+.stufen { margin: 0 0 var(--sp-7); }
+/* Feste Textspalte rechts, der Balken nimmt seinen Anteil der Restbreite:
+   so stehen die Beschriftungen untereinander statt an der Balkenspitze. */
+.stufe {
+  display: grid; grid-template-columns: minmax(0, 1fr) 19rem;
+  gap: var(--sp-5); align-items: center; margin-bottom: var(--sp-3);
+}
+.stufe__bar {
+  display: block; width: var(--b); height: 1.6rem; border: 1px solid var(--hair-hell);
+  border-radius: var(--radius); background: var(--flaeche); transform-origin: left;
+}
+.stufe__text { font-size: var(--fs-xs); color: var(--mut); line-height: 1.45; }
+.stufe__text b { color: var(--fg); font-weight: 500; }
+.stufen figcaption { margin-top: var(--sp-4); font-size: var(--fs-xs); color: var(--mut); }
+.js .stufen .stufe__bar { transform: scaleX(0); transition: transform .7s var(--ease); }
+.js .stufen.da .stufe__bar { transform: scaleX(1); }
+.js .stufen.da .stufe:nth-child(2) .stufe__bar { transition-delay: .1s; }
+.js .stufen.da .stufe:nth-child(3) .stufe__bar { transition-delay: .2s; }
+.js .stufen.da .stufe:nth-child(4) .stufe__bar { transition-delay: .3s; }
+@media (max-width: 40rem) {
+  .stufe { grid-template-columns: 1fr; gap: var(--sp-2); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .stufen .stufe__bar { transform: none; transition: none; }
+}
