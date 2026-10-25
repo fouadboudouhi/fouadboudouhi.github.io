@@ -1,7 +1,7 @@
 /* ==========================================================================
    Fouad Boudouhi — persönliche Seite
    Sprachumschaltung, Hell/Dunkel, Bewegung, Druckvorbereitung,
-   Pipeline-Simulation, Befehlspalette, Tooltips.
+   Pipeline-Simulation, Zeitleiste, Befehlspalette, Tooltips.
    Kein Framework, kein Build-Schritt. Was hier steht, läuft im Browser.
    ========================================================================== */
 
@@ -93,28 +93,44 @@
       '<div class="pipe__kopf"><b>' + t("agentische Pipeline", "agentic pipeline") + '</b><span>' + t("simuliert", "simulated") + '</span></div>' +
       '<div class="pipe__stufen">' + STUFEN.map(function (s) { return '<div class="pipe__stufe"><span class="pipe__dot"></span>' + t(s[0], s[1]) + '</div>'; }).join("") + '</div>' +
       '<div class="pipe__bahn"></div><div class="pipe__log"></div>' +
-      '<div class="pipe__fuss">' + t("Schema des Ablaufs aus Projekt 01 · Zahlen sind erfunden", "Schematic of the flow from project 01 · numbers are made up") + '</div></div>';
+      '<div class="pipe__fuss">' + t("Schema des Ablaufs aus Projekt 01 · Zahlen sind erfunden", "Schematic of the flow from project 01 · numbers are made up") +
+      (sparsam ? "" : ' · <b>' + t("Klick wirft ein Ticket ein", "click to add a ticket") + '</b>') + '</div></div>';
     var bahn = pipeWurzel.querySelector(".pipe__bahn"), log = pipeWurzel.querySelector(".pipe__log"),
         stufen = pipeWurzel.querySelectorAll(".pipe__stufe"), nr = 400 + Math.floor(Math.random() * 90), zeilen = [];
     function melde(text) {
       zeilen.unshift(text); zeilen = zeilen.slice(0, 3);
       log.innerHTML = zeilen.map(function (z) { return "<div>" + z + "</div>"; }).join("");
     }
-    function setze(ticket, i) { ticket.style.transform = "translateX(" + (i * 100) + "%)"; }
+    // Drei Spuren untereinander, damit mehrere Tickets in derselben Stufe nicht
+    // uebereinanderliegen; innerhalb einer Spur ruecken sie leicht nach rechts.
+    function alle() { return bahn.querySelectorAll(".pipe__ticket"); }
+    function freieSpur() { var n = [0, 0, 0]; alle().forEach(function (t) { n[+t.dataset.spur]++; }); return n.indexOf(Math.min.apply(null, n)); }
+    function ordne() {
+      var gruppen = {}, spuren = 1;
+      alle().forEach(function (t) {
+        var k = t.dataset.spur + ":" + t.dataset.stufe, i = gruppen[k] = (gruppen[k] || 0) + 1;
+        t.style.transform = "translate(calc(" + (+t.dataset.stufe * 100) + "% + " + ((i - 1) * 10) + "px), " + (+t.dataset.spur * 1.55) + "rem)";
+        spuren = Math.max(spuren, +t.dataset.spur + 1);
+      });
+      bahn.style.height = (1.9 + (spuren - 1) * 1.55) + "rem";
+    }
+    function setze(ticket, i) { ticket.dataset.stufe = i; ordne(); }
     function markiere(i, klasse) {
       stufen.forEach(function (s) { s.classList.remove("aktiv"); });
       if (i >= 0) { stufen[i].classList.add("aktiv"); if (klasse) stufen[i].classList.add(klasse); }
     }
     if (sparsam) {
-      [0, 2, 3].forEach(function (i, k) { var el = document.createElement("div"); el.className = "pipe__ticket"; el.innerHTML = "<span>#" + (nr + k) + "</span>"; setze(el, i); bahn.appendChild(el); });
+      [0, 2, 3].forEach(function (i, k) { var el = document.createElement("div"); el.className = "pipe__ticket"; el.dataset.spur = 0; el.innerHTML = "<span>#" + (nr + k) + "</span>"; bahn.appendChild(el); setze(el, i); });
       melde("#" + (nr + 2) + " → Merge: <i>" + t("gemergt", "merged") + "</i>"); return;
     }
     var aktiv = 0;
-    function lauf() {
-      if (aktiv >= 2) return;
+    function lauf(vonHand) {
+      // Von selbst laufen hoechstens zwei, von Hand duerfen es zehn sein.
+      if (aktiv >= (vonHand ? 10 : 2)) return;
       aktiv++;
-      var id = "#" + (nr++), el = document.createElement("div"), rueck = Math.random() < 0.28;
-      el.className = "pipe__ticket"; el.innerHTML = "<span>" + id + "</span>"; setze(el, 0); bahn.appendChild(el);
+      var id = "#" + (nr++), el = document.createElement("div"), rueck = Math.random() < (vonHand ? 0.4 : 0.28);
+      el.className = "pipe__ticket" + (vonHand ? " hand" : ""); el.dataset.spur = freieSpur(); el.innerHTML = "<span>" + id + "</span>"; bahn.appendChild(el); setze(el, 0);
+      if (vonHand) melde(id + " → " + t("eingeworfen", "added"));
       var plan = [0, 1, 2].concat(rueck ? [1, 2, 3] : [3]), k = 0;
       function schritt() {
         var i = plan[k];
@@ -129,11 +145,13 @@
         else melde(id + " → Plan: " + t("freigegeben", "approved"));
         k++;
         if (k < plan.length) { window.setTimeout(schritt, 1150 + Math.random() * 350); }
-        else { window.setTimeout(function () { el.classList.add("fertig"); markiere(-1); window.setTimeout(function () { el.remove(); aktiv--; }, 450); }, 900); }
+        else { window.setTimeout(function () { el.classList.add("fertig"); markiere(-1); window.setTimeout(function () { el.remove(); aktiv--; ordne(); }, 450); }, 900); }
       }
       window.setTimeout(schritt, 200);
     }
-    lauf(); window.setInterval(lauf, 3400);
+    lauf(); window.setInterval(function () { lauf(false); }, 3400);
+    // Zum Anfassen: ein Klick auf die Karte wirft ein eigenes Ticket ein.
+    pipeWurzel.addEventListener("click", function () { lauf(true); });
   })();
 
   /* ------------------------------------------------ Befehlspalette */
@@ -233,13 +251,35 @@
   var schein = document.getElementById("schein");
   var kopf = document.getElementById("kopf");
 
+  // Zeitleiste im Werdegang: die Linie reicht bis knapp unter die Bildschirmmitte,
+  // der Punkt einer Station wird amber, sobald die Linie ihn erreicht.
+  var stationen = document.querySelectorAll(".station");
+  function zeichneLinie() {
+    var ref = window.innerHeight * 0.55;
+    stationen.forEach(function (s) {
+      var r = s.getBoundingClientRect();
+      var f = sparsam ? 1 : Math.max(0, Math.min(1, (ref - r.top) / r.height));
+      s.style.setProperty("--linie", (f * 100).toFixed(1) + "%");
+      s.classList.toggle("erreicht", f > 0);
+    });
+  }
+  var linieGeplant = false;
+  function planeLinie() {
+    if (linieGeplant || !stationen.length) return;
+    linieGeplant = true;
+    requestAnimationFrame(function () { linieGeplant = false; zeichneLinie(); });
+  }
+
   window.addEventListener("scroll", function () {
     if (balken) {
       var h = document.documentElement.scrollHeight - window.innerHeight;
       balken.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + "%";
     }
     if (kopf) kopf.classList.toggle("ab", window.scrollY > 12);
+    planeLinie();
   }, { passive: true });
+  window.addEventListener("resize", planeLinie, { passive: true });
+  planeLinie();
 
   if (schein && !sparsam) {
     window.addEventListener("pointermove", function (e) {
