@@ -23,6 +23,23 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b0b0c'/%3E%3Ctext x='16' y='22' font-family='system-ui,sans-serif' font-weight='500' font-size='15' fill='%23f4f2ee' text-anchor='middle'%3EFB%3C/text%3E%3C/svg%3E">
 <script>(function(d){d.classList.add("js");try{if(localStorage.getItem("fb-theme")==="light")d.setAttribute("data-theme","light")}catch(e){}})(document.documentElement)</script>
 <link rel="stylesheet" href="assets/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Fouad Boudouhi",
+  "jobTitle": "Berater für Softwaretesting und agentische Entwicklung",
+  "worksFor": { "@type": "Organization", "name": "SPIRIT-TESTING Software & Services GmbH", "url": "https://www.spirit-testing.com" },
+  "url": "https://fouadboudouhi.github.io/",
+  "image": "https://fouadboudouhi.github.io/assets/og-image.png",
+  "sameAs": ["https://www.linkedin.com/in/fouadboudouhi", "https://github.com/fouadboudouhi"],
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Hochschule Darmstadt" },
+  "hasCredential": { "@type": "EducationalOccupationalCredential", "name": "ISTQB Certified Tester Foundation Level" },
+  "knowsLanguage": ["de", "en", "ary", "zgh"],
+  "knowsAbout": ["Softwaretest", "Testautomatisierung", "CI/CD", "KI-Agenten", "Robot Framework", "Playwright", "pytest", "k6", "ecu.test", "test.guide"],
+  "homeLocation": { "@type": "Place", "name": "Rhein-Main-Gebiet, Deutschland" }
+}
+</script>
 </head>
 <body>
 
@@ -63,13 +80,13 @@
     </p>
 
     <div class="actions auf">
-      <a class="btn btn--solid" href="#werdegang"><span lang="de">Werdegang ansehen</span><span lang="en">See the career</span></a>
+      <a class="btn btn--solid" href="#werdegang"><span lang="de">Werdegang ansehen</span><span lang="en">See my experience</span></a>
       <a class="btn btn--ghost" href="#kontakt"><span lang="de">Kontakt aufnehmen</span><span lang="en">Get in touch</span></a>
     </div>
 
     <p class="status auf">
       <span><span lang="de">Rhein-Main-Gebiet und remote</span><span lang="en">Rhine-Main region and remote</span></span>
-      <span><span lang="de">Deutsch, Englisch, Marokkanisch</span><span lang="en">German, English, Moroccan Arabic</span></span>
+      <span><span lang="de">Deutsch, Englisch, Darija, Tamazight</span><span lang="en">German, English, Darija, Tamazight</span></span>
       <span>ISTQB&reg; CTFL</span>
     </p>
   </section>
@@ -118,7 +135,7 @@
 
         <p class="station__kurz">
           <span lang="de">Produktentwicklung im eigenen Haus, Testberatung beim Kunden, und der Entwicklungsprozess, mit dem das Team agentisch arbeitet.</span>
-          <span lang="en">Product development in house, test consulting at the client, and the process the team uses to develop with agents.</span>
+          <span lang="en">In-house product development, test consulting on the client side, and the process the team now uses to build with agents.</span>
         </p>
 
         <p class="engagement"><span lang="de">Im eigenen Produkt</span><span lang="en">On our own product</span></p>
@@ -132,9 +149,9 @@
         <ul class="station__list" lang="en">
           <li>Product planning with the team: shaping requirements and helping set the direction</li>
           <li>Development of new features in the Angular front end and the Spring Boot back end, delivered with AI agents</li>
-          <li>Building the agentic development process from ticket to merge: fixed roles, defined handovers, approval by people</li>
-          <li>Measuring the process by throughput and quality of the pull requests, before and after</li>
-          <li>Bringing the team into the process</li>
+          <li>Building the agentic development process from ticket to merge: fixed roles, defined handovers, human approval</li>
+          <li>Measuring the process on pull-request throughput and quality, before and after</li>
+          <li>Onboarding the team onto the process</li>
         </ul>
 
         <p class="engagement"><span lang="de">Beim Kunden — große Fondsgesellschaft</span><span lang="en">At the client — large asset manager</span></p>
@@ -146,11 +163,11 @@
           <li>Konzeption und Entwicklung eines KI-Agenten auf den internen APIs: schreibt Tests in Robot Framework und als Unittests, repariert rot gelaufene Pipelines per Commit oder Vorschlag, prüft Merge Requests mit Freigabeempfehlung</li>
         </ul>
         <ul class="station__list" lang="en">
-          <li>Building up and stabilising the test infrastructure in GitLab for the company's development teams</li>
+          <li>Building and stabilising the GitLab test infrastructure for the company's development teams</li>
           <li>Migration of the repositories and their pipelines from Azure DevOps to GitLab CI</li>
           <li>Development of shared GitLab CI/CD components that make linters and a test run mandatory before every merge</li>
           <li>Implementation of a knowledge agent in the company's own chatbot for recurring questions from onboarding and daily work</li>
-          <li>Design and development of an AI agent on the internal APIs: writes tests in Robot Framework and as unit tests, repairs pipelines that went red by commit or proposal, reviews merge requests with an approval recommendation</li>
+          <li>Design and development of an AI agent on the internal APIs: writes tests in Robot Framework and as unit tests, fixes failing pipelines with a commit or a proposed change, and reviews merge requests with an approval recommendation</li>
         </ul>
 
         <ul class="tags"><li>Python</li><li>Robot Framework</li><li>GitLab CI</li><li>Angular</li><li>Spring Boot</li><li>Jira &amp; Xray</li></ul>
@@ -182,8 +199,8 @@
           <li>Specification, automation and evaluation of the tests with ecu.test and test.guide</li>
           <li>Automating test preparation: providing test objects, flashing ECUs, assembling test data</li>
           <li>Building the CI/CD pipelines for test execution in Jenkins and GitHub Actions</li>
-          <li>Analysis of logs and traces on deviations at the test bench and in the vehicle</li>
-          <li>Test consulting and training of the client's team on site</li>
+          <li>Log and trace analysis when results deviate on the test bench and in the vehicle</li>
+          <li>Test consulting and on-site training for the client's team</li>
         </ul>
 
         <p class="engagement"><span lang="de">Sportwagenhersteller — 01 bis 07/2026</span><span lang="en">Sports car manufacturer — 01 to 07/2026</span></p>
@@ -193,7 +210,7 @@
         </ul>
         <ul class="station__list" lang="en">
           <li>Building a continuous testing pipeline that starts automatically on every software delivery</li>
-          <li>Bringing test execution together across department boundaries</li>
+          <li>Consolidating test execution across department boundaries</li>
         </ul>
 
         <ul class="tags"><li>ecu.test</li><li>test.guide</li><li>Jenkins</li><li>GitHub Actions</li><li>Python</li><li>HiL / XIL</li></ul>
@@ -228,7 +245,7 @@
     <h2 class="titel auf"><span lang="de">Womit ich arbeite</span><span lang="en">What I work with</span></h2>
     <p class="vorspann auf" style="margin-bottom: var(--sp-8)">
       <span lang="de">Selbst eingeschätzt in drei Stufen. <b>Sehr gut:</b> über Jahre produktiv eingesetzt, ich kann andere darin anleiten. <b>Gut:</b> sicher im Projekteinsatz. <b>Solide:</b> eingesetzt, aber kein Schwerpunkt.</span>
-      <span lang="en">Self-assessed on three levels. <b>Expert:</b> years of productive use, I can guide others. <b>Advanced:</b> confident in project use. <b>Working knowledge:</b> used, but not a focus.</span>
+      <span lang="en">Self-assessed on three levels. <b>Expert:</b> years of production use, and I can coach others. <b>Advanced:</b> confident use on projects. <b>Working knowledge:</b> used, but not a focus.</span>
     </p>
 
     <div class="skills">
@@ -246,8 +263,7 @@
           <li><span><span lang="de">Testentwurf: Testpläne, Testfälle, Verfahren</span><span lang="en">Test design: plans, cases, techniques</span></span><span class="level" data-level="4"><span lang="de">Sehr gut</span><span lang="en">Expert</span></span></li>
           <li><span><span lang="de">Teststrategie</span><span lang="en">Test strategy</span></span><span class="level" data-level="3"><span lang="de">Gut</span><span lang="en">Advanced</span></span></li>
           <li><span><span lang="de">Anforderungsanalyse</span><span lang="en">Requirements analysis</span></span><span class="level" data-level="3"><span lang="de">Gut</span><span lang="en">Advanced</span></span></li>
-          <li><span><span lang="de">Log- und Traceanalyse</span><span lang="en">Log and trace analysis</span></span><span class="level" data-level="3"><span lang="de">Gut</span><span lang="en">Advanced</span></span></li>
-          <li><span><span lang="de">Defektmanagement</span><span lang="en">Defect management</span></span><span class="level" data-level="2"><span lang="de">Solide</span><span lang="en">Working knowledge</span></span></li>
+          <li><span><span lang="de">Jira und Xray</span><span lang="en">Jira and Xray</span></span><span class="level" data-level="3"><span lang="de">Gut</span><span lang="en">Advanced</span></span></li>
         </ul>
       </div>
       <div class="skills__group auf">
@@ -259,9 +275,6 @@
           <li><span>pytest</span><span class="level" data-level="3"><span lang="de">Gut</span><span lang="en">Advanced</span></span></li>
           <li><span>Playwright</span><span class="level" data-level="3"><span lang="de">Gut</span><span lang="en">Advanced</span></span></li>
           <li><span>k6</span><span class="level" data-level="3"><span lang="de">Gut</span><span lang="en">Advanced</span></span></li>
-          <li><span>Angular</span><span class="level" data-level="2"><span lang="de">Solide</span><span lang="en">Working knowledge</span></span></li>
-          <li><span>Spring Boot</span><span class="level" data-level="2"><span lang="de">Solide</span><span lang="en">Working knowledge</span></span></li>
-          <li><span>SQL</span><span class="level" data-level="2"><span lang="de">Solide</span><span lang="en">Working knowledge</span></span></li>
         </ul>
       </div>
       <div class="skills__group auf">
@@ -272,7 +285,6 @@
           <li><span>Jenkins</span><span class="level" data-level="3"><span lang="de">Gut</span><span lang="en">Advanced</span></span></li>
           <li><span>GitHub Actions</span><span class="level" data-level="3"><span lang="de">Gut</span><span lang="en">Advanced</span></span></li>
           <li><span>Docker</span><span class="level" data-level="2"><span lang="de">Solide</span><span lang="en">Working knowledge</span></span></li>
-          <li><span>Azure DevOps</span><span class="level" data-level="2"><span lang="de">Solide</span><span lang="en">Working knowledge</span></span></li>
         </ul>
       </div>
       <div class="skills__group auf">
@@ -280,17 +292,7 @@
         <ul class="skills__list">
           <li><span>ecu.test</span><span class="level" data-level="4"><span lang="de">Sehr gut</span><span lang="en">Expert</span></span></li>
           <li><span>test.guide</span><span class="level" data-level="4"><span lang="de">Sehr gut</span><span lang="en">Expert</span></span></li>
-          <li><span><span lang="de">HiL- und XIL-Prüfstände</span><span lang="en">HiL and XIL test benches</span></span><span class="level" data-level="4"><span lang="de">Sehr gut</span><span lang="en">Expert</span></span></li>
-          <li><span><span lang="de">Testen hardwarenaher Systeme</span><span lang="en">Testing hardware-level systems</span></span><span class="level" data-level="4"><span lang="de">Sehr gut</span><span lang="en">Expert</span></span></li>
-        </ul>
-      </div>
-      <div class="skills__group auf">
-        <h3><span lang="de">Werkzeuge &amp; Schulung</span><span lang="en">Tools &amp; training</span></h3>
-        <ul class="skills__list">
-          <li><span><span lang="de">Jira und Xray</span><span lang="en">Jira and Xray</span></span><span class="level" data-level="3"><span lang="de">Gut</span><span lang="en">Advanced</span></span></li>
-          <li><span>Confluence</span><span class="level" data-level="3"><span lang="de">Gut</span><span lang="en">Advanced</span></span></li>
-          <li><span><span lang="de">Schulungen halten</span><span lang="en">Running training sessions</span></span><span class="level" data-level="3"><span lang="de">Gut</span><span lang="en">Advanced</span></span></li>
-          <li><span><span lang="de">ALM (ehemals HP Quality Center)</span><span lang="en">ALM (formerly HP Quality Center)</span></span><span class="level" data-level="2"><span lang="de">Solide</span><span lang="en">Working knowledge</span></span></li>
+          <li><span><span lang="de">HiL- und XIL-Prüfstände, hardwarenahes Testen</span><span lang="en">HiL and XIL test benches, hardware-level testing</span></span><span class="level" data-level="4"><span lang="de">Sehr gut</span><span lang="en">Expert</span></span></li>
         </ul>
       </div>
     </div>
@@ -307,7 +309,7 @@
       <article class="projekt auf">
         <h3><span lang="de">Agentischer Entwicklungsprozess im Team</span><span lang="en">An agentic development process for the team</span></h3>
         <p lang="de">Bei SPIRIT-TESTING, Herbst 2026. Sechs Stufen vom Ticket bis zur Abnahme, Agenten in getrennten Rollen, Freigabe und Merge durch Menschen. Vorher und nachher mit denselben Kennzahlen gemessen: 5,1-mal so viele Pull Requests je Woche, 72 % weniger Änderungswünsche je Pull Request, bei unveränderter Größe der Änderungen.</p>
-        <p lang="en">At SPIRIT-TESTING, autumn 2026. Six stages from ticket to sign-off, agents in separate roles, approval and merge by people. Measured before and after with the same figures: 5.1 times as many pull requests per week, 72 % fewer change requests per pull request, with the size of the changes unchanged.</p>
+        <p lang="en">At SPIRIT-TESTING, autumn 2026. Six stages from ticket to sign-off, agents in separate roles, human approval and merge. Measured before and after with the same figures: 5.1 times as many pull requests per week, 72 % fewer change requests per pull request, with no change in the size of the pull requests.</p>
         <ul class="tags"><li><span lang="de">KI-Agenten</span><span lang="en">AI agents</span></li><li>GitHub API</li><li><span lang="de">Kennzahlen</span><span lang="en">Metrics</span></li></ul>
         <p class="projekt__link"><a href="agentische-entwicklung.html"><span lang="de">Der Ablauf und die Zahlen</span><span lang="en">The process and the figures</span></a></p>
       </article>
@@ -315,7 +317,7 @@
       <article class="projekt auf">
         <h3><span lang="de">Investment-Plattform für Immobilien</span><span lang="en">Real estate investment platform</span></h3>
         <p lang="de">Für einen privaten Auftraggeber, Oktober 2026. Webanwendung für Deal-Pipeline, Datenraum mit KI-Extraktion aus Exposés, Kalkulation, Entscheidung und Portfolio, aus einem Lastenheft in dreizehn Phasen umgesetzt, in nummerierten Runden mit Agenten. Getestet mit Vitest und Playwright auf Desktop und Handy; eine QA-Runde mit sechs Prüf-Agenten in festen Rollen fand 92 Befunde, alle behoben. Code und Anwendung sind nicht öffentlich.</p>
-        <p lang="en">For a private client, October 2026. Web application for deal pipeline, data room with AI extraction from property exposés, calculation, decision and portfolio, built from a requirements specification in thirteen phases, in numbered rounds with agents. Tested with Vitest and Playwright on desktop and mobile; one QA round with six test agents in fixed roles found 92 findings, all fixed. Code and application are not public.</p>
+        <p lang="en">For a private client, October 2026. A web application covering deal pipeline, a data room with AI extraction from property listings, calculation, decision-making and portfolio, built from a requirements specification in thirteen phases, in numbered rounds with agents. Tested with Vitest and Playwright on desktop and mobile; one QA round with six test agents in fixed roles raised 92 findings, all resolved. Code and application are not public.</p>
         <ul class="tags"><li>TypeScript</li><li>Playwright</li><li><span lang="de">KI-Agenten</span><span lang="en">AI agents</span></li></ul>
         <p class="projekt__link"><a href="investment-plattform.html"><span lang="de">Wie es gebaut und getestet wurde</span><span lang="en">How it was built and tested</span></a></p>
       </article>
@@ -343,7 +345,7 @@
   <!-- =========================================================== Kontakt -->
   <section class="wrap" id="kontakt">
     <p class="marke auf">05 — <span lang="de">Kontakt</span><span lang="en">Contact</span></p>
-    <h2 class="titel auf"><span lang="de">Schreib mir.</span><span lang="en">Write to me.</span></h2>
+    <h2 class="titel auf"><span lang="de">Schreib mir.</span><span lang="en">Drop me a line.</span></h2>
     <p class="vorspann auf">
       <span lang="de">Am einfachsten per E-Mail, sonst über LinkedIn.</span>
       <span lang="en">Email is easiest; LinkedIn works too.</span>
@@ -352,6 +354,10 @@
       <a href="mailto:fouad-boudouhi@hotmail.de">fouad-boudouhi@hotmail.de</a>
       <a href="https://www.linkedin.com/in/fouadboudouhi" rel="me">LinkedIn</a>
       <a href="https://github.com/fouadboudouhi" rel="me">GitHub</a>
+    </p>
+    <p class="pdf auf">
+      <button type="button" class="btn btn--ghost" data-print><span lang="de">Diese Seite als PDF speichern</span><span lang="en">Save this page as PDF</span></button>
+      <span class="pdf__hinweis"><span lang="de">Öffnet den Druckdialog; dort „Als PDF speichern" wählen. Die Druckfassung ist hell, ohne Navigation.</span><span lang="en">Opens the print dialog; choose “Save as PDF” there. The print version is light, without navigation.</span></span>
     </p>
   </section>
 

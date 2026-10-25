@@ -73,6 +73,11 @@
     setzeThema(root.getAttribute("data-theme") !== "light", true);
   });
 
+  document.addEventListener("click", function (ev) {
+    var btn = ev.target.closest ? ev.target.closest("[data-print]") : null;
+    if (btn) window.print();
+  });
+
   // Beim Drucken soll die vollständige Tabelle mit aufs Papier.
   window.addEventListener("beforeprint", function () {
     document.querySelectorAll("details").forEach(function (d) { d.open = true; });

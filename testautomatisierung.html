@@ -83,7 +83,7 @@
   </dl>
 
   <div class="prose" lang="de"><p>Die Anwendung ist der „Toolshop", ein kleiner Online-Shop, den es nur zum Üben gibt: Angular vorn, eine PHP-API dahinter, eine Datenbank darunter. Interessant ist nicht der Shop, sondern das Gerüst darum. Ich habe es so gebaut, wie ich ein Automatisierungsprojekt beim Kunden aufsetzen würde: Ein Befehl bringt die Umgebung hoch, die Datenbank wird jedes Mal gleich befüllt, Smoke- und Regressionstests sind getrennt, und jeder Lauf hinterlässt seine Artefakte an einer festen Stelle.</p></div>
-  <div class="prose" lang="en"><p>The application is the “Toolshop”, a small online shop that exists only for practice: Angular at the front, a PHP API behind it, a database underneath. The interesting part is not the shop but the harness around it. I built it the way I would set up an automation project at a client: one command brings up the environment, the database is seeded the same way every time, smoke and regression tests are separate, and every run leaves its artefacts in a fixed place.</p></div>
+  <div class="prose" lang="en"><p>The application is the “Toolshop”, a small online shop that exists only for practice: Angular at the front, a PHP API behind it, a database underneath. The interesting part is not the shop but the harness around it. I built it the way I would set up an automation project for a client: one command brings up the environment, the database is seeded the same way every time, smoke and regression tests are separate, and every run leaves its artefacts in a fixed place.</p></div>
 
   <figure class="aufbau auf">
     <svg viewBox="0 0 960 300" role="img" aria-labelledby="aufbau-titel">
@@ -150,10 +150,10 @@
   <div class="prose" lang="en"><p>Testing happens on three levels. Robot Framework with the Browser library covers the user interface: 15 smoke tests that run on every pull request and 20 regression tests for the main branch, from filters and search through product details to the cart. pytest checks the API against the OpenAPI contract; what the contract does not describe is skipped rather than counted as a failure. k6 covers load in four scenarios, ramp and peak nightly, soak weekly, with thresholds of 1.5 seconds at the 95th and 3 seconds at the 99th percentile. Every run writes reports and screenshots into a numbered folder.</p></div>
 
   <div class="prose" lang="de"><p>Gefunden hat die Suite dabei einen Fehler in der Anwendung selbst: Das Sortieren der Produktliste über die API antwortet durchgehend mit einem Serverfehler. Der Regressionstest für die Preissortierung hält das fest, und im README steht, woran man den Unterschied zwischen einem Fehler in der Anwendung und einer wackligen Automatisierung erkennt.</p></div>
-  <div class="prose" lang="en"><p>Along the way the suite found a defect in the application itself: sorting the product list through the API consistently answers with a server error. The regression test for sorting by price records it, and the README explains how to tell a defect in the application from flaky automation.</p></div>
+  <div class="prose" lang="en"><p>Along the way the suite found a defect in the application itself: sorting the product list through the API consistently returns a server error. The regression test for sorting by price records it, and the README explains how to tell a defect in the application from flaky automation.</p></div>
 
   <div class="prose" lang="de"><p>52 Commits zwischen Dezember 2025 und Februar 2026. Seit das Projekt fertig ist, sind die Pipelines abgeschaltet; der letzte Lauf war grün. Der Code ist öffentlich, mit Testplan, Architekturbeschreibung und Anleitung zum Nachstellen.</p></div>
-  <div class="prose" lang="en"><p>52 commits between December 2025 and February 2026. Since the project is finished the pipelines are switched off; the last run was green. The code is public, with a test plan, an architecture description and instructions for reproducing it.</p></div>
+  <div class="prose" lang="en"><p>52 commits between December 2025 and February 2026. With the project finished, the pipelines are switched off; the last run was green. The code is public, with a test plan, an architecture description and instructions for reproducing it.</p></div>
 
 </main>
 

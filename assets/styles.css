@@ -327,6 +327,12 @@ section { padding-block: var(--block); }
 .prose p { font-size: var(--fs-lg); line-height: 1.6; }
 
 .kontakt__links { display: flex; flex-wrap: wrap; gap: var(--sp-6); margin-top: var(--sp-6); font-size: var(--fs-lg); }
+/* PDF-Knopf: nur mit JavaScript sinnvoll, ohne bleibt er weg. Der Hinweis
+   daneben sagt, was passiert, bevor der Druckdialog aufgeht. */
+.pdf { display: none; margin-top: var(--sp-7); max-width: none; }
+.js .pdf { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-3) var(--sp-5); }
+.pdf .btn { font: inherit; font-size: var(--fs-xs); cursor: pointer; }
+.pdf__hinweis { font-size: var(--fs-xs); color: var(--mut); max-width: 28rem; }
 
 footer.footer {
   border-top: 1px solid var(--hair); padding-block: var(--sp-7) var(--sp-8);
@@ -400,7 +406,7 @@ footer.footer a:hover { color: var(--fg); }
   html, body { background: #fff; color: #111; font-size: 10.5pt; line-height: 1.45; }
 
   /* Bildschirm-Beiwerk weg */
-  .topbar, #fortschritt, #schein, .skip-link, .actions, .strich { display: none !important; }
+  .topbar, #fortschritt, #schein, .skip-link, .actions, .strich, .pdf, .themeswitch { display: none !important; }
 
   /* Keine Animation im Druck */
   .js .auf, .js .strich { opacity: 1 !important; transform: none !important; }
@@ -408,11 +414,6 @@ footer.footer a:hover { color: var(--fg); }
   section { padding-block: 0 10mm; }
   .wrap { max-width: none; padding-inline: 0; }
 
-  /* Name oben auf die erste Seite */
-  .hero::before {
-    content: "Fouad Boudouhi";
-    display: block; font-size: 13pt; font-weight: 500; margin-bottom: 2mm;
-  }
   .hero { padding-top: 0; }
   .hero__titel { font-size: 20pt; max-width: none; margin-bottom: 4mm; }
   .titel { font-size: 14pt; margin-bottom: 3mm; }
@@ -421,7 +422,7 @@ footer.footer a:hover { color: var(--fg); }
   .status { margin-top: 3mm; }
 
   /* Nichts Wichtiges zerreißen */
-  section, .station, .zahl, .skills__group, .reach__item, table { break-inside: avoid; }
+  section, .station, .zahl, .skills__group, .reach__item, .projekt, table { break-inside: avoid; }
   .station { border: 0; border-top: 1px solid #ccc; border-radius: 0; background: none;
              padding: 4mm 0 0; margin-bottom: 5mm; }
   .badge { border: 1px solid #111; background: none; color: #111; }
@@ -434,6 +435,8 @@ footer.footer a:hover { color: var(--fg); }
   .tbl { font-size: 9.5pt; }
   .reach { grid-template-columns: 1fr; }
   .skills { grid-template-columns: 1fr 1fr; gap: 4mm 8mm; }
+  .projekt__link a::after { content: ""; }
+  .gruppe { margin: 6mm 0 3mm; }
 
   /* Adressen ausschreiben, auf Papier ist ein Verweis sonst wertlos */
   a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 8.5pt; color: #555; word-break: break-all; }
@@ -639,3 +642,8 @@ footer.footer a:hover { color: var(--fg); }
   .aufbau svg { display: none; }
   .aufbau__liste { display: block; }
 }
+
+/* --------------------------------------------------------------- 404-Seite */
+/* Das Prüfprotokoll als Tabelle der Seite; die Zahl zählt wie eine Kennzahl hoch. */
+.vier { margin-top: var(--sp-7); max-width: 46rem; }
+.vier td.e { font-weight: 500; }
