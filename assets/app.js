@@ -152,7 +152,6 @@
       ["Investment-Plattform für Immobilien", "Real estate investment platform", "investment-plattform.html", t("Projekt", "Project")],
       ["Testautomatisierung für eine Übungsanwendung", "Test automation for a practice app", "testautomatisierung.html", t("Projekt", "Project")],
       ["Porsche 911 Targa auf Elektroantrieb", "Porsche 911 Targa converted to electric", "porsche.html", t("Projekt", "Project")],
-      ["Wie diese Seite gebaut ist", "How this site is built", "kolophon.html", t("Kolophon", "Colophon")],
       ["E-Mail schreiben", "Send an email", "mailto:fouad-boudouhi@hotmail.de", "mailto"],
       ["LinkedIn", "LinkedIn", "https://www.linkedin.com/in/fouadboudouhi", "↗"], ["GitHub", "GitHub", "https://github.com/fouadboudouhi", "↗"],
       [t("Hell/Dunkel umschalten", "Toggle light/dark"), null, "!theme", "⌘"], [t("Sprache wechseln", "Switch language"), null, "!lang", "⌘"]
