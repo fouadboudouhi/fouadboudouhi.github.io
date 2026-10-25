@@ -33,6 +33,7 @@
   --hair:      #1d1d20;
   --hair-hell: #2b2b30;
   --glanz:     rgba(255, 255, 255, .055);   /* Lichtschein unter dem Zeiger */
+  --akzent:    #d4a24c;                     /* Ocker: Rubriken, Knopf, Badge, Hervorhebungen */
 
   /* Schrift */
   --f: "Satoshi", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -81,6 +82,7 @@ html[data-theme="light"] {
   --hair:      #e3e2dd;
   --hair-hell: #cfcec8;
   --glanz:     rgba(0, 0, 0, .04);
+  --akzent:    #8a5f12;                     /* dunkler, damit Text darin 5:1 auf Hell hält */
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -404,7 +406,7 @@ footer.footer a:hover { color: var(--fg); }
   :root {
     --bg: #ffffff; --flaeche: #ffffff; --fg: #111111;
     --mut: #444444; --mut-hell: #222222;
-    --hair: #cccccc; --hair-hell: #999999;
+    --hair: #cccccc; --hair-hell: #999999; --akzent: #111111;
   }
   @page { margin: 16mm 14mm; }
 
@@ -660,3 +662,27 @@ footer.footer a:hover { color: var(--fg); }
 /* Das Prüfprotokoll als Tabelle der Seite; die Zahl zählt wie eine Kennzahl hoch. */
 .vier { margin-top: var(--sp-7); max-width: 46rem; }
 .vier td.e { font-weight: 500; }
+
+/* ---------------------------------------------------------------- Akzent */
+/* Eine Farbe, sparsam gesetzt: Rubriken, der gefuellte Knopf, der Badge, die
+   aktive Sprache, Projektlinks, Listenpunkte, Hervorhebungen in den Figuren.
+   Text, Hintergrund und Haarlinien bleiben monochrom. */
+.marke { color: var(--akzent); }
+#fortschritt { background: var(--akzent); }
+.btn--solid { background: var(--akzent); border-color: var(--akzent); color: var(--bg); }
+.btn--solid:hover { background: transparent; color: var(--akzent); }
+.badge { background: var(--akzent); color: var(--bg); }
+a:hover { border-bottom-color: var(--akzent); }
+.projekt__link a { color: var(--akzent); border-bottom-color: color-mix(in srgb, var(--akzent) 45%, transparent); }
+.kontakt__links a { border-bottom-color: color-mix(in srgb, var(--akzent) 45%, transparent); }
+.langswitch button[aria-pressed="true"] { color: var(--akzent); border-bottom-color: var(--akzent); }
+.themeswitch[aria-pressed="true"] { color: var(--akzent); }
+.station__list li::before { background: var(--akzent); }
+.chart .balken--neu rect { fill: var(--akzent); }
+.chart .balken:hover rect { fill: var(--akzent); }
+.chart .wert { fill: var(--akzent); }
+.flow circle { stroke: var(--akzent); }
+.zahl:first-child .w { color: var(--akzent); }
+.stufe:first-child .stufe__bar { background: var(--akzent); }
+.vier td.e { color: var(--akzent); }
+@media print { .badge { border-color: #111; color: #111; } .btn--solid { display: none; } }
