@@ -37,7 +37,7 @@ dem Zeiger, die Kopfzeile bekommt beim Scrollen eine Trennlinie. Alles respektie
 
 ```
 Hero · 01 Schwerpunkte · 02 Werdegang · 03 Fähigkeiten · 04 Projekte · 05 Kontakt
-Projektseiten: agentische-entwicklung.html (Ablauf + Messung), porsche.html
+Projektseiten: agentische-entwicklung.html (Ablauf + Messung), investment-plattform.html, porsche.html
 ```
 
 ## Unter eine eigene Domain bringen

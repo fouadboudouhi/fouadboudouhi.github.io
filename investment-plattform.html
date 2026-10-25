@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="de" data-lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Investment-Plattform für Immobilien — Fouad Boudouhi</title>
+<meta name="description" content="Eine Webanwendung für Immobilien-Investments, aus einem Lastenheft in drei Wochen gebaut: nummerierte Runden mit Agenten, vier Testebenen, QA mit Rollen-Agenten, eigener Server.">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b0b0c'/%3E%3Ctext x='16' y='22' font-family='system-ui,sans-serif' font-weight='500' font-size='15' fill='%23f4f2ee' text-anchor='middle'%3EFB%3C/text%3E%3C/svg%3E">
+<script>document.documentElement.classList.add("js")</script>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<div id="schein"></div>
+
+<a class="skip-link" href="#main"><span lang="de">Zum Inhalt springen</span><span lang="en">Skip to content</span></a>
+
+<header class="topbar" id="kopf">
+  <div class="wrap topbar__inner">
+    <a class="topbar__name" href="index.html">Fouad Boudouhi</a>
+    <nav class="topbar__nav" aria-label="Hauptnavigation">
+      <a href="index.html#projekte"><span lang="de">Alle Projekte</span><span lang="en">All projects</span></a>
+      <span class="langswitch" role="group" aria-label="Sprache / Language">
+        <button type="button" data-set-lang="de" aria-pressed="true">DE</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </span>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap projektseite">
+
+  <a class="back" href="index.html#projekte">&larr; <span lang="de">zurück zur Startseite</span><span lang="en">back to the home page</span></a>
+
+  <h1><span lang="de">Investment-Plattform für Immobilien</span><span lang="en">Real estate investment platform</span></h1>
+  <p class="projektseite__unter">
+    <span lang="de">Aus einem Lastenheft in drei Wochen gebaut, mit Agenten in nummerierten Runden.</span>
+    <span lang="en">Built from a requirements specification in three weeks, with agents in numbered rounds.</span>
+  </p>
+
+  <p class="projektseite__meta">
+    <span><span lang="de">Oktober 2026</span><span lang="en">October 2026</span></span>
+    <span><span lang="de">Privater Auftraggeber</span><span lang="en">Private client</span></span>
+    <span>TypeScript</span>
+    <span>Playwright</span>
+  </p>
+
+  <dl class="kennzahlen">
+    <div>
+      <dt><span lang="de">Umfang</span><span lang="en">Size</span></dt>
+      <dd><span lang="de">688 Quelldateien, 14 Migrationen</span><span lang="en">688 source files, 14 migrations</span></dd>
+    </div>
+    <div>
+      <dt><span lang="de">Tests</span><span lang="en">Tests</span></dt>
+      <dd><span lang="de">317 Vitest-Dateien, 81 Playwright-Szenarien</span><span lang="en">317 Vitest files, 81 Playwright scenarios</span></dd>
+    </div>
+    <div>
+      <dt><span lang="de">Zeitraum</span><span lang="en">Period</span></dt>
+      <dd><span lang="de">3. bis 24. Oktober 2026, 434 Commits</span><span lang="en">3 to 24 October 2026, 434 commits</span></dd>
+    </div>
+    <div>
+      <dt><span lang="de">Betrieb</span><span lang="en">Operation</span></dt>
+      <dd><span lang="de">eigener Server, Docker, tägliche Sicherung</span><span lang="en">own server, Docker, daily backup</span></dd>
+    </div>
+  </dl>
+
+  <div class="prose" lang="de"><p>Ein privater Auftraggeber investiert in Immobilien und wollte seine Arbeit vom ersten Exposé bis zum Bestand in einer Anwendung haben: Deals in einer Pipeline führen, Unterlagen in einem Datenraum ablegen, Kennzahlen rechnen, entscheiden, das Portfolio verwalten. Dafür gab es ein Lastenheft. Daraus habe ich einen Plan mit dreizehn Phasen gemacht, von Fundament und Rechten über Rechenkern und Entscheidung bis zu Portfolio, Posteingang und Deal-Suche. Code und Anwendung gehören dem Auftraggeber und sind nicht öffentlich.</p></div>
+  <div class="prose" lang="en"><p>A private client invests in real estate and wanted his work, from the first exposé to the portfolio, in one application: deals in a pipeline, documents in a data room, figures calculated, decisions made, the portfolio managed. There was a requirements specification for it. From that I made a plan with thirteen phases, from foundation and permissions through calculation core and decision to portfolio, inbox and deal sourcing. Code and application belong to the client and are not public.</p></div>
+
+  <div class="prose" lang="de"><p>Gebaut habe ich in nummerierten Runden mit Agenten, jede Runde ein abgegrenztes Stück aus dem Plan: Umsetzung, Prüfung, Merge. 434 Commits in drei Wochen. Die Anwendung ist ein TypeScript-Monorepo mit Rechenkern, Domänenschicht und Datenbank als eigenen Paketen und der Weboberfläche darüber. Der Rechenkern ist gegen die Tabellenkalkulation abgeglichen, mit der der Auftraggeber bisher gerechnet hat; drei Referenzfälle daraus laufen als Golden-Tests mit.</p></div>
+  <div class="prose" lang="en"><p>I built it in numbered rounds with agents, each round a bounded piece of the plan: implementation, check, merge. 434 commits in three weeks. The application is a TypeScript monorepo with the calculation core, the domain layer and the database as separate packages and the web front end on top. The calculation core is reconciled against the spreadsheet the client used to calculate with; three reference cases from it run as golden tests.</p></div>
+
+  <figure class="stufen auf">
+    <div class="stufe" style="--b: 28%"><span class="stufe__bar"></span><span class="stufe__text"><span lang="de"><b>Funktionstest Ende-zu-Ende</b> — vier Agenten, jede Funktion einmal durch</span><span lang="en"><b>End-to-end functional test</b> — four agents, every function once</span></span></div>
+    <div class="stufe" style="--b: 44%"><span class="stufe__bar"></span><span class="stufe__text"><span lang="de"><b>QA-Runden</b> — sechs Prüf-Agenten in festen Rollen, Desktop und Handy</span><span lang="en"><b>QA rounds</b> — six test agents in fixed roles, desktop and mobile</span></span></div>
+    <div class="stufe" style="--b: 62%"><span class="stufe__bar"></span><span class="stufe__text"><span lang="de"><b>Playwright</b> — 81 Szenarien, Desktop und 375 px</span><span lang="en"><b>Playwright</b> — 81 scenarios, desktop and 375 px</span></span></div>
+    <div class="stufe" style="--b: 82%"><span class="stufe__bar"></span><span class="stufe__text"><span lang="de"><b>Vitest</b> — 317 Testdateien in Rechenkern, Domäne und Web, darunter die Golden-Tests</span><span lang="en"><b>Vitest</b> — 317 test files across calculation core, domain and web, golden tests included</span></span></div>
+    <figcaption>
+      <span lang="de">Vier Ebenen. Unten die Menge, oben das Urteil: Je höher, desto weniger Läufe und desto mehr Kontext je Lauf.</span>
+      <span lang="en">Four levels. Volume at the bottom, judgement at the top: the higher the level, the fewer runs and the more context per run.</span>
+    </figcaption>
+  </figure>
+
+  <div class="prose" lang="de"><p>Die QA-Runden sind der Teil, der aus dem Testen kommt. Sechs Agenten mit festen Rollen, von Akquise über Analyst und Investor bis Admin, gehen die Anwendung auf Desktop und Handy so durch, wie ihre Nutzergruppe sie benutzen würde, und schreiben jeden Befund mit Beleg auf. Die zweite Runde brachte 92 Befunde, von Dezimaleingaben über Rechteprüfungen bis zu Handy-Layouts; alle sind umgesetzt. Danach haben vier Agenten jede Funktion Ende-zu-Ende geprüft, und aus dem, was sie fanden, ist eine dauerhafte E2E-Suite geworden.</p></div>
+  <div class="prose" lang="en"><p>The QA rounds are the part that comes from testing. Six agents with fixed roles, from acquisition through analyst and investor to admin, work through the application on desktop and mobile the way their user group would, and write down every finding with evidence. The second round produced 92 findings, from decimal input through permission checks to mobile layouts; all are implemented. After that, four agents checked every function end to end, and what they found became a permanent E2E suite.</p></div>
+
+  <div class="prose" lang="de"><p>Die Anwendung hat selbst Agenten. Einer ordnet eingehende E-Mails den Deals zu, legt Anhänge im Datenraum ab und stößt die Extraktion an; ein zweiter liest Inserate aus Suchauftrags-Mails und prüft sie gegen die Buy Box. Beide laufen über ein Gateway mit drei Freigabestufen, die der Auftraggeber je Aktionstyp einstellt. Was Geld bewegt, also Kaufangebote, Provisions- und Widerrufsbestätigungen, ist fest auf menschliche Freigabe kodiert und lässt sich in den Einstellungen nicht lockern.</p></div>
+  <div class="prose" lang="en"><p>The application has agents of its own. One assigns incoming emails to deals, files attachments in the data room and triggers extraction; a second reads listings from search-alert emails and checks them against the buy box. Both run through a gateway with three approval levels that the client sets per action type. Anything that moves money, meaning purchase offers, commission and withdrawal confirmations, is hard-coded to human approval and cannot be loosened in the settings.</p></div>
+
+  <div class="prose" lang="de"><p>Betrieben wird die Anwendung auf einem eigenen Server in Nürnberg: ein Docker-Stack mit Reverse-Proxy und HTTPS, Postgres, dem Worker im Prozess und einer täglichen Sicherung, für rund fünf Euro im Monat. Die Einrichtung ist ein Skript, die Daten bleiben in Deutschland.</p></div>
+  <div class="prose" lang="en"><p>The application runs on a dedicated server in Nuremberg: a Docker stack with reverse proxy and HTTPS, Postgres, the worker in process and a daily backup, for around five euros a month. Setup is a script, and the data stays in Germany.</p></div>
+
+</main>
+
+<footer class="wrap footer">
+  <span>&copy; 2026 Fouad Boudouhi ·
+    <a href="index.html"><span lang="de">Startseite</span><span lang="en">Home</span></a> ·
+    <a href="impressum.html"><span lang="de">Impressum</span><span lang="en">Legal notice</span></a> ·
+    <a href="datenschutz.html"><span lang="de">Datenschutz</span><span lang="en">Privacy</span></a>
+  </span>
+  <span><span lang="de">Stand: Oktober 2026</span><span lang="en">Last updated: October 2026</span></span>
+</footer>
+
+<script src="assets/app.js" defer></script>
+</body>
+</html>
