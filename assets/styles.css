@@ -34,8 +34,8 @@
   --mut-hell:  #b6bdcb;
   --hair:      #1f2632;
   --hair-hell: #2c3544;
-  --glanz:     rgba(110, 168, 255, .07);    /* Lichtschein unter dem Zeiger */
-  --akzent:    #6ea8ff;                     /* Blau: Rubriken, Knopf, Badge, Hervorhebungen */
+  --glanz:     rgba(227, 169, 74, .07);     /* Lichtschein unter dem Zeiger */
+  --akzent:    #e3a94a;                     /* Amber: Rubriken, Knopf, Badge, Hervorhebungen */
   --f-mono:    ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 
   /* Schrift */
