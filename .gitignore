@@ -1,0 +1,8 @@
+# Entwuerfe fuer LinkedIn-Beitraege: nicht Teil der Seite, nicht veroeffentlichen
+beitraege/
+# lokales Werkzeug (Vorschau-Server)
+.claude/
+# Einzeldatei-Fassungen fuers Handy, werden aus den Quellen gebaut
+fouad-boudouhi-*.html
+# Arbeitsnotizen
+NOTIZEN.md
