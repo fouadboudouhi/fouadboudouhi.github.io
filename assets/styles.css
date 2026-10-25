@@ -576,8 +576,8 @@ footer.footer a:hover { color: var(--fg); }
   gap: var(--sp-5); align-items: center; margin-bottom: var(--sp-3);
 }
 .stufe__bar {
-  display: block; width: var(--b); height: 1.6rem; border: 1px solid var(--hair-hell);
-  border-radius: var(--radius); background: var(--flaeche); transform-origin: left;
+  display: block; width: var(--b); height: 1.6rem;
+  border-radius: var(--radius); background: var(--mut); transform-origin: left;
 }
 .stufe__text { font-size: var(--fs-xs); color: var(--mut); line-height: 1.45; }
 .stufe__text b { color: var(--fg); font-weight: 500; }
