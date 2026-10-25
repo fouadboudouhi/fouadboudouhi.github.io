@@ -1,6 +1,6 @@
 /* ==========================================================================
    Fouad Boudouhi — persönliche Seite
-   Sprachumschaltung, Bewegung, Druckvorbereitung.
+   Sprachumschaltung, Hell/Dunkel, Bewegung, Druckvorbereitung.
    Kein Framework, kein Build-Schritt. Was hier steht, läuft im Browser.
    ========================================================================== */
 
@@ -45,6 +45,32 @@
     if (!btn) return;
     setzeSprache(btn.getAttribute("data-set-lang"), true);
     if (typeof zeichne === "function") zeichne();
+  });
+
+  /* --------------------------------------------------------- Hell/Dunkel */
+  // Standard ist dunkel. Das Kopf-Skript setzt data-theme vor dem ersten
+  // Zeichnen aus dem Speicher; hier kommen nur Schalter und Merken dazu.
+
+  var THEMA = "fb-theme";
+
+  function setzeThema(hell, merken) {
+    if (hell) root.setAttribute("data-theme", "light");
+    else root.removeAttribute("data-theme");
+    var knoepfe = document.querySelectorAll("[data-toggle-theme]");
+    for (var i = 0; i < knoepfe.length; i++) {
+      knoepfe[i].setAttribute("aria-pressed", hell ? "true" : "false");
+    }
+    if (merken) {
+      try { window.localStorage.setItem(THEMA, hell ? "light" : "dark"); } catch (e) { /* privater Modus */ }
+    }
+  }
+
+  setzeThema(root.getAttribute("data-theme") === "light", false);
+
+  document.addEventListener("click", function (ev) {
+    var btn = ev.target.closest ? ev.target.closest("[data-toggle-theme]") : null;
+    if (!btn) return;
+    setzeThema(root.getAttribute("data-theme") !== "light", true);
   });
 
   // Beim Drucken soll die vollständige Tabelle mit aufs Papier.
