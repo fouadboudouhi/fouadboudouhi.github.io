@@ -1,0 +1,566 @@
+/* ==========================================================================
+   Fouad Boudouhi — persönliche Seite
+   Eine Schrift, kein Akzentton, Trennung durch Abstand statt durch Linien.
+   Alle Werte genau einmal hier auf :root.
+   ========================================================================== */
+
+/* Satoshi, selbst ausgeliefert (ITF Free Font License).
+   Nur die beiden Schnitte, die die Seite wirklich benutzt. */
+@font-face {
+  font-family: "Satoshi";
+  src: url("fonts/satoshi-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("fonts/satoshi-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: dark;
+
+  /* Farben */
+  --bg:        #0b0b0c;
+  --flaeche:   #0f0f11;
+  --fg:        #f4f2ee;
+  --mut:       #8b8b92;
+  --mut-hell:  #adadb4;
+  --hair:      #1d1d20;
+  --hair-hell: #2b2b30;
+
+  /* Schrift */
+  --f: "Satoshi", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Größen — eine Stufung im Verhältnis 1,2, Grundgröße 17px (= 1rem).
+     Jede Größe hat genau eine Aufgabe, von Mikrobeschriftung bis Schlagzeile. */
+  --fs-2xs: 0.7rem;    /* Rubriken, Stufen, Tabellenköpfe   ~12px */
+  --fs-xs:  0.84rem;   /* Navigation, Eckdaten, Fußnoten    ~14px */
+  --fs-md:  1rem;      /* Fließtext überall                  17px */
+  --fs-lg:  1.2rem;    /* Lesetext in Über mich             ~20px */
+  --fs-xl:  1.45rem;   /* Zwischenüberschriften             ~25px */
+  --fs-2xl: 1.9rem;    /* Kennzahlen im Fließtext           ~32px */
+  --fs-3xl: clamp(2.2rem, 1.5rem + 2vw, 2.9rem);   /* Abschnittstitel */
+  --fs-4xl: clamp(2.6rem, 1.4rem + 5vw, 4.6rem);   /* Schlagzeile    */
+  --fs-zahl: clamp(2rem, 1.4rem + 2.4vw, 3.4rem);  /* Hauptkennzahl  */
+
+  /* Abstände */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+  --sp-8: 4.5rem;
+  --block: clamp(5.5rem, 14vh, 11rem);
+
+  /* Maße */
+  --w-page: 74rem;
+  --w-text: 36rem;
+  --rand: clamp(1.5rem, 5vw, 5.5rem);
+  --radius: 3px;
+  --ease: cubic-bezier(.22, .61, .36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { font-size: 106.25%; scroll-behavior: smooth; }  /* 1rem = 17px */
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--f);
+  font-size: var(--fs-md);
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 { font-weight: 500; margin: 0; letter-spacing: -0.035em; line-height: 1.05; text-wrap: balance; }
+p { margin: 0 0 var(--sp-4); max-width: var(--w-text); color: var(--mut-hell); }
+p:last-child { margin-bottom: 0; }
+ul { margin: 0; padding-left: 1.1em; }
+li { margin-bottom: var(--sp-2); }
+b, strong { font-weight: 500; color: var(--fg); }
+code { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: 0.9em; }
+
+a { color: var(--fg); text-decoration: none; border-bottom: 1px solid var(--hair-hell); transition: border-color .3s var(--ease); }
+a:hover { border-color: var(--fg); }
+
+:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; border-radius: 2px; }
+
+/* Sprachumschaltung — ohne JavaScript bleibt data-lang="de" stehen. */
+html[data-lang="de"] [lang="en"] { display: none; }
+html[data-lang="en"] [lang="de"] { display: none; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute; left: var(--sp-4); top: var(--sp-4); z-index: 50;
+  background: var(--flaeche); border: 1px solid var(--hair-hell); border-radius: var(--radius);
+  padding: var(--sp-2) var(--sp-4); transform: translateY(-250%);
+}
+.skip-link:focus { transform: translateY(0); }
+
+/* ------------------------------------------------------------------ Gerüst */
+
+.wrap { max-width: var(--w-page); margin-inline: auto; padding-inline: var(--rand); position: relative; z-index: 1; }
+section { padding-block: var(--block); }
+.strich { height: 1px; background: var(--hair); transform-origin: left; }
+
+.marke {
+  font-size: var(--fs-2xs); text-transform: uppercase; letter-spacing: 0.2em;
+  color: var(--mut); margin: 0 0 var(--sp-7); max-width: none;
+}
+.titel { font-size: var(--fs-3xl); margin-bottom: var(--sp-6); max-width: 20ch; }
+.vorspann { color: var(--fg); font-size: var(--fs-lg); max-width: 42rem; line-height: 1.5; }
+
+/* ------------------------------------------------------------------- Kopf */
+
+.topbar {
+  position: fixed; inset: 0 0 auto; z-index: 20;
+  backdrop-filter: blur(16px);
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  border-bottom: 1px solid transparent;
+  transition: border-color .4s var(--ease);
+}
+.topbar.ab { border-bottom-color: var(--hair); }
+.topbar__inner { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-4); padding-block: var(--sp-3); }
+.topbar__name { font-size: var(--fs-md); letter-spacing: -0.01em; border: 0; }
+.topbar__nav { display: flex; align-items: center; gap: var(--sp-5); }
+.topbar__nav a { color: var(--mut); font-size: var(--fs-xs); border: 0; transition: color .3s var(--ease); }
+.topbar__nav a:hover { color: var(--fg); }
+@media (max-width: 52rem) { .is-optional { display: none; } }
+
+.langswitch { display: flex; gap: var(--sp-2); margin-left: var(--sp-2); }
+.langswitch button {
+  font: inherit; font-size: var(--fs-xs); letter-spacing: 0.08em;
+  background: none; border: 0; padding: var(--sp-1) 0; cursor: pointer;
+  color: var(--mut); border-bottom: 1px solid transparent; transition: color .3s var(--ease), border-color .3s var(--ease);
+}
+.langswitch button:hover { color: var(--fg); }
+.langswitch button[aria-pressed="true"] { color: var(--fg); border-bottom-color: var(--fg); }
+
+#fortschritt { position: fixed; top: 0; left: 0; height: 1px; width: 0; background: var(--fg); z-index: 21; transition: width .08s linear; }
+#schein {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: .5;
+  background: radial-gradient(42rem 42rem at var(--x, 50%) var(--y, 0%), rgba(255,255,255,.055), transparent 70%);
+}
+
+/* ------------------------------------------------------------------- Hero */
+
+.hero { padding-block: clamp(9rem, 24vh, 17rem) var(--block); }
+.hero__titel { font-size: var(--fs-4xl); letter-spacing: -0.05em; margin-bottom: var(--sp-6); max-width: 14ch; }
+
+/* --------------------------------------------------------------- Kennzahlen */
+
+.zahlen {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  column-gap: clamp(2.5rem, 5vw, 5.5rem);
+  row-gap: var(--sp-7);
+  margin-bottom: var(--sp-8);
+}
+/* Eine Hauptzahl, drei Begleitzahlen. Vier gleich große Werte nebeneinander
+   lesen sich sonst als eine durchgehende Rechnung. */
+@media (min-width: 60rem) {
+  .zahlen { grid-template-columns: 1.5fr 1fr 1fr 1fr; align-items: end; }
+  .zahl:first-child { padding-right: var(--sp-6); }
+  .zahl:first-child .w { font-size: clamp(2.4rem, 1.5rem + 2.9vw, 3.7rem); }
+  .zahl:not(:first-child) .w { font-size: var(--fs-2xl); }
+}
+/* Haarlinie je Kennzahl: bindet Zahl und Beschriftung zu einem Block und
+   verhindert, dass die Werte nebeneinander wie eine Gleichung gelesen werden. */
+.zahl {
+  border-top: 1px solid var(--hair-hell);
+  padding-top: var(--sp-4);
+  display: flex;
+  flex-direction: column;
+}
+/* Beschriftung zuerst, Zahl darunter: So beginnt jede Spalte mit Text.
+   Vier gleich große Zahlen in einer Reihe lesen sich sonst wie eine Gleichung. */
+.zahl .b { order: 1; font-size: var(--fs-xs); color: var(--mut); line-height: 1.4; margin-bottom: var(--sp-4); min-height: 2.8em; }
+.zahl .w { order: 2; font-size: var(--fs-zahl); letter-spacing: -0.055em; line-height: .88; }
+
+/* ----------------------------------------------------------------- Tabellen */
+
+.tbl { width: 100%; border-collapse: collapse; font-size: var(--fs-md); max-width: 46rem; }
+.tbl caption { text-align: left; color: var(--mut); font-size: var(--fs-xs); padding-bottom: var(--sp-4); }
+.tbl th {
+  font-weight: 400; font-size: var(--fs-2xs); text-transform: uppercase; letter-spacing: .14em;
+  color: var(--mut); text-align: right; padding: 0 0 var(--sp-4); border-bottom: 1px solid var(--hair);
+}
+.tbl th:first-child { text-align: left; }
+.tbl td { padding: var(--sp-4) 0; text-align: right; border-bottom: 1px solid var(--hair); color: var(--mut); }
+.tbl td:first-child { text-align: left; color: var(--fg); }
+.tbl td + td { padding-left: var(--sp-6); }
+.tbl td.e { color: var(--fg); }
+.tbl tr:last-child td { border-bottom: 0; }
+.note { font-size: var(--fs-xs); color: var(--mut); max-width: 42rem; margin-top: var(--sp-6); line-height: 1.6; }
+
+/* ------------------------------------------------------------- Was ich tue */
+
+/* Drei Schwerpunkte untereinander, getrennt durch Haarlinien.
+   Eine Spalte hält die Zeilen bei gut 60 Zeichen. */
+.reach { display: grid; gap: 0; }
+.reach__item { padding-block: var(--sp-6); border-top: 1px solid var(--hair); max-width: 44rem; }
+.reach__item:first-child { border-top: 0; padding-top: 0; }
+.reach__step { font-size: var(--fs-2xs); text-transform: uppercase; letter-spacing: .2em; color: var(--mut); margin-bottom: var(--sp-4); }
+.reach__title { font-size: var(--fs-lg); font-weight: 500; margin-bottom: var(--sp-3); }
+.reach__item p { font-size: var(--fs-md); max-width: none; }
+
+/* ---------------------------------------------------------------- Werdegang */
+
+/* Stationen als abgesetzte Karten: Beim Überfliegen sieht man sofort,
+   wo eine Station anfängt und aufhört. */
+/* Keine Karten: gerahmte Kaesten mit Fuellung sehen nach Lebenslauf-Generator
+   aus und brechen mit dem Rest der Seite, der nur mit Haarlinien arbeitet.
+   Stattdessen eine Zeitleiste - Datum links in eigener Spalte, Inhalt rechts,
+   getrennt durch eine Linie ueber die volle Breite. */
+.station { padding: var(--sp-7) 0; border-top: 1px solid var(--hair); }
+.station:first-of-type { border-top: 0; padding-top: 0; }
+.station:last-of-type { padding-bottom: 0; }
+@media (min-width: 54rem) {
+  .station { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); gap: clamp(2rem, 4vw, 3.25rem); }
+}
+.station__when {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2) var(--sp-3);
+  font-size: var(--fs-xs); color: var(--mut); margin: 0 0 var(--sp-3);
+}
+@media (min-width: 54rem) {
+  /* In der Zeitleiste stehen Zeitraum und Status untereinander, damit die
+     Spalte schmal bleiben kann. */
+  .station__when { flex-direction: column; align-items: flex-start; margin-bottom: 0; }
+}
+.badge {
+  font-size: var(--fs-2xs); letter-spacing: .1em; text-transform: uppercase;
+  color: var(--bg); background: var(--fg);
+  padding: 2px var(--sp-2); border-radius: 100px;
+}
+.station__role { font-size: var(--fs-lg); font-weight: 500; margin-bottom: var(--sp-1); }
+.station__org { font-size: var(--fs-xs); color: var(--mut); margin-bottom: var(--sp-1); }
+.station__mutter { color: var(--mut); }
+.station__mutter::before { content: "· "; }
+/* Ort und Arbeitsmodell: steht genau dort, wo ein Recruiter es sucht. */
+.station__ort { font-size: var(--fs-xs); color: var(--mut); margin-bottom: var(--sp-4); }
+.station__org a { color: var(--mut); border-bottom-color: var(--hair); }
+.station__org a:hover { color: var(--fg); border-bottom-color: var(--fg); }
+.station__org a::after { content: " ↗"; }
+.station__kurz { font-size: var(--fs-md); color: var(--fg); margin-bottom: var(--sp-5); max-width: 42rem; }
+.station__list { font-size: var(--fs-md); max-width: var(--w-text); color: var(--mut-hell); list-style: none; padding-left: 0; }
+.station__list li { padding-left: 1.1em; position: relative; }
+/* Kleiner Punkt statt Gedankenstrich: derselbe Knoten wie im Ablaufbild,
+   liest sich als Liste und nicht als Dialog. */
+.station__list li::before {
+  content: ""; position: absolute; left: 0; top: .66em;
+  width: 4px; height: 4px; border-radius: 50%; background: var(--mut);
+}
+.station__list b { color: var(--fg); font-weight: 500; }
+
+.engagement {
+  font-size: var(--fs-2xs); text-transform: uppercase; letter-spacing: .18em;
+  color: var(--mut); margin: var(--sp-6) 0 var(--sp-4); max-width: none;
+}
+.station__org + .engagement { margin-top: 0; }
+/* Trennt die Berufsstationen von Ausbildung und Zertifikat, ohne eine eigene
+   Sektion aufzumachen - die Zeitleiste laeuft einfach weiter. */
+.gruppe {
+  font-size: var(--fs-2xs); text-transform: uppercase; letter-spacing: .18em;
+  color: var(--mut); margin: var(--sp-8) 0 var(--sp-5); max-width: none;
+}
+.gruppe + .station { border-top: 0; padding-top: 0; }
+
+.tags { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-5); padding: 0; list-style: none; }
+.tags li { margin: 0; font-size: var(--fs-xs); color: var(--mut); }
+.tags li + li::before { content: "·"; margin-right: var(--sp-3); }
+
+/* -------------------------------------------------------------- Fähigkeiten */
+
+.skills { display: grid; gap: clamp(2.5rem, 5vw, 4rem); }
+@media (min-width: 54rem) { .skills { grid-template-columns: 1fr 1fr; } }
+.skills__group h3 { font-size: var(--fs-2xs); text-transform: uppercase; letter-spacing: .18em; color: var(--mut); margin-bottom: var(--sp-4); font-weight: 400; }
+.skills__list { list-style: none; padding: 0; margin: 0; }
+.skills__list li {
+  display: flex; justify-content: space-between; align-items: baseline; gap: var(--sp-5);
+  margin: 0; padding: var(--sp-3) 0; border-bottom: 1px solid var(--hair); font-size: var(--fs-md);
+}
+.level { color: var(--mut); font-size: var(--fs-xs); white-space: nowrap; }
+.level[data-level="4"] { color: var(--fg); }
+
+
+.prose { max-width: var(--w-text); }
+.prose p { font-size: var(--fs-lg); line-height: 1.6; }
+
+.kontakt__links { display: flex; flex-wrap: wrap; gap: var(--sp-6); margin-top: var(--sp-6); font-size: var(--fs-lg); }
+
+footer.footer {
+  border-top: 1px solid var(--hair); padding-block: var(--sp-7) var(--sp-8);
+  font-size: var(--fs-xs); color: var(--mut);
+  display: flex; flex-wrap: wrap; gap: var(--sp-4); justify-content: space-between;
+}
+footer.footer a { color: var(--mut); border: 0; }
+footer.footer a:hover { color: var(--fg); }
+
+/* Offene Stelle, bewusst sichtbar */
+.gap { border: 1px dashed var(--hair-hell); border-radius: var(--radius); padding: var(--sp-5); background: var(--flaeche); }
+.gap__label { font-size: var(--fs-2xs); text-transform: uppercase; letter-spacing: .18em; color: var(--mut); margin-bottom: var(--sp-3); }
+.gap p { font-size: var(--fs-md); }
+
+/* ------------------------------------------------------------ Rechtsseiten */
+
+.legal { padding-block: clamp(7rem, 18vh, 10rem) var(--block); }
+.legal h1 { font-size: var(--fs-3xl); margin-bottom: var(--sp-6); }
+.legal h2 { font-size: var(--fs-lg); margin: var(--sp-7) 0 var(--sp-3); }
+.legal p, .legal ul { max-width: var(--w-text); font-size: var(--fs-md); color: var(--mut-hell); }
+.legal .back { display: inline-block; margin-bottom: var(--sp-6); font-size: var(--fs-xs); color: var(--mut); border: 0; }
+.legal .back:hover { color: var(--fg); }
+
+/* ---------------------------------------------------------------- Bewegung */
+
+.js .auf { opacity: 0; transform: translateY(16px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+.js .auf.da { opacity: 1; transform: none; }
+.js .strich { transform: scaleX(0); transition: transform 1.2s var(--ease); }
+.js .strich.da { transform: scaleX(1); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .auf { opacity: 1; transform: none; transition: none; }
+  .js .strich { transform: scaleX(1); transition: none; }
+  #schein { display: none; }
+  * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+/* ----------------------------------------------- Handlungsaufforderung */
+
+.actions { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-7); }
+.btn {
+  display: inline-block; font-size: var(--fs-xs); line-height: 1;
+  padding: var(--sp-4) var(--sp-6); border-radius: 100px;
+  border: 1px solid var(--hair-hell); color: var(--fg);
+  transition: background-color .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease);
+}
+.btn--solid { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.btn--solid:hover { background: transparent; color: var(--fg); }
+.btn--ghost:hover { border-color: var(--fg); }
+
+.status {
+  display: flex; flex-wrap: wrap; gap: var(--sp-2) var(--sp-5);
+  margin-top: var(--sp-6); font-size: var(--fs-xs); color: var(--mut); max-width: none;
+}
+.status > span + span::before { content: "·"; margin-right: var(--sp-5); }
+
+/* ==========================================================================
+   Druck — die Seite ist der Lebenslauf. Strg+P soll eine saubere PDF geben,
+   die man einer Bewerbung anhängen kann.
+   ========================================================================== */
+
+@media print {
+  :root {
+    --bg: #ffffff; --flaeche: #ffffff; --fg: #111111;
+    --mut: #444444; --mut-hell: #222222;
+    --hair: #cccccc; --hair-hell: #999999;
+  }
+  @page { margin: 16mm 14mm; }
+
+  html, body { background: #fff; color: #111; font-size: 10.5pt; line-height: 1.45; }
+
+  /* Bildschirm-Beiwerk weg */
+  .topbar, #fortschritt, #schein, .skip-link, .actions, .strich { display: none !important; }
+
+  /* Keine Animation im Druck */
+  .js .auf, .js .strich { opacity: 1 !important; transform: none !important; }
+
+  section { padding-block: 0 10mm; }
+  .wrap { max-width: none; padding-inline: 0; }
+
+  /* Name oben auf die erste Seite */
+  .hero::before {
+    content: "Fouad Boudouhi";
+    display: block; font-size: 13pt; font-weight: 500; margin-bottom: 2mm;
+  }
+  .hero { padding-top: 0; }
+  .hero__titel { font-size: 20pt; max-width: none; margin-bottom: 4mm; }
+  .titel { font-size: 14pt; margin-bottom: 3mm; }
+  .vorspann { font-size: 11pt; max-width: none; }
+  .marke { margin-bottom: 3mm; letter-spacing: .12em; }
+  .status { margin-top: 3mm; }
+
+  /* Nichts Wichtiges zerreißen */
+  section, .station, .zahl, .skills__group, .reach__item, table { break-inside: avoid; }
+  .station { border: 0; border-top: 1px solid #ccc; border-radius: 0; background: none;
+             padding: 4mm 0 0; margin-bottom: 5mm; }
+  .badge { border: 1px solid #111; background: none; color: #111; }
+  .station__org a::after { content: ""; }
+  h1, h2, h3 { break-after: avoid; }
+  #werdegang { break-before: page; }
+
+  .zahlen { gap: 6mm; }
+  .zahl:first-child .w, .zahl .w { font-size: 16pt !important; }
+  .tbl { font-size: 9.5pt; }
+  .reach { grid-template-columns: 1fr; }
+  .skills { grid-template-columns: 1fr 1fr; gap: 4mm 8mm; }
+
+  /* Adressen ausschreiben, auf Papier ist ein Verweis sonst wertlos */
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 8.5pt; color: #555; word-break: break-all; }
+  a[href^="mailto"]::after { content: ""; }
+  a { color: #111; border: 0; }
+
+  footer.footer { border-top: 1px solid #ccc; font-size: 8.5pt; }
+}
+
+/* ------------------------------------------------------- Verfahren, Schema */
+
+.flow { margin: 0 0 var(--sp-8); }
+.flow svg { width: 100%; height: auto; overflow: visible; }
+.flow .bahn { stroke: var(--hair-hell); stroke-width: 1; }
+.flow circle { fill: var(--bg); stroke: var(--fg); stroke-width: 1.5; }
+.flow text { font-family: var(--f); font-size: 15px; fill: var(--mut-hell); }
+.flow figcaption {
+  margin-top: var(--sp-6); font-size: var(--fs-xs); color: var(--mut); max-width: 44rem;
+}
+
+/* Die Bahn zeichnet sich, danach erscheinen die Stufen nacheinander.
+   Das ist Gestaltung, kein Mitschnitt - der Hinweis steht in der Bildunterschrift. */
+.js .flow .bahn { stroke-dasharray: 900; stroke-dashoffset: 900; }
+.js .flow .knoten { opacity: 0; }
+.js .flow.da .bahn { animation: bahn 1.1s var(--ease) forwards; }
+.js .flow.da .knoten { animation: stufe .5s var(--ease) forwards; animation-delay: calc(.5s + var(--i) * .13s); }
+@keyframes bahn { to { stroke-dashoffset: 0; } }
+@keyframes stufe { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .flow .bahn { stroke-dasharray: none; stroke-dashoffset: 0; }
+  .js .flow .knoten { opacity: 1; }
+}
+@media (max-width: 40rem) { .flow text { font-size: 22px; } }
+
+/* -------------------------------------------------- Wochendiagramm in 04 */
+
+.chart { margin: 0 0 var(--sp-8); }
+.chart svg { width: 100%; height: auto; overflow: visible; }
+.chart .netz { stroke: var(--hair); stroke-width: 1; }
+.chart .basis { stroke: var(--hair-hell); stroke-width: 1; }
+.chart .balken rect { fill: var(--mut); transition: fill .2s var(--ease); }
+.chart .balken--neu rect { fill: var(--fg); }
+.chart .balken:hover rect { fill: var(--fg); }
+.chart .marke-linie { stroke: var(--mut-hell); stroke-width: 1; stroke-dasharray: 3 3; }
+.chart text { font-family: var(--f); }
+.chart .achse { font-size: 13px; fill: var(--mut); }
+.chart .marke-text { font-size: 13px; fill: var(--mut-hell); }
+.chart .wert { font-size: 15px; font-weight: 500; fill: var(--fg); }
+.chart figcaption { margin-top: var(--sp-5); font-size: var(--fs-xs); color: var(--mut); max-width: 46rem; }
+
+@media (max-width: 46rem) {
+  .chart .achse, .chart .marke-text { font-size: 20px; }
+  .chart .wert { font-size: 22px; }
+}
+
+
+/* ==========================================================================
+   Das Raster der Seite. Jeder Abschnitt hat links seine Rubrik, rechts den
+   Inhalt. Die Rubrik bleibt beim Scrollen stehen, solange ihr Abschnitt läuft.
+   Der Titelbereich ist die bewusste Ausnahme und läuft über die volle Breite.
+   ========================================================================== */
+
+@media (min-width: 60rem) {
+  main > section.wrap:not(.hero) {
+    display: grid;
+    grid-template-columns: 11rem minmax(0, 1fr);
+    column-gap: clamp(2.5rem, 4vw, 4.5rem);
+    align-items: start;
+  }
+  main > section.wrap:not(.hero) > * { grid-column: 2; }
+  main > section.wrap:not(.hero) > .marke {
+    grid-column: 1;
+    grid-row: 1 / -1;
+    position: sticky;
+    top: 5.5rem;
+    margin-bottom: 0;
+    text-align: right;
+  }
+}
+
+/* ------------------------------------------------- Alle Kennzahlen, einklappbar */
+
+.alle { margin: 0 0 var(--sp-6); max-width: 46rem; }
+.alle > summary {
+  cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: var(--sp-2);
+  font-size: var(--fs-xs); color: var(--mut); padding-bottom: 2px;
+  border-bottom: 1px solid var(--hair-hell); transition: color .3s var(--ease), border-color .3s var(--ease);
+}
+.alle > summary::-webkit-details-marker { display: none; }
+.alle > summary::after { content: "+"; font-size: var(--fs-md); line-height: 1; }
+.alle[open] > summary::after { content: "−"; }
+.alle > summary:hover { color: var(--fg); border-color: var(--fg); }
+.alle[open] > summary { margin-bottom: var(--sp-5); }
+
+/* ------------------------------------------------------------- Nebenher */
+
+/* Projekte als Zeilen mit Haarlinie, gleiche Form wie die Schwerpunkte in 01:
+   keine Kaesten, keine Spalten, die den Text auf Briefmarkenbreite druecken. */
+.projekte { display: grid; gap: 0; }
+.projekt { padding-block: var(--sp-6); border-top: 1px solid var(--hair); max-width: 44rem; }
+.projekt:first-child { border-top: 0; padding-top: 0; }
+.projekt h3 { font-size: var(--fs-lg); font-weight: 500; margin-bottom: var(--sp-3); }
+.projekt p { font-size: var(--fs-md); color: var(--mut-hell); max-width: none; }
+.projekt .tags { margin-top: var(--sp-4); }
+.projekt__link { margin: var(--sp-3) 0 0; font-size: var(--fs-xs); }
+.projekt__link a::after { content: " →"; }
+
+/* ----------------------------------------------------------- Projektseite */
+
+/* Eine Spalte fuer Text und Bilder: gemeinsame Kante, Zeilen bei rund 75 Zeichen. */
+.projektseite { padding-block: clamp(7rem, 18vh, 10rem) var(--block); max-width: calc(40rem + 2 * var(--rand)); }
+.projektseite .prose { max-width: none; }
+.projektseite .prose p { margin-bottom: 0; max-width: none; }
+.projektseite__unter { max-width: none; }
+.projektseite h1 { font-size: var(--fs-3xl); margin-bottom: var(--sp-4); }
+.projektseite__unter { font-size: var(--fs-lg); color: var(--mut-hell); max-width: 40rem; margin-bottom: var(--sp-6); }
+.projektseite__meta {
+  display: flex; flex-wrap: wrap; gap: var(--sp-2) var(--sp-5); margin: 0 0 var(--sp-8);
+  font-size: var(--fs-xs); color: var(--mut); max-width: none;
+}
+.projektseite__meta > span + span::before { content: "·"; margin-right: var(--sp-5); }
+
+.kennzahlen {
+  display: grid; gap: var(--sp-5); margin: 0 0 var(--sp-8);
+  padding-block: var(--sp-6); border-block: 1px solid var(--hair);
+}
+@media (min-width: 46rem) { .kennzahlen { grid-template-columns: repeat(2, 1fr); gap: var(--sp-6) var(--sp-7); } }
+.kennzahlen dt { font-size: var(--fs-2xs); text-transform: uppercase; letter-spacing: .18em; color: var(--mut); margin-bottom: var(--sp-2); }
+.kennzahlen dd { margin: 0; font-size: var(--fs-lg); color: var(--fg); }
+
+.projektseite .prose { margin-bottom: var(--sp-7); }
+.bild { margin: 0 0 var(--sp-7); }
+.bild img { width: 100%; height: auto; display: block; border-radius: var(--radius); background: var(--flaeche); }
+.bild figcaption { margin-top: var(--sp-3); font-size: var(--fs-xs); color: var(--mut); }
+.projektseite .back { display: inline-block; margin-bottom: var(--sp-6); font-size: var(--fs-xs); color: var(--mut); border: 0; }
+.projektseite .back:hover { color: var(--fg); }
+
+@media print {
+  .bild { break-inside: avoid; }
+  .bild img { max-height: 9cm; width: auto; }
+}
+
+/* ----------------------------------------------- Ablauf und Zahlen im Artikel */
+/* Die Projektseite ist schmaler als die Startseite; die SVG-Beschriftungen
+   werden mitskaliert und brauchen deshalb groessere Ausgangswerte. */
+.projektseite .flow text { font-size: 20px; }
+.projektseite .chart .achse, .projektseite .chart .marke-text { font-size: 17px; }
+.projektseite .chart .wert { font-size: 20px; }
+.projektseite .zahlen { margin-bottom: var(--sp-7); }
+@media (min-width: 60rem) {
+  .projektseite .zahlen { grid-template-columns: 1fr 1fr; }
+  .projektseite .zahl:first-child .w { font-size: var(--fs-zahl); }
+}
+.projektseite .alle { margin-bottom: var(--sp-7); }
