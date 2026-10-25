@@ -191,12 +191,6 @@ section { padding-block: var(--block); }
 
 .hero { padding-block: clamp(9rem, 24vh, 17rem) var(--block); }
 .hero__titel { font-size: var(--fs-4xl); letter-spacing: -0.05em; margin-bottom: var(--sp-6); max-width: 14ch; }
-/* Portrait: klein, quadratisch, in Graustufen - ein Gesicht, keine Buehne. */
-.hero__foto {
-  display: block; width: 6.5rem; height: 6.5rem; object-fit: cover; border-radius: var(--radius);
-  margin-bottom: var(--sp-6); background: var(--flaeche);
-}
-
 /* --------------------------------------------------------------- Kennzahlen */
 
 .zahlen {
@@ -433,7 +427,7 @@ footer.footer a:hover { color: var(--fg); }
 
   /* Nichts Wichtiges zerreißen */
   section, .station, .zahl, .skills__group, .reach__item, .projekt, table { break-inside: avoid; }
-  .projekt__bild, .hero__foto { display: none; }
+  .projekt__bild { display: none; }
   .station { border: 0; border-top: 1px solid #ccc; border-radius: 0; background: none;
              padding: 4mm 0 0; margin-bottom: 5mm; }
   .badge { border: 1px solid #111; background: none; color: #111; }
@@ -728,7 +722,6 @@ footer.footer, .chart text, .flow text, .stufe__text, .badge, .projektseite__met
 /* Hero: kompakter, zwei Spalten ab 64rem, rechts die Pipeline */
 .hero { padding-block: clamp(6rem, 13vh, 8.5rem) var(--block); }
 .hero__titel { font-size: clamp(2.4rem, 1.2rem + 4.2vw, 4rem); letter-spacing: -.04em; }
-.hero__foto { width: 5.5rem; height: 5.5rem; box-shadow: 0 0 0 1px var(--hair-hell); }
 .vorspann { font-size: 1.1rem; }
 @media (min-width: 64rem) {
   .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 24rem); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
