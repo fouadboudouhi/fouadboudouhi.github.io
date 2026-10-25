@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://fouadboudouhi.github.io/sitemap.xml
+Sitemap: https://fouad-boudouhi.de/sitemap.xml
