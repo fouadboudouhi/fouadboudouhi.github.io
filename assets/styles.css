@@ -755,17 +755,28 @@ footer.footer, .chart text, .flow text, .stufe__text, .badge, .projektseite__met
 @media (min-width: 54rem) { .projekte { grid-template-columns: 1fr 1fr; } .projekt { grid-template-columns: 1fr; } }
 .projekt, .projekt:first-child { display: block; border: 1px solid var(--hair); border-radius: var(--radius); background: var(--flaeche);
   padding: 1.1rem; max-width: none; transition: border-color .3s var(--ease), transform .3s var(--ease); }
-.projekt:hover { border-color: var(--hair-hell); transform: translateY(-2px); }
+.projekt:hover { border-color: var(--hair-hell); transform: translateY(-4px); box-shadow: 0 14px 30px -18px rgb(0 0 0 / .55); }
 .projekt__bild { margin-bottom: 1rem; border-radius: 6px; }
-.projekt__bild img { opacity: 1; }
+.projekt__bild img { opacity: 1; transition: transform .7s var(--ease); }
+.projekt:hover .projekt__bild img { transform: scale(1.04); }
+.projekt__link a::after { display: inline-block; transition: transform .3s var(--ease); }
+.projekt:hover .projekt__link a::after { transform: translateX(3px); }
 .projekt h3 { font-size: 1.05rem; }
 .projekt p { font-size: .92rem; }
 .projekt__text { max-width: none; }
 
 /* Zeitleiste mit Linie */
 @media (min-width: 54rem) {
-  .station { position: relative; }
-  .station::before { content: ""; position: absolute; left: calc(8.5rem + clamp(2rem, 4vw, 3.25rem) / 2); top: 0; bottom: 0; width: 1px; background: var(--hair-hell); }
+  .station { position: relative; --linie-farbe: color-mix(in srgb, var(--akzent) 70%, var(--hair-hell)); }
+  /* Die Linie waechst mit dem Lesen: app.js setzt --linie auf den Anteil, der schon
+     oberhalb der Bildschirmmitte liegt. Ohne JS ist sie einfach durchgezogen. */
+  .station::before { content: ""; position: absolute; left: calc(8.5rem + clamp(2rem, 4vw, 3.25rem) / 2); top: 0; bottom: 0; width: 1px;
+    background: linear-gradient(to bottom, var(--linie-farbe) var(--linie, 100%), var(--hair-hell) 0); }
+  /* Punkt auf der Linie, amber sobald die Linie ihn erreicht */
+  .station::after { content: ""; position: absolute; left: calc(8.5rem + clamp(2rem, 4vw, 3.25rem) / 2 - 3px); top: calc(var(--sp-7) + .35em); width: 7px; height: 7px;
+    border-radius: 50%; background: var(--bg); border: 1px solid var(--hair-hell); transition: background .4s var(--ease), border-color .4s var(--ease), box-shadow .4s var(--ease); }
+  .station:first-of-type::after { top: .35em; }
+  .station.erreicht::after { background: var(--akzent); border-color: var(--akzent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--akzent) 22%, transparent); }
 }
 
 /* ------------------------------------------------- Pipeline-Simulation */
@@ -784,13 +795,14 @@ footer.footer, .chart text, .flow text, .stufe__text, .badge, .projektseite__met
 .pipe__dot { display: block; width: 13px; height: 13px; margin: 0 auto .45rem; border-radius: 50%; border: 1.5px solid var(--hair-hell); background: var(--bg); transition: border-color .3s, background .3s; }
 .pipe__stufe.aktiv .pipe__dot { border-color: var(--akzent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--akzent) 22%, transparent); }
 .pipe__stufe.ok .pipe__dot { border-color: var(--akzent); background: var(--akzent); }
-.pipe__bahn { position: relative; height: 1.9rem; margin-bottom: .8rem; }
+.pipe__bahn { position: relative; height: 1.9rem; margin-bottom: .8rem; transition: height .4s var(--ease); }
 .pipe__ticket {
   position: absolute; top: 0; left: 0; width: 25%; display: flex; justify-content: center;
   transition: transform .55s var(--ease), opacity .4s var(--ease); will-change: transform;
 }
 .pipe__ticket span { border: 1px solid var(--hair-hell); border-radius: 5px; padding: .2rem .45rem; background: var(--bg); color: var(--fg); font-size: .7rem; white-space: nowrap; }
 .pipe__ticket.rueck span { border-color: var(--akzent); color: var(--akzent); }
+.pipe__ticket.hand span { border-color: var(--mut-hell); }
 .pipe__ticket.fertig { opacity: 0; }
 .pipe__log { border-top: 1px solid var(--hair); padding-top: .6rem; display: grid; gap: .25rem; min-height: 3.6em; }
 .pipe__log div { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -837,8 +849,11 @@ footer.footer, .chart text, .flow text, .stufe__text, .badge, .projektseite__met
 }
 @media (prefers-reduced-motion: reduce) {
   .topbar__name::after { animation: none; }
-  .pipe__ticket { transition: none; }
+  .pipe__ticket, .pipe__bahn { transition: none; }
+  .projekt:hover, .projekt:hover .projekt__bild img { transform: none; }
 }
+.pipe { cursor: pointer; }
+.pipe__fuss b { font-weight: 500; color: var(--mut-hell); }
 /* Kopfzeile auf dem Handy: Name in einer Zeile, Navigation eng */
 .topbar__name { white-space: nowrap; }
 @media (max-width: 52rem) { .topbar__nav { gap: var(--sp-4); } .topbar__nav a { font-size: .74rem; } }
