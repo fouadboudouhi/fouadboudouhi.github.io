@@ -24,8 +24,10 @@ Dann http://localhost:4173 öffnen.
 ## Gestaltung
 
 Dunkel, monochrom, eine einzige Schriftfamilie (**Satoshi**), **keine Akzentfarbe**.
-Getrennt wird durch Abstand und Haarlinien, nicht durch Kästen. Die Seite hat
-bewusst **keinen Hellmodus** — dunkel ist hier die Identität, kein Schalterzustand.
+Getrennt wird durch Abstand und Haarlinien, nicht durch Kästen. **Dunkel ist der
+Standard**; ein Schalter neben DE/EN stellt auf hell um (`data-theme="light"` auf
+`<html>`, gemerkt unter `fb-theme`). Die Systemeinstellung wird bewusst nicht ausgewertet.
+Alle Farben beider Fassungen stehen als Variablen auf `:root`.
 
 Bewegung: Abschnitte steigen beim Scrollen ein, die Kennzahlen zählen hoch,
 Trennlinien zeichnen sich von links nach rechts, ein schwacher Lichtschein folgt
