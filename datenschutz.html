@@ -6,7 +6,8 @@
 <title>Datenschutz — Fouad Boudouhi</title>
 <meta name="description" content="Datenschutzerklärung: keine Cookies, keine Analyse, keine Schriften von fremden Servern.">
 <meta name="robots" content="noindex">
-<meta name="color-scheme" content="dark">
+<meta name="color-scheme" content="dark light">
+<script>(function(d){d.classList.add("js");try{if(localStorage.getItem("fb-theme")==="light")d.setAttribute("data-theme","light")}catch(e){}})(document.documentElement)</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b0b0c'/%3E%3Ctext x='16' y='22' font-family='system-ui,sans-serif' font-weight='500' font-size='15' fill='%23f4f2ee' text-anchor='middle'%3EFB%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/styles.css">
 </head>
@@ -24,6 +25,9 @@
         <button type="button" data-set-lang="de" aria-pressed="true">DE</button>
         <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
       </span>
+      <button type="button" class="themeswitch" data-toggle-theme aria-pressed="false" aria-label="Hell / Dunkel umschalten · Light / dark" title="Hell / Dunkel">
+        <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><circle cx="8" cy="8" r="6.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.6a6.4 6.4 0 0 1 0 12.8z" fill="currentColor"/></svg>
+      </button>
     </nav>
   </div>
 </header>
@@ -48,8 +52,8 @@
   <p lang="en">The site is hosted on GitHub Pages, a service of GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. GitHub is certified under the EU-US Data Privacy Framework; the transfer to the United States rests on the European Commission’s adequacy decision (Art. 45 GDPR). What GitHub processes when you open the site is described in <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">GitHub’s privacy statement</a>.</p>
 
   <h2><span lang="de">Was im Browser gespeichert wird</span><span lang="en">What is stored in your browser</span></h2>
-  <p lang="de">Wenn du die Sprache umschaltest, merkt sich die Seite deine Wahl im lokalen Speicher deines Browsers unter dem Schlüssel <code>fb-lang</code>. Das ist kein Cookie, der Wert wird nicht übertragen, und er enthält nichts als <code>de</code> oder <code>en</code>. Du kannst ihn jederzeit über die Einstellungen deines Browsers löschen. Weil dieser Eintrag für die von dir ausdrücklich gewünschte Funktion erforderlich ist, braucht es dafür keine Einwilligung (§ 25 Abs. 2 Nr. 2 TDDDG).</p>
-  <p lang="en">If you switch languages, the site remembers your choice in your browser's local storage under the key <code>fb-lang</code>. It is not a cookie, the value is never transmitted, and it contains nothing but <code>de</code> or <code>en</code>. You can delete it at any time in your browser settings. Because this entry is required for a function you explicitly requested, no consent is needed for it.</p>
+  <p lang="de">Wenn du die Sprache oder den Hell-/Dunkelmodus umschaltest, merkt sich die Seite deine Wahl im lokalen Speicher deines Browsers unter den Schlüsseln <code>fb-lang</code> und <code>fb-theme</code>. Das sind keine Cookies, die Werte werden nicht übertragen, und sie enthalten nichts als <code>de</code> oder <code>en</code> beziehungsweise <code>dark</code> oder <code>light</code>. Du kannst sie jederzeit über die Einstellungen deines Browsers löschen. Weil diese Einträge für die von dir ausdrücklich gewünschte Funktion erforderlich sind, braucht es dafür keine Einwilligung (§ 25 Abs. 2 Nr. 2 TDDDG).</p>
+  <p lang="en">If you switch the language or the light/dark mode, the site remembers your choice in your browser's local storage under the keys <code>fb-lang</code> and <code>fb-theme</code>. They are not cookies, the values are never transmitted, and they contain nothing but <code>de</code> or <code>en</code> and <code>dark</code> or <code>light</code> respectively. You can delete them at any time in your browser settings. Because these entries are required for a function you explicitly requested, no consent is needed for it.</p>
 
 <h2><span lang="de">E-Mail-Kontakt</span><span lang="en">Contact by email</span></h2>
   <p lang="de">Wenn du mir schreibst, verarbeite ich deine Nachricht und deine Adresse, um sie zu beantworten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b bzw. lit. f DSGVO. Ich lösche die Nachricht, sobald sie nicht mehr gebraucht wird und keine Aufbewahrungspflicht entgegensteht.</p>
