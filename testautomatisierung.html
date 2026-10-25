@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="de" data-lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Testautomatisierung für eine Übungsanwendung — Fouad Boudouhi</title>
+<meta name="description" content="Ein Testgerüst um eine Demo-Anwendung, gebaut wie für ein Kundenprojekt: Docker-Stack, Robot Framework, pytest, k6, GitHub Actions. Mit einem gefundenen Fehler in der Anwendung.">
+<meta name="color-scheme" content="dark light">
+<script>(function(d){d.classList.add("js");try{if(localStorage.getItem("fb-theme")==="light")d.setAttribute("data-theme","light")}catch(e){}})(document.documentElement)</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b0b0c'/%3E%3Ctext x='16' y='22' font-family='system-ui,sans-serif' font-weight='500' font-size='15' fill='%23f4f2ee' text-anchor='middle'%3EFB%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<div id="schein"></div>
+
+<a class="skip-link" href="#main"><span lang="de">Zum Inhalt springen</span><span lang="en">Skip to content</span></a>
+
+<header class="topbar" id="kopf">
+  <div class="wrap topbar__inner">
+    <a class="topbar__name" href="index.html">Fouad Boudouhi</a>
+    <nav class="topbar__nav" aria-label="Hauptnavigation">
+      <a href="index.html#projekte"><span lang="de">Alle Projekte</span><span lang="en">All projects</span></a>
+      <span class="langswitch" role="group" aria-label="Sprache / Language">
+        <button type="button" data-set-lang="de" aria-pressed="true">DE</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </span>
+      <button type="button" class="themeswitch" data-toggle-theme aria-pressed="false" aria-label="Hell / Dunkel umschalten · Light / dark" title="Hell / Dunkel">
+        <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><circle cx="8" cy="8" r="6.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.6a6.4 6.4 0 0 1 0 12.8z" fill="currentColor"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap projektseite">
+
+  <a class="back" href="index.html#projekte">&larr; <span lang="de">zurück zur Startseite</span><span lang="en">back to the home page</span></a>
+
+  <h1><span lang="de">Testautomatisierung für eine Übungsanwendung</span><span lang="en">Test automation for a practice application</span></h1>
+  <p class="projektseite__unter">
+    <span lang="de">Ein Testgerüst um eine Demo-Anwendung, gebaut wie für ein Kundenprojekt.</span>
+    <span lang="en">A test harness around a demo application, built the way I would for a client.</span>
+  </p>
+
+  <p class="projektseite__meta">
+    <span>12/2025 – 02/2026</span>
+    <span>Robot Framework</span>
+    <span>pytest</span>
+    <span>k6</span>
+    <span><a href="https://github.com/fouadboudouhi/test-automation-practice-toolshop" rel="noopener"><span lang="de">Code auf GitHub</span><span lang="en">Code on GitHub</span></a></span>
+  </p>
+
+  <dl class="kennzahlen">
+    <div>
+      <dt><span lang="de">Oberfläche</span><span lang="en">User interface</span></dt>
+      <dd><span lang="de">35 Robot-Testfälle, 15 Smoke und 20 Regression</span><span lang="en">35 Robot test cases, 15 smoke and 20 regression</span></dd>
+    </div>
+    <div>
+      <dt>API</dt>
+      <dd><span lang="de">pytest gegen den OpenAPI-Vertrag, Smoke und Regression</span><span lang="en">pytest against the OpenAPI contract, smoke and regression</span></dd>
+    </div>
+    <div>
+      <dt><span lang="de">Last</span><span lang="en">Load</span></dt>
+      <dd><span lang="de">4 k6-Szenarien: Smoke, Ramp, Peak, Soak</span><span lang="en">4 k6 scenarios: smoke, ramp, peak, soak</span></dd>
+    </div>
+    <div>
+      <dt>Pipeline</dt>
+      <dd><span lang="de">174 Läufe in GitHub Actions</span><span lang="en">174 runs in GitHub Actions</span></dd>
+    </div>
+  </dl>
+
+  <div class="prose" lang="de"><p>Die Anwendung ist der „Toolshop", ein kleiner Online-Shop, den es nur zum Üben gibt: Angular vorn, eine PHP-API dahinter, eine Datenbank darunter. Interessant ist nicht der Shop, sondern das Gerüst darum. Ich habe es so gebaut, wie ich ein Automatisierungsprojekt beim Kunden aufsetzen würde: Ein Befehl bringt die Umgebung hoch, die Datenbank wird jedes Mal gleich befüllt, Smoke- und Regressionstests sind getrennt, und jeder Lauf hinterlässt seine Artefakte an einer festen Stelle.</p></div>
+  <div class="prose" lang="en"><p>The application is the “Toolshop”, a small online shop that exists only for practice: Angular at the front, a PHP API behind it, a database underneath. The interesting part is not the shop but the harness around it. I built it the way I would set up an automation project at a client: one command brings up the environment, the database is seeded the same way every time, smoke and regression tests are separate, and every run leaves its artefacts in a fixed place.</p></div>
+
+  <figure class="aufbau auf">
+    <svg viewBox="0 0 960 300" role="img" aria-labelledby="aufbau-titel">
+      <title id="aufbau-titel"><span lang="de">Aufbau: drei Testläufer oben, der Docker-Compose-Stack darunter</span><span lang="en">Structure: three test runners on top, the Docker Compose stack below</span></title>
+      <defs>
+        <marker id="pfeil" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L8,4 L0,8 z"/></marker>
+      </defs>
+      <!-- Testläufer -->
+      <g class="kasten"><rect x="40" y="20" width="250" height="52" rx="3"/>
+        <text class="name" x="165" y="42" text-anchor="middle">Robot Framework + Browser</text>
+        <text class="rolle" x="165" y="61" text-anchor="middle" lang="de">UI-Tests, Playwright darunter</text>
+        <text class="rolle" x="165" y="61" text-anchor="middle" lang="en">UI tests, Playwright underneath</text></g>
+      <g class="kasten"><rect x="355" y="20" width="250" height="52" rx="3"/>
+        <text class="name" x="480" y="42" text-anchor="middle">pytest + requests</text>
+        <text class="rolle" x="480" y="61" text-anchor="middle" lang="de">API-Tests gegen den OpenAPI-Vertrag</text>
+        <text class="rolle" x="480" y="61" text-anchor="middle" lang="en">API tests against the OpenAPI contract</text></g>
+      <g class="kasten"><rect x="670" y="20" width="250" height="52" rx="3"/>
+        <text class="name" x="795" y="42" text-anchor="middle">k6</text>
+        <text class="rolle" x="795" y="61" text-anchor="middle" lang="de">Lasttests, vier Szenarien</text>
+        <text class="rolle" x="795" y="61" text-anchor="middle" lang="en">Load tests, four scenarios</text></g>
+      <!-- Pfeile nach unten -->
+      <path class="pfeil" d="M165,72 V175"/>
+      <path class="pfeil" d="M480,72 V175"/>
+      <path class="pfeil" d="M795,72 V100 H560 V175"/>
+      <!-- Docker-Stack -->
+      <rect class="rahmen" x="40" y="120" width="900" height="160" rx="3"/>
+      <text class="rahmen-text" x="925" y="266" text-anchor="end">Docker Compose</text>
+      <g class="kasten"><rect x="70" y="175" width="190" height="52" rx="3"/>
+        <text class="name" x="165" y="197" text-anchor="middle">Angular-UI</text>
+        <text class="rolle" x="165" y="216" text-anchor="middle">:4200</text></g>
+      <g class="kasten"><rect x="390" y="175" width="200" height="52" rx="3"/>
+        <text class="name" x="490" y="197" text-anchor="middle">nginx-Gateway</text>
+        <text class="rolle" x="490" y="216" text-anchor="middle">:8091</text></g>
+      <g class="kasten"><rect x="640" y="175" width="150" height="52" rx="3"/>
+        <text class="name" x="715" y="197" text-anchor="middle">Laravel-API</text>
+        <text class="rolle" x="715" y="216" text-anchor="middle">PHP-FPM</text></g>
+      <g class="kasten"><rect x="830" y="175" width="100" height="52" rx="3"/>
+        <text class="name" x="880" y="197" text-anchor="middle">MariaDB</text>
+        <text class="rolle" x="880" y="216" text-anchor="middle" lang="de">Daten</text>
+        <text class="rolle" x="880" y="216" text-anchor="middle" lang="en">data</text></g>
+      <!-- Pfeile im Stack -->
+      <path class="pfeil" d="M260,201 H390"/>
+      <path class="pfeil" d="M590,201 H640"/>
+      <path class="pfeil" d="M790,201 H830"/>
+    </svg>
+    <ul class="aufbau__liste">
+      <li lang="de"><b>Robot Framework + Browser</b> prüft die Angular-Oberfläche (Playwright darunter).</li>
+      <li lang="en"><b>Robot Framework + Browser</b> checks the Angular front end (Playwright underneath).</li>
+      <li lang="de"><b>pytest + requests</b> und <b>k6</b> gehen über das nginx-Gateway an die Laravel-API.</li>
+      <li lang="en"><b>pytest + requests</b> and <b>k6</b> go through the nginx gateway to the Laravel API.</li>
+      <li lang="de">Oberfläche, Gateway, API und MariaDB laufen zusammen in <b>Docker Compose</b>.</li>
+      <li lang="en">Front end, gateway, API and MariaDB run together in <b>Docker Compose</b>.</li>
+    </ul>
+    <figcaption>
+      <span lang="de">Drei Testläufer, ein Stack. Lokal und in der Pipeline laufen dieselben Make-Ziele.</span>
+      <span lang="en">Three test runners, one stack. The same Make targets run locally and in the pipeline.</span>
+    </figcaption>
+  </figure>
+
+  <div class="prose" lang="de"><p>Die Umgebung ist ein Docker-Compose-Stack aus Oberfläche, Gateway, API und Datenbank. Ein Makefile ist der einzige Einstieg: <code>make up</code>, <code>make seed</code>, <code>make smoke</code>, <code>make regression</code>, dieselben Ziele lokal wie in GitHub Actions. Das Seeding wartet, bis API und Datenbank antworten, spielt die Daten ein und prüft danach die Produktanzahl, bevor ein Test startet.</p></div>
+  <div class="prose" lang="en"><p>The environment is a Docker Compose stack of front end, gateway, API and database. A Makefile is the only entry point: <code>make up</code>, <code>make seed</code>, <code>make smoke</code>, <code>make regression</code>, the same targets locally as in GitHub Actions. Seeding waits until API and database respond, loads the data and then checks the product count before any test starts.</p></div>
+
+  <div class="prose" lang="de"><p>Getestet wird auf drei Ebenen. Die Oberfläche prüft Robot Framework mit der Browser-Bibliothek: 15 Smoke-Tests, die bei jedem Pull Request laufen, und 20 Regressionstests für den Hauptzweig, von Filtern und Suche über Produktdetails bis zum Warenkorb. Die API prüft pytest gegen den OpenAPI-Vertrag; was der Vertrag nicht beschreibt, wird übersprungen statt als Fehler gezählt. Die Last prüft k6 in vier Szenarien, nachts Ramp und Peak, wöchentlich Soak, mit Schwellen bei 1,5 Sekunden für das 95. und 3 Sekunden für das 99. Perzentil. Jeder Lauf schreibt Berichte und Screenshots in einen nummerierten Ordner.</p></div>
+  <div class="prose" lang="en"><p>Testing happens on three levels. Robot Framework with the Browser library covers the user interface: 15 smoke tests that run on every pull request and 20 regression tests for the main branch, from filters and search through product details to the cart. pytest checks the API against the OpenAPI contract; what the contract does not describe is skipped rather than counted as a failure. k6 covers load in four scenarios, ramp and peak nightly, soak weekly, with thresholds of 1.5 seconds at the 95th and 3 seconds at the 99th percentile. Every run writes reports and screenshots into a numbered folder.</p></div>
+
+  <div class="prose" lang="de"><p>Gefunden hat die Suite dabei einen Fehler in der Anwendung selbst: Das Sortieren der Produktliste über die API antwortet durchgehend mit einem Serverfehler. Der Regressionstest für die Preissortierung hält das fest, und im README steht, woran man den Unterschied zwischen einem Fehler in der Anwendung und einer wackligen Automatisierung erkennt.</p></div>
+  <div class="prose" lang="en"><p>Along the way the suite found a defect in the application itself: sorting the product list through the API consistently answers with a server error. The regression test for sorting by price records it, and the README explains how to tell a defect in the application from flaky automation.</p></div>
+
+  <div class="prose" lang="de"><p>52 Commits zwischen Dezember 2025 und Februar 2026. Seit das Projekt fertig ist, sind die Pipelines abgeschaltet; der letzte Lauf war grün. Der Code ist öffentlich, mit Testplan, Architekturbeschreibung und Anleitung zum Nachstellen.</p></div>
+  <div class="prose" lang="en"><p>52 commits between December 2025 and February 2026. Since the project is finished the pipelines are switched off; the last run was green. The code is public, with a test plan, an architecture description and instructions for reproducing it.</p></div>
+
+</main>
+
+<footer class="wrap footer">
+  <span>&copy; 2026 Fouad Boudouhi ·
+    <a href="index.html"><span lang="de">Startseite</span><span lang="en">Home</span></a> ·
+    <a href="impressum.html"><span lang="de">Impressum</span><span lang="en">Legal notice</span></a> ·
+    <a href="datenschutz.html"><span lang="de">Datenschutz</span><span lang="en">Privacy</span></a>
+  </span>
+  <span><span lang="de">Stand: Oktober 2026</span><span lang="en">Last updated: October 2026</span></span>
+</footer>
+
+<script src="assets/app.js" defer></script>
+</body>
+</html>

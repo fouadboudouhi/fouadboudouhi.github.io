@@ -618,3 +618,24 @@ footer.footer a:hover { color: var(--fg); }
 @media (prefers-reduced-motion: reduce) {
   .js .stufen .stufe__bar { transform: none; transition: none; }
 }
+
+/* ---------------------------------------------- Aufbau-Skizze (Projektseite) */
+/* Kaesten und Pfeile aus den Seitenfarben. Auf dem Handy wird die SVG zu klein
+   fuer ihre Beschriftung; dann steht dieselbe Information als Liste darunter. */
+.aufbau { margin: 0 0 var(--sp-7); }
+.aufbau svg { width: 100%; height: auto; overflow: visible; }
+.aufbau .kasten rect { fill: var(--flaeche); stroke: var(--hair-hell); stroke-width: 1; }
+.aufbau text { font-family: var(--f); }
+.aufbau .name { font-size: 17px; fill: var(--fg); font-weight: 500; }
+.aufbau .rolle { font-size: 14px; fill: var(--mut); }
+.aufbau .pfeil { fill: none; stroke: var(--mut); stroke-width: 1.2; marker-end: url(#pfeil); }
+.aufbau marker path { fill: var(--mut); }
+.aufbau .rahmen { fill: none; stroke: var(--mut); stroke-width: 1; stroke-dasharray: 4 4; }
+.aufbau .rahmen-text { font-size: 13px; fill: var(--mut); letter-spacing: .14em; text-transform: uppercase; }
+.aufbau__liste { display: none; list-style: none; padding: 0; margin: 0; font-size: var(--fs-xs); color: var(--mut); }
+.aufbau__liste li { margin-bottom: var(--sp-2); }
+.aufbau figcaption { margin-top: var(--sp-4); font-size: var(--fs-xs); color: var(--mut); }
+@media (max-width: 40rem) {
+  .aufbau svg { display: none; }
+  .aufbau__liste { display: block; }
+}
