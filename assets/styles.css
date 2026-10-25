@@ -850,12 +850,3 @@ footer.footer, .chart text, .flow text, .stufe__text, .badge, .projektseite__met
 .topbar__name { white-space: nowrap; }
 @media (max-width: 52rem) { .topbar__nav { gap: var(--sp-4); } .topbar__nav a { font-size: .74rem; } }
 .status > span { white-space: nowrap; }
-
-/* ---------------------------------------------------------------- Kolophon */
-.kolophon__h { font-size: var(--fs-xl); font-weight: 500; margin: var(--sp-7) 0 var(--sp-4); }
-.kolophon__liste { list-style: none; padding: 0; margin: 0 0 var(--sp-6); }
-.kolophon__liste li { position: relative; padding-left: 1.1em; margin-bottom: var(--sp-3); color: var(--mut-hell); font-size: var(--fs-md); line-height: 1.55; }
-.kolophon__liste li::before { content: ""; position: absolute; left: 0; top: .66em; width: 4px; height: 4px; border-radius: 50%; background: var(--akzent); }
-.kolophon__liste b { color: var(--fg); font-weight: 500; }
-.kolophon__dateien { margin: 0 0 var(--sp-6); }
-.kolophon__dateien td:first-child { font-family: var(--f-mono); font-size: var(--fs-xs); }
