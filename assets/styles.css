@@ -25,15 +25,18 @@
   color-scheme: dark;
 
   /* Farben */
-  --bg:        #0b0b0c;
-  --flaeche:   #0f0f11;
-  --fg:        #f4f2ee;
-  --mut:       #8b8b92;
-  --mut-hell:  #adadb4;
-  --hair:      #1d1d20;
-  --hair-hell: #2b2b30;
-  --glanz:     rgba(255, 255, 255, .055);   /* Lichtschein unter dem Zeiger */
-  --akzent:    #d4a24c;                     /* Ocker: Rubriken, Knopf, Badge, Hervorhebungen */
+  /* Nachtblau: dunkel, aber getoent - die Umgebung eines Editors, nicht ein
+     ausgeschalteter Bildschirm. Hell (unten) bekommt Ocker statt Blau. */
+  --bg:        #0e1117;
+  --flaeche:   #141922;
+  --fg:        #f2f4f8;
+  --mut:       #8b94a7;
+  --mut-hell:  #b6bdcb;
+  --hair:      #1f2632;
+  --hair-hell: #2c3544;
+  --glanz:     rgba(110, 168, 255, .07);    /* Lichtschein unter dem Zeiger */
+  --akzent:    #6ea8ff;                     /* Blau: Rubriken, Knopf, Badge, Hervorhebungen */
+  --f-mono:    ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 
   /* Schrift */
   --f: "Satoshi", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -59,13 +62,13 @@
   --sp-6: 2rem;
   --sp-7: 3rem;
   --sp-8: 4.5rem;
-  --block: clamp(5.5rem, 14vh, 11rem);
+  --block: clamp(4rem, 9vh, 6.5rem);
 
   /* Maße */
   --w-page: 74rem;
   --w-text: 36rem;
   --rand: clamp(1.5rem, 5vw, 5.5rem);
-  --radius: 3px;
+  --radius: 8px;
   --ease: cubic-bezier(.22, .61, .36, 1);
 }
 
@@ -686,3 +689,164 @@ a:hover { border-bottom-color: var(--akzent); }
 .stufe:first-child .stufe__bar { background: var(--akzent); }
 .vier td.e { color: var(--akzent); }
 @media print { .badge { border-color: #111; color: #111; } .btn--solid { display: none; } }
+
+/* ======================================================================
+   Engineer-Schicht: Mono fuer alles, was Meta ist; Chips, Karten, Raster,
+   dichtere Rhythmik. Ueberschreibt die Regeln weiter oben nach Reihenfolge.
+   ====================================================================== */
+
+/* Raster im Hintergrund, nur oben links und sehr leise */
+.js body::before {
+  content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .55;
+  background-image: linear-gradient(var(--hair) 1px, transparent 1px), linear-gradient(90deg, var(--hair) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(60rem 40rem at 18% 0%, #000 25%, transparent 78%);
+  -webkit-mask-image: radial-gradient(60rem 40rem at 18% 0%, #000 25%, transparent 78%);
+}
+
+/* Mono fuer Meta */
+.marke, .station__when, .engagement, .gruppe, .tags, .status, .topbar__nav a, .langswitch button,
+.kennzahlen dt, .zahl .b, .level, .projekt__link, .station__org, .station__ort, .skills__group h3,
+footer.footer, .chart text, .flow text, .stufe__text, .badge, .projektseite__meta, .projektseite .back,
+.pdf__hinweis, .tbl caption, .tbl th, .aufbau .rolle, .aufbau .rahmen-text, .bild figcaption,
+.flow figcaption, .chart figcaption, .stufen figcaption, .aufbau figcaption, .alle summary {
+  font-family: var(--f-mono); letter-spacing: 0; text-transform: none;
+}
+.marke { font-size: .78rem; }
+.marke::before { content: "// "; color: var(--mut); }
+.engagement, .gruppe, .skills__group h3, .kennzahlen dt { font-size: .74rem; color: var(--mut); letter-spacing: 0; }
+.engagement::before, .gruppe::before { content: "# "; color: var(--akzent); }
+.station__when { font-size: .78rem; }
+.badge { border-radius: 4px; font-size: .66rem; letter-spacing: .04em; text-transform: uppercase; }
+.tags li { font-size: .76rem; }
+.status { font-size: .8rem; }
+.topbar__nav a, .langswitch button { font-size: .78rem; }
+.topbar__name { font-family: var(--f-mono); font-size: .9rem; letter-spacing: 0; }
+.topbar__name::after { content: "_"; color: var(--akzent); animation: blink 1.1s steps(2) infinite; }
+@keyframes blink { to { opacity: 0; } }
+
+/* Hero: kompakter, zwei Spalten ab 64rem, rechts die Pipeline */
+.hero { padding-block: clamp(6rem, 13vh, 8.5rem) var(--block); }
+.hero__titel { font-size: clamp(2.4rem, 1.2rem + 4.2vw, 4rem); letter-spacing: -.04em; }
+.hero__foto { width: 5.5rem; height: 5.5rem; box-shadow: 0 0 0 1px var(--hair-hell); }
+.vorspann { font-size: 1.1rem; }
+@media (min-width: 64rem) {
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 24rem); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+}
+.btn { border-radius: 6px; padding: .65rem 1rem; font-family: var(--f-mono); font-size: .82rem; }
+
+/* Stack-Leiste unter der Statuszeile */
+.stack { display: flex; flex-wrap: wrap; gap: .4rem; margin: var(--sp-5) 0 0; padding: 0; list-style: none; max-width: 42rem; }
+.stack li { margin: 0; font-family: var(--f-mono); font-size: .74rem; color: var(--mut-hell); border: 1px solid var(--hair-hell);
+  background: var(--flaeche); border-radius: 6px; padding: .28rem .55rem; }
+.stack b { color: var(--akzent); font-weight: 500; margin-right: .35rem; }
+
+/* Schwerpunkte als drei Karten */
+@media (min-width: 54rem) { .reach { grid-template-columns: repeat(3, 1fr); gap: 1rem; counter-reset: reach; } }
+.reach { counter-reset: reach; gap: 1rem; }
+.reach__item, .reach__item:first-child { border: 1px solid var(--hair); border-radius: var(--radius); background: var(--flaeche); padding: 1.25rem; max-width: none; }
+.reach__item::before { content: counter(reach, decimal-leading-zero); counter-increment: reach; display: block; font-family: var(--f-mono); color: var(--akzent); font-size: .78rem; margin-bottom: .6rem; }
+.reach__title { font-size: 1.05rem; }
+.reach__item p { font-size: .92rem; }
+
+/* Faehigkeiten als Chips */
+.skills { gap: 1.5rem 2rem; }
+.skills__list { display: flex; flex-wrap: wrap; gap: .4rem; }
+.skills__list li { display: inline-flex; gap: .5rem; align-items: baseline; margin: 0; padding: .3rem .6rem; font-size: .88rem;
+  border: 1px solid var(--hair-hell); border-radius: 6px; background: var(--flaeche); }
+.skills__list .level { font-size: .68rem; }
+.skills__list .level[data-level="4"] { color: var(--akzent); }
+
+/* Projekte als Karten mit Bild oben */
+.projekte { grid-template-columns: 1fr; gap: 1.25rem; }
+@media (min-width: 54rem) { .projekte { grid-template-columns: 1fr 1fr; } .projekt { grid-template-columns: 1fr; } }
+.projekt, .projekt:first-child { display: block; border: 1px solid var(--hair); border-radius: var(--radius); background: var(--flaeche);
+  padding: 1.1rem; max-width: none; transition: border-color .3s var(--ease), transform .3s var(--ease); }
+.projekt:hover { border-color: var(--hair-hell); transform: translateY(-2px); }
+.projekt__bild { margin-bottom: 1rem; border-radius: 6px; }
+.projekt__bild img { opacity: 1; }
+.projekt h3 { font-size: 1.05rem; }
+.projekt p { font-size: .92rem; }
+.projekt__text { max-width: none; }
+
+/* Zeitleiste mit Linie */
+@media (min-width: 54rem) {
+  .station { position: relative; }
+  .station::before { content: ""; position: absolute; left: calc(8.5rem + clamp(2rem, 4vw, 3.25rem) / 2); top: 0; bottom: 0; width: 1px; background: var(--hair-hell); }
+}
+
+/* ------------------------------------------------- Pipeline-Simulation */
+/* Tickets wandern durch vier Stufen; simuliert, in Schleife, nicht echt. */
+.pipeline { display: none; }
+.js .pipeline { display: block; }
+.pipe {
+  border: 1px solid var(--hair); border-radius: var(--radius); background: var(--flaeche);
+  padding: 1rem 1.1rem 1rem; font-family: var(--f-mono); font-size: .72rem; color: var(--mut);
+}
+.pipe__kopf { display: flex; justify-content: space-between; margin-bottom: 1rem; }
+.pipe__kopf b { color: var(--mut-hell); font-weight: 500; }
+.pipe__stufen { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); margin-bottom: .6rem; }
+.pipe__stufen::before { content: ""; position: absolute; left: 12.5%; right: 12.5%; top: 6px; height: 1px; background: var(--hair-hell); }
+.pipe__stufe { position: relative; text-align: center; }
+.pipe__dot { display: block; width: 13px; height: 13px; margin: 0 auto .45rem; border-radius: 50%; border: 1.5px solid var(--hair-hell); background: var(--bg); transition: border-color .3s, background .3s; }
+.pipe__stufe.aktiv .pipe__dot { border-color: var(--akzent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--akzent) 22%, transparent); }
+.pipe__stufe.ok .pipe__dot { border-color: var(--akzent); background: var(--akzent); }
+.pipe__bahn { position: relative; height: 1.9rem; margin-bottom: .8rem; }
+.pipe__ticket {
+  position: absolute; top: 0; left: 0; width: 25%; display: flex; justify-content: center;
+  transition: transform .55s var(--ease), opacity .4s var(--ease); will-change: transform;
+}
+.pipe__ticket span { border: 1px solid var(--hair-hell); border-radius: 5px; padding: .2rem .45rem; background: var(--bg); color: var(--fg); font-size: .7rem; white-space: nowrap; }
+.pipe__ticket.rueck span { border-color: var(--akzent); color: var(--akzent); }
+.pipe__ticket.fertig { opacity: 0; }
+.pipe__log { border-top: 1px solid var(--hair); padding-top: .6rem; display: grid; gap: .25rem; min-height: 3.6em; }
+.pipe__log div { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pipe__log div:first-child { color: var(--mut-hell); }
+.pipe__log i { font-style: normal; color: var(--akzent); }
+.pipe__fuss { margin-top: .7rem; font-size: .66rem; color: var(--mut); }
+
+/* -------------------------------------------------- Befehlspalette (Strg+K) */
+.palette-knopf {
+  display: inline-flex; align-items: center; gap: .4rem; font: inherit; font-family: var(--f-mono); font-size: .72rem;
+  color: var(--mut); background: var(--flaeche); border: 1px solid var(--hair-hell); border-radius: 6px; padding: .3rem .5rem; cursor: pointer;
+  transition: color .3s var(--ease), border-color .3s var(--ease);
+}
+.palette-knopf:hover { color: var(--fg); border-color: var(--mut); }
+.palette-knopf kbd { font: inherit; color: var(--mut); }
+@media (max-width: 52rem) { .palette-knopf { display: none; } }
+.palette { position: fixed; inset: 0; z-index: 60; display: none; align-items: flex-start; justify-content: center; padding: 12vh 1rem 2rem;
+  background: color-mix(in srgb, var(--bg) 70%, transparent); backdrop-filter: blur(6px); }
+.palette.offen { display: flex; }
+.palette__box { width: min(36rem, 100%); background: var(--flaeche); border: 1px solid var(--hair-hell); border-radius: 10px;
+  box-shadow: 0 30px 80px rgba(0,0,0,.45); overflow: hidden; font-family: var(--f-mono); }
+.palette__eingabe { width: 100%; box-sizing: border-box; font: inherit; font-size: .95rem; padding: .9rem 1rem; border: 0; border-bottom: 1px solid var(--hair);
+  background: transparent; color: var(--fg); outline: none; }
+.palette__eingabe::placeholder { color: var(--mut); }
+.palette__liste { list-style: none; margin: 0; padding: .4rem; max-height: 50vh; overflow: auto; }
+.palette__liste li { margin: 0; }
+.palette__liste button { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 1rem; text-align: left;
+  font: inherit; font-size: .84rem; color: var(--mut-hell); background: none; border: 0; border-radius: 6px; padding: .55rem .7rem; cursor: pointer; }
+.palette__liste button small { font-size: .68rem; color: var(--mut); }
+.palette__liste li.aktiv button, .palette__liste button:hover { background: var(--bg); color: var(--fg); }
+.palette__liste li.aktiv button span::before { content: "› "; color: var(--akzent); }
+.palette__fuss { display: flex; gap: 1rem; padding: .5rem .9rem .7rem; font-size: .66rem; color: var(--mut); border-top: 1px solid var(--hair); }
+.palette kbd { font: inherit; border: 1px solid var(--hair-hell); border-radius: 4px; padding: 0 .3rem; }
+
+/* ---------------------------------------------------------- Tooltip */
+.tip { position: fixed; z-index: 55; pointer-events: none; font-family: var(--f-mono); font-size: .72rem; color: var(--fg);
+  background: var(--flaeche); border: 1px solid var(--hair-hell); border-radius: 6px; padding: .35rem .55rem; opacity: 0;
+  transform: translate(-50%, -120%); transition: opacity .15s; white-space: nowrap; }
+.tip.da { opacity: 1; }
+
+@media print {
+  .js body::before, .pipeline, .palette, .palette-knopf, .tip, .topbar__name::after { display: none !important; }
+  .reach__item, .projekt, .skills__list li, .stack li { background: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .topbar__name::after { animation: none; }
+  .pipe__ticket { transition: none; }
+}
+/* Kopfzeile auf dem Handy: Name in einer Zeile, Navigation eng */
+.topbar__name { white-space: nowrap; }
+@media (max-width: 52rem) { .topbar__nav { gap: var(--sp-4); } .topbar__nav a { font-size: .74rem; } }
+.status > span { white-space: nowrap; }
