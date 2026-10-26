@@ -891,17 +891,9 @@ footer.footer, .chart text, .stufe__text, .badge, .projektseite__meta, .projekts
 /* Externe Links im Kontakt tragen denselben Pfeil wie im Werdegang. */
 .kontakt__links a[href^="http"]::after { content: " ↗"; }
 /* Stationskopf auf dem Handy: Firma mit Pfeil in einer Zeile, der Ort darunter,
-   die Muttergesellschaft faellt weg; dazu die Zeitleiste mit Linie und Punkt wie
-   auf dem Desktop, damit der Text eine Kante hat. */
+   die Muttergesellschaft faellt weg. Keine Zeitleiste: Linie und Punkt kosten auf
+   dem Handy nur Breite, die Einsatz-Bloecke geben die Kante. */
 @media (max-width: 53.98rem) {
-  .station:not(.station--kompakt) { position: relative; padding-left: 1.4rem; --linie-farbe: color-mix(in srgb, var(--akzent) 70%, var(--hair-hell)); }
-  .station:not(.station--kompakt)::before { content: ""; position: absolute; left: 5px; top: 0; bottom: 0; width: 1px;
-    background: linear-gradient(to bottom, var(--linie-farbe) var(--linie, 100%), var(--hair-hell) 0); }
-  .station:not(.station--kompakt)::after { content: ""; position: absolute; left: 0; top: calc(var(--sp-6) + .35em); width: 11px; height: 11px;
-    box-sizing: border-box; border-radius: 50%; background: var(--bg); border: 1.5px solid var(--hair-hell);
-    transition: background .4s var(--ease), border-color .4s var(--ease); }
-  .station:not(.station--kompakt):first-of-type::after { top: .35em; }
-  .station.erreicht::after { background: var(--akzent); border-color: var(--akzent); }
   .station__mutter { display: none; }
   .station__list { font-size: .95rem; line-height: 1.5; }
 }
