@@ -25,7 +25,7 @@
 <script>(function(d){d.classList.add("js");try{if(localStorage.getItem("fb-theme")==="light"){d.setAttribute("data-theme","light");var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content","#f6f5f2")}var l=localStorage.getItem("fb-lang")||(navigator.language||"de").slice(0,2);l=l==="en"?"en":"de";d.setAttribute("lang",l);d.setAttribute("data-lang",l)}catch(e){}})(document.documentElement)</script>
 <link rel="preload" href="assets/fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/satoshi-500.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/styles.css?v=c8a3724a">
+<link rel="stylesheet" href="assets/styles.css?v=265b7cc2">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -79,8 +79,8 @@
     <p class="marke"><span lang="de">Berater für Softwaretesting · Agentische Entwicklung</span><span lang="en">Software testing consultant · Agentic development</span></p>
     <h1 class="hero__titel">Fouad Boudouhi</h1>
     <p class="vorspann">
-      <span lang="de">Ich teste Software seit 2021, zuerst Steuergeräte an Prüfständen und im Fahrzeug, seit 2026 Fachanwendungen in Banking&nbsp;&amp;&nbsp;Finance. Bei SPIRIT-TESTING entwickle ich außerdem an einem Testmanagement-Werkzeug mit und habe den Prozess entworfen, mit dem mein Team agentisch entwickelt. Studiert habe ich Mechatronik in Darmstadt.</span>
-      <span lang="en">I have been testing software since 2021, first ECUs on test benches and in vehicles, since 2026 business applications in banking and finance. At SPIRIT-TESTING I also co-develop a test management tool and designed the process my team uses to develop with AI agents. I studied mechatronics in Darmstadt.</span>
+      <span lang="de">Ich teste Software seit 2021: erst Steuergeräte an Prüfständen und im Fahrzeug, seit 2026 Fachanwendungen in Banking&nbsp;&amp;&nbsp;Finance. Bei SPIRIT-TESTING baue ich am Testmanagement-Werkzeug mit und habe den agentischen Entwicklungsprozess des Teams entworfen.</span>
+      <span lang="en">I have been testing software since 2021: first ECUs on test benches and in vehicles, since 2026 business applications in banking and finance. At SPIRIT-TESTING I co-develop the test management tool and designed the team’s agentic development process.</span>
     </p>
 
     <div class="actions">
@@ -93,10 +93,6 @@
       <span><span lang="de">Deutsch, Englisch, Darija, Tamazight</span><span lang="en">German, English, Darija, Tamazight</span></span>
       <span>ISTQB&reg; CTFL</span>
     </p>
-    <ul class="stack" aria-label="Stack">
-      <li><b>py</b>Python</li><li><b>rf</b>Robot Framework</li><li><b>pw</b>Playwright</li><li><b>pt</b>pytest</li><li><b>k6</b>k6</li>
-      <li><b>ci</b>GitLab CI</li><li><b>ci</b>GitHub Actions</li><li><b>hil</b>ecu.test</li><li><b>hil</b>test.guide</li><li><b>ai</b><span lang="de">KI-Agenten</span><span lang="en">AI agents</span></li>
-    </ul>
     </div>
     <div class="pipeline" data-pipeline aria-hidden="true"></div>
   </section>
@@ -111,20 +107,20 @@
     <div class="reach">
       <div class="reach__item auf">
         <h3 class="reach__title"><span lang="de">Teststrategie und Testentwurf</span><span lang="en">Test strategy and test design</span></h3>
-        <p lang="de">Ich schreibe Teststrategie und Testkonzept und stimme beides mit Entwicklung und Fachbereich ab. Die Testfälle entwerfe ich nach Äquivalenzklassen, Grenzwerten und Zustandsübergängen, führe sie auf Integrations- und Systemebene durch und begleite die Abnahme. Testfälle und Defekte verwalte ich in Jira und Xray.</p>
-        <p lang="en">I write the test strategy and test concept and align both with engineering and the business side. I design test cases using equivalence classes, boundary values and state transitions, run them at integration and system level, and see the acceptance through. Test cases and defects live in Jira and Xray.</p>
+        <p lang="de">Teststrategie und Testkonzept, abgestimmt mit Entwicklung und Fachbereich. Testfälle nach Äquivalenzklassen, Grenzwerten und Zustandsübergängen, durchgeführt auf Integrations- und Systemebene, bis zur Abnahme.</p>
+        <p lang="en">Test strategy and test concept, aligned with engineering and the business side. Test cases by equivalence classes, boundary values and state transitions, run at integration and system level, through to acceptance.</p>
       </div>
 
       <div class="reach__item auf">
         <h3 class="reach__title"><span lang="de">Testautomatisierung und CI/CD</span><span lang="en">Test automation and CI/CD</span></h3>
-        <p lang="de">Ich automatisiere in Python mit Robot Framework, pytest und Playwright, am Prüfstand mit ecu.test und test.guide. Die Pipeline gehört dazu: zentrale CI/CD-Komponenten für alle Repositories, Linter und Testlauf als Pflichtschritt vor jedem Merge. Im Einsatz hatte ich dafür GitLab CI, Jenkins und GitHub Actions.</p>
-        <p lang="en">I automate in Python with Robot Framework, pytest and Playwright, and on the test bench with ecu.test and test.guide. The pipeline is part of it: shared CI/CD components for all repositories, with linters and a test run as a mandatory step before every merge. I have used GitLab CI, Jenkins and GitHub Actions for that.</p>
+        <p lang="de">Automatisierung in Python mit Robot Framework, pytest und Playwright, am Prüfstand mit ecu.test. Dazu die Pipeline: zentrale CI/CD-Komponenten, Linter und Testlauf als Pflicht vor jedem Merge.</p>
+        <p lang="en">Automation in Python with Robot Framework, pytest and Playwright, on the test bench with ecu.test. Plus the pipeline: shared CI/CD components, linters and a test run mandatory before every merge.</p>
       </div>
 
       <div class="reach__item auf">
         <h3 class="reach__title"><span lang="de">KI-Agenten in Entwicklung und Test</span><span lang="en">AI agents in development and testing</span></h3>
-        <p lang="de">Ich entwickle mit Agenten in festen Rollen für Planung, Umsetzung und Review, mit definierten Übergaben dazwischen. Riskante Änderungen gibt ein Mensch frei, gemergt wird nach einem menschlichen Review. Mit demselben Ansatz lasse ich Agenten testen: mehrere Rollen auf dieselbe Anwendung, jeder Befund mit Beleg. Ob das etwas bringt, habe ich gemessen; <a href="agentische-entwicklung.html">der Ablauf und die Zahlen</a> stehen bei den Projekten.</p>
-        <p lang="en">I develop with agents in fixed roles for planning, implementation and review, with defined handovers in between. A person approves risky changes, and merges happen after a human review. I use the same approach to let agents test: several roles on the same application, every finding backed by evidence. I measured whether it pays off; <a href="agentische-entwicklung.html">the process and the figures</a> are under projects.</p>
+        <p lang="de">Agenten in festen Rollen für Planung, Umsetzung und Review, mit definierten Übergaben. Riskante Änderungen gibt ein Mensch frei, gemergt wird nach menschlichem Review. Nach demselben Muster lasse ich Agenten testen: mehrere Rollen, jeder Befund mit Beleg. <a href="agentische-entwicklung.html">Die Zahlen</a> stehen bei den Projekten.</p>
+        <p lang="en">Agents in fixed roles for planning, implementation and review, with defined handovers. A human approves risky changes, merges follow a human review. I let agents test the same way: several roles, every finding backed by evidence. <a href="agentische-entwicklung.html">The figures</a> are under projects.</p>
       </div>
     </div>
   </section>
@@ -143,10 +139,6 @@
         <p class="station__org"><a href="https://www.spirit-testing.com" rel="noopener">SPIRIT-TESTING Software &amp; Services GmbH</a> <span class="station__mutter"><span lang="de">Teil der testSolutions GmbH</span><span lang="en">Part of testSolutions GmbH</span></span></p>
         <p class="station__ort"><span lang="de">Rhein-Main-Gebiet und remote</span><span lang="en">Rhine-Main region and remote</span></p>
 
-        <p class="station__kurz">
-          <span lang="de">Produktentwicklung im eigenen Haus, Testberatung beim Kunden, und der Entwicklungsprozess, mit dem das Team agentisch arbeitet.</span>
-          <span lang="en">In-house product development, test consulting on the client side, and the process the team now uses to build with agents.</span>
-        </p>
 
         <div class="einsatz">
         <p class="engagement"><span lang="de">Im eigenen Produkt</span><span lang="en">On our own product</span></p>
@@ -154,14 +146,14 @@
           <li>Produktplanung: Anforderungen zuschneiden, fachliche Richtung mitgestalten</li>
           <li>Neue Funktionen in Angular und Spring Boot, umgesetzt mit KI-Agenten</li>
           <li>Agentischer Prozess vom Ticket bis zum Merge, mit Freigabe durch Menschen</li>
-          <li>Messung des Prozesses an Durchsatz und Qualität der Pull Requests</li>
+          <li>Messung des Prozesses: Durchsatz und Qualität der Pull Requests</li>
           <li>Einarbeitung des Teams in den Prozess</li>
         </ul>
         <ul class="station__list" lang="en">
           <li>Product planning: shaping requirements, helping set the direction</li>
           <li>New features in Angular and Spring Boot, built with AI agents</li>
           <li>Agentic process from ticket to merge, with human approval</li>
-          <li>Process measured on pull-request throughput and quality</li>
+          <li>Process measurement: pull-request throughput and quality</li>
           <li>Onboarding the team onto the process</li>
         </ul>
         </div>
@@ -170,7 +162,7 @@
         <p class="engagement"><span lang="de">Beim Kunden — große Fondsgesellschaft</span><span lang="en">At the client — large asset manager</span></p>
         <ul class="station__list" lang="de">
           <li>Automatisierte Testfälle mit Robot Framework: Konzeption, Struktur, Pflege</li>
-          <li>Testinfrastruktur in GitLab für die Entwicklungsteams aufgebaut und stabilisiert</li>
+          <li>Testinfrastruktur in GitLab für die Entwicklungsteams</li>
           <li>Migration der Repositories und Pipelines von Azure DevOps nach GitLab CI</li>
           <li>Zentrale CI/CD-Komponenten: Linter und Testlauf als Pflicht vor jedem Merge</li>
           <li>Wissensagent im hauseigenen Chatbot für Onboarding- und Alltagsfragen</li>
@@ -178,7 +170,7 @@
         </ul>
         <ul class="station__list" lang="en">
           <li>Automated test cases in Robot Framework: design, structure, upkeep</li>
-          <li>GitLab test infrastructure for the development teams, built and stabilised</li>
+          <li>GitLab test infrastructure for the development teams</li>
           <li>Migration of repositories and pipelines from Azure DevOps to GitLab CI</li>
           <li>Shared CI/CD components: linters and tests mandatory before every merge</li>
           <li>Knowledge agent in the in-house chatbot for onboarding and everyday questions</li>
@@ -196,16 +188,12 @@
         <h3 class="station__role"><span lang="de">Systemingenieur (ab 10/2021)</span><span lang="en">Systems engineer (from 10/2021)</span></h3>
         <p class="station__org"><a href="https://www.tracetronic.de" rel="noopener">tracetronic GmbH</a></p>
         <p class="station__ort"><span lang="de">München · beim Kunden vor Ort und remote</span><span lang="en">Munich · on site with the client and remote</span></p>
-        <p class="station__kurz">
-          <span lang="de">Absicherung von Steuergeräte-Software beim Kunden vor Ort, von der Testspezifikation bis zur Pipeline.</span>
-          <span lang="en">Validating ECU software on site with the client, from test specification through to the pipeline.</span>
-        </p>
 
         <div class="einsatz">
         <p class="engagement"><span lang="de">Sportwagenhersteller — 01 bis 07/2026</span><span lang="en">Sports car manufacturer — 01 to 07/2026</span></p>
         <ul class="station__list" lang="de">
           <li>Continuous-Testing-Pipeline, die bei jeder Softwareabgabe automatisch anläuft</li>
-          <li>Testausführung über Abteilungsgrenzen hinweg zusammengeführt</li>
+          <li>Testausführung über Abteilungsgrenzen zusammengeführt</li>
           <li>Testdurchführung auf Fahrzeug-, SiL- und HiL-Ebene</li>
           <li>Review von Testspezifikationen, Beratung zu Teststrategie und Testarchitektur</li>
           <li>Einarbeitung der Anwender in ecu.test und test.guide</li>
@@ -223,9 +211,9 @@
         <p class="engagement"><span lang="de">Antriebsentwicklung, deutscher Premium-Hersteller — 10/2021 bis 12/2025</span><span lang="en">Powertrain development, German premium manufacturer — 10/2021 to 12/2025</span></p>
         <ul class="station__list" lang="de">
           <li>Absicherung der Steuergeräte-Software an XIL-Prüfständen und im Fahrzeug</li>
-          <li>Tests mit ecu.test und test.guide spezifiziert, automatisiert und ausgewertet</li>
-          <li>Systemfunktionen und Betriebsstrategien im Antriebsstrang analysiert und bewertet</li>
-          <li>Testvorbereitung automatisiert: Testobjekte, Flashen, Testdaten</li>
+          <li>Testspezifikation, Automatisierung und Auswertung mit ecu.test und test.guide</li>
+          <li>Analyse von Systemfunktionen und Betriebsstrategien im Antriebsstrang</li>
+          <li>Automatisierte Testvorbereitung: Testobjekte, Flashen, Testdaten</li>
           <li>CI/CD-Pipelines für die Testausführung in Jenkins und GitHub Actions</li>
           <li>Log- und Trace-Analyse bei Abweichungen am Prüfstand und im Fahrzeug</li>
           <li>Fahrberechtigung für Prototypenfahrzeuge, Stufen B0 bis B2 (2023)</li>
@@ -233,8 +221,8 @@
         </ul>
         <ul class="station__list" lang="en">
           <li>ECU software validation on XIL test benches and in the vehicle</li>
-          <li>Tests specified, automated and evaluated with ecu.test and test.guide</li>
-          <li>Powertrain system functions and operating strategies analysed and assessed</li>
+          <li>Test specification, automation and evaluation with ecu.test and test.guide</li>
+          <li>Analysis of powertrain system functions and operating strategies</li>
           <li>Automated test preparation: test objects, flashing, test data</li>
           <li>CI/CD pipelines for test execution in Jenkins and GitHub Actions</li>
           <li>Log and trace analysis for deviations on the bench and in the vehicle</li>
@@ -294,10 +282,6 @@
         <h3 class="station__role"><span lang="de">B.Sc. Mechatronik</span><span lang="en">B.Sc. Mechatronics</span></h3>
         <p class="station__org"><a href="https://h-da.de" rel="noopener">Hochschule Darmstadt</a></p>
         <p class="station__ort">Darmstadt</p>
-        <p class="station__kurz">
-          <span lang="de">Abschlussarbeit 2021 bei tracetronic in München, Thema im Werdegang.</span>
-          <span lang="en">Thesis in 2021 at tracetronic in Munich, topic listed under career.</span>
-        </p>
       </div>
     </div>
 
@@ -308,8 +292,8 @@
         <p class="station__org">Jugendcafé Chillmo</p>
         <p class="station__ort">Darmstadt</p>
         <p class="station__kurz">
-          <span lang="de">Naturwissenschaftliche Projekte mit Kindern und Jugendlichen zwischen 6 und 14 Jahren, dazu Betreuung der offenen Angebote.</span>
-          <span lang="en">Science projects with children and teenagers between 6 and 14, plus supervision of the open drop-in programme.</span>
+          <span lang="de">Naturwissenschaftliche Projekte mit Kindern und Jugendlichen, 6 bis 14 Jahre.</span>
+          <span lang="en">Science projects with children and teenagers, ages 6 to 14.</span>
         </p>
       </div>
     </div>
@@ -339,7 +323,7 @@
         <h3><span lang="de">Testen</span><span lang="en">Testing</span></h3>
         <ul class="skills__list">
           <li><span><span lang="de">System-, Integrations- und Regressionstest</span><span lang="en">System, integration and regression testing</span></span><span class="level" data-level="4"><span lang="de">Sehr gut</span><span lang="en">Expert</span></span></li>
-          <li><span><span lang="de">Testentwurf: Testpläne, Testfälle, Verfahren</span><span lang="en">Test design: plans, cases, techniques</span></span><span class="level" data-level="4"><span lang="de">Sehr gut</span><span lang="en">Expert</span></span></li>
+          <li><span><span lang="de">Testentwurf</span><span lang="en">Test design</span></span><span class="level" data-level="4"><span lang="de">Sehr gut</span><span lang="en">Expert</span></span></li>
           <li><span><span lang="de">Teststrategie</span><span lang="en">Test strategy</span></span><span class="level" data-level="4"><span lang="de">Sehr gut</span><span lang="en">Expert</span></span></li>
           <li><span><span lang="de">Jira und Xray</span><span lang="en">Jira and Xray</span></span><span class="level" data-level="4"><span lang="de">Sehr gut</span><span lang="en">Expert</span></span></li>
           <li><span><span lang="de">Anforderungsanalyse</span><span lang="en">Requirements analysis</span></span><span class="level" data-level="3"><span lang="de">Gut</span><span lang="en">Advanced</span></span></li>
@@ -372,7 +356,7 @@
         <ul class="skills__list">
           <li><span>ecu.test</span><span class="level" data-level="4"><span lang="de">Sehr gut</span><span lang="en">Expert</span></span></li>
           <li><span>test.guide</span><span class="level" data-level="4"><span lang="de">Sehr gut</span><span lang="en">Expert</span></span></li>
-          <li><span><span lang="de">HiL- und XIL-Prüfstände, hardwarenahes Testen</span><span lang="en">HiL and XIL test benches, hardware-level testing</span></span><span class="level" data-level="4"><span lang="de">Sehr gut</span><span lang="en">Expert</span></span></li>
+          <li><span><span lang="de">HiL/XIL-Prüfstände</span><span lang="en">HiL/XIL test benches</span></span><span class="level" data-level="4"><span lang="de">Sehr gut</span><span lang="en">Expert</span></span></li>
         </ul>
       </div>
     </div>
@@ -449,7 +433,6 @@
     </p>
     <p class="pdf auf">
       <button type="button" class="btn btn--ghost" data-print><span lang="de">Diese Seite als PDF speichern</span><span lang="en">Save this page as PDF</span></button>
-      <span class="pdf__hinweis"><span lang="de">Öffnet den Druckdialog; dort „Als PDF speichern" wählen. Die Druckfassung ist hell, ohne Navigation.</span><span lang="en">Opens the print dialog; choose “Save as PDF” there. The print version is light, without navigation.</span></span>
     </p>
   </section>
 
@@ -462,6 +445,6 @@
   <span><span lang="de">Stand: Oktober 2026</span><span lang="en">Last updated: October 2026</span></span>
 </footer>
 
-<script src="assets/app.js?v=fe9556ef" defer></script>
+<script src="assets/app.js?v=c9329737" defer></script>
 </body>
 </html>

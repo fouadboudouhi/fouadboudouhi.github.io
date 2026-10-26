@@ -98,7 +98,7 @@
       '<div class="pipe__kopf"><b>' + t("agentische Pipeline", "agentic pipeline") + '</b><span>' + t("simuliert", "simulated") + '</span></div>' +
       '<div class="pipe__stufen">' + STUFEN.map(function (s) { return '<div class="pipe__stufe"><span class="pipe__dot"></span>' + t(s[0], s[1]) + '</div>'; }).join("") + '</div>' +
       '<div class="pipe__bahn"></div><div class="pipe__log"></div>' +
-      '<div class="pipe__fuss">' + t("Schema des Ablaufs aus Projekt 01 · Freigabe und Abnahme durch Menschen · Zahlen sind erfunden", "Schematic of the flow from project 01 · humans approve and sign off · numbers are made up") +
+      '<div class="pipe__fuss">' + t("Schema aus Projekt 01, Zahlen erfunden", "Schematic from project 01, numbers made up") +
       (sparsam ? "" : ' · <b>' + t("Klick wirft ein Ticket ein", "click to add a ticket") + '</b>') + '</div></div>';
     var bahn = pipeWurzel.querySelector(".pipe__bahn"), log = pipeWurzel.querySelector(".pipe__log"),
         stufen = pipeWurzel.querySelectorAll(".pipe__stufe"), nr = 400 + Math.floor(Math.random() * 90), zeilen = [];
