@@ -10,7 +10,7 @@ investment-plattform.html   die vier Projektseiten
 testautomatisierung.html
 porsche.html
 sitemap.xml                 Liste der Seiten für Suchmaschinen
-impressum.html, datenschutz.html, 404.html
+datenschutz.html, 404.html
 assets/styles.css           alle Farb-, Abstands- und Schriftwerte einmal auf :root
 assets/app.js               Sprache, Hell/Dunkel, Pipeline-Schema, Befehlspalette, Bewegung
 assets/fonts/               Satoshi, selbst gehostet
