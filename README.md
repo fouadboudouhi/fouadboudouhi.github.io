@@ -9,19 +9,17 @@ agentische-entwicklung.html
 investment-plattform.html   die vier Projektseiten
 testautomatisierung.html
 porsche.html
-blog.html, blog/            Blog-Übersicht und die Beiträge (nur Deutsch)
-feed.xml, sitemap.xml       erzeugt aus blog.html, siehe unten
+sitemap.xml                 Liste der Seiten für Suchmaschinen
 impressum.html, datenschutz.html, 404.html
 assets/styles.css           alle Farb-, Abstands- und Schriftwerte einmal auf :root
 assets/app.js               Sprache, Hell/Dunkel, Pipeline-Schema, Befehlspalette, Bewegung
 assets/fonts/               Satoshi, selbst gehostet
-assets/thumbs/, assets/porsche/, assets/blog/   Bilder
+assets/thumbs/, assets/porsche/   Bilder
 assets/og-image.png         Vorschaubild fürs Teilen, 1200x630
 ```
 
 Lokales Werkzeug liegt in `.claude/` und ist nicht Teil des Repositorys:
-`serve.py` (Vorschau-Server ohne Cache), `blog-feed.py` (Feed und Sitemap),
-`stempel.py` (Versionsstempel).
+`serve.py` (Vorschau-Server ohne Cache) und `stempel.py` (Versionsstempel).
 
 ## Lokal ansehen
 
@@ -47,7 +45,7 @@ auf `:root`.
 **Zwei Sprachen in einer Datei:** Jeder Text steht als Paar `<span lang="de">` /
 `<span lang="en">`, das CSS blendet die jeweils andere aus (`data-lang` auf `<html>`,
 gemerkt unter `fb-lang`). Auch erzeugte Texte aus `app.js` tragen beide Fassungen, damit
-der Wechsel ohne Neuladen klappt. Die Blogbeiträge gibt es nur auf Deutsch.
+der Wechsel ohne Neuladen klappt.
 
 **Bewegung:** Abschnitte steigen beim Scrollen ein (der Hero nicht, der steht sofort),
 Kennzahlen zählen hoch, Trennlinien zeichnen sich von links nach rechts, die Zeitleiste
@@ -63,18 +61,6 @@ trotzdem sichtbar (die Animation hängt an einer `js`-Klasse, die das Skript sel
 Hero · 01 Schwerpunkte · 02 Werdegang · 03 Fähigkeiten · 04 Projekte · 05 Kontakt
 Projektseiten: agentische-entwicklung.html (Ablauf + Messung), investment-plattform.html,
 testautomatisierung.html, porsche.html
-Blog: blog.html, Beiträge in blog/
-```
-
-## Neuer Blogbeitrag
-
-1. Datei in `blog/` anlegen, am einfachsten eine bestehende kopieren; `canonical`,
-   `og:*` und `description` im `<head>` anpassen.
-2. Eintrag oben in der Liste in `blog.html` ergänzen (`data-datum` im ISO-Format).
-3. Feed und Sitemap neu bauen und beides mit committen:
-
-```bash
-python -I .claude/blog-feed.py
 ```
 
 ## Versionsstempel
