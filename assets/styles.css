@@ -911,3 +911,28 @@ footer.footer, .chart text, .stufe__text, .badge, .projektseite__meta, .projekts
   .station:not(.station--kompakt) .station__ort::before { content: " · "; }
   .station:not(.station--kompakt) .station__ort + .station__kurz { margin-top: var(--sp-4); }
 }
+
+/* ---------------------------------------------- Ausbildung als Raster */
+/* Die fuenf kurzen Eintraege sind gleichgewichtig und keine Abfolge: oben die
+   drei Zertifikate, darunter Studium und Ehrenamt, als kleine Karten statt in
+   der Zeitleiste. Die Zeitleiste selbst endet mit der letzten Berufsstation. */
+.kompakt { display: grid; grid-template-columns: 1fr; gap: var(--sp-3); }
+.kompakt .station, .kompakt .station:first-of-type, .kompakt .station:last-of-type {
+  display: block; margin: 0; padding: .9rem 1rem; border: 1px solid var(--hair); border-radius: var(--radius);
+  background: var(--flaeche); transition: border-color .3s var(--ease);
+}
+.kompakt .station:hover { border-color: var(--hair-hell); }
+.kompakt .station::before, .kompakt .station::after { display: none; }
+.kompakt .station__when { margin: 0 0 var(--sp-2); font-size: .74rem; }
+@media (min-width: 54rem) {
+  .kompakt { grid-template-columns: repeat(6, 1fr); gap: var(--sp-4); }
+  .kompakt .station { grid-column: span 2; }
+  .kompakt .station:nth-child(n + 4) { grid-column: span 3; }
+}
+
+/* Beim Ueberfahren eine leichte Flaeche hinter der Berufsstation, ohne Rahmen
+   und ohne Verschiebung: der Schatten traegt die Farbe 1rem ueber den Inhalt hinaus. */
+@media (hover: hover) {
+  .station:not(.station--kompakt) { border-radius: var(--radius); transition: background-color .3s var(--ease), box-shadow .3s var(--ease); }
+  .station:not(.station--kompakt):hover { background-color: var(--flaeche); box-shadow: 0 0 0 1rem var(--flaeche); }
+}
