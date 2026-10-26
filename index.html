@@ -25,7 +25,7 @@
 <script>(function(d){d.classList.add("js");try{if(localStorage.getItem("fb-theme")==="light"){d.setAttribute("data-theme","light");var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content","#f6f5f2")}var l=localStorage.getItem("fb-lang")||(navigator.language||"de").slice(0,2);l=l==="en"?"en":"de";d.setAttribute("lang",l);d.setAttribute("data-lang",l)}catch(e){}})(document.documentElement)</script>
 <link rel="preload" href="assets/fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/satoshi-500.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/styles.css?v=9bd883b6">
+<link rel="stylesheet" href="assets/styles.css?v=e18d0b38">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -148,39 +148,43 @@
           <span lang="en">In-house product development, test consulting on the client side, and the process the team now uses to build with agents.</span>
         </p>
 
+        <div class="einsatz">
         <p class="engagement"><span lang="de">Im eigenen Produkt</span><span lang="en">On our own product</span></p>
         <ul class="station__list" lang="de">
-          <li>Mitarbeit an der Produktplanung: Anforderungen zuschneiden und die fachliche Richtung mitgestalten</li>
-          <li>Entwicklung neuer Funktionen im Angular-Frontend und im Spring-Boot-Backend, umgesetzt mit KI-Agenten</li>
-          <li>Aufbau des agentischen Entwicklungsprozesses vom Ticket bis zum Merge: feste Rollen, definierte Übergaben, Freigabe durch Menschen</li>
-          <li>Messung des Prozesses an Durchsatz und Qualität der Pull Requests, vorher und nachher</li>
+          <li>Produktplanung: Anforderungen zuschneiden, fachliche Richtung mitgestalten</li>
+          <li>Neue Funktionen in Angular und Spring Boot, umgesetzt mit KI-Agenten</li>
+          <li>Agentischer Prozess vom Ticket bis zum Merge, mit Freigabe durch Menschen</li>
+          <li>Messung des Prozesses an Durchsatz und Qualität der Pull Requests</li>
           <li>Einarbeitung des Teams in den Prozess</li>
         </ul>
         <ul class="station__list" lang="en">
-          <li>Product planning with the team: shaping requirements and helping set the direction</li>
-          <li>Development of new features in the Angular front end and the Spring Boot back end, delivered with AI agents</li>
-          <li>Building the agentic development process from ticket to merge: fixed roles, defined handovers, human approval</li>
-          <li>Measuring the process on pull-request throughput and quality, before and after</li>
+          <li>Product planning: shaping requirements, helping set the direction</li>
+          <li>New features in Angular and Spring Boot, built with AI agents</li>
+          <li>Agentic process from ticket to merge, with human approval</li>
+          <li>Process measured on pull-request throughput and quality</li>
           <li>Onboarding the team onto the process</li>
         </ul>
+        </div>
 
+        <div class="einsatz">
         <p class="engagement"><span lang="de">Beim Kunden — große Fondsgesellschaft</span><span lang="en">At the client — large asset manager</span></p>
         <ul class="station__list" lang="de">
-          <li>Konzeption, Strukturierung und Pflege der automatisierten Testfälle mit Robot Framework</li>
-          <li>Aufbau und Stabilisierung der Testinfrastruktur in GitLab für die Entwicklungsteams des Hauses</li>
-          <li>Migration der Repositories samt Pipelines von Azure DevOps nach GitLab CI</li>
-          <li>Entwicklung zentraler GitLab-CI/CD-Komponenten, die Linter und Testlauf vor jedem Merge zum Pflichtschritt machen</li>
-          <li>Umsetzung eines Wissensagenten in der hauseigenen Chatbot-KI für wiederkehrende Fragen aus Onboarding und Alltag</li>
-          <li>Konzeption und Entwicklung eines KI-Agenten auf den internen APIs: schreibt Tests in Robot Framework und als Unittests, repariert rot gelaufene Pipelines per Commit oder Vorschlag, prüft Merge Requests mit Freigabeempfehlung</li>
+          <li>Automatisierte Testfälle mit Robot Framework: Konzeption, Struktur, Pflege</li>
+          <li>Testinfrastruktur in GitLab für die Entwicklungsteams aufgebaut und stabilisiert</li>
+          <li>Migration der Repositories und Pipelines von Azure DevOps nach GitLab CI</li>
+          <li>Zentrale CI/CD-Komponenten: Linter und Testlauf als Pflicht vor jedem Merge</li>
+          <li>Wissensagent im hauseigenen Chatbot für Onboarding- und Alltagsfragen</li>
+          <li>KI-Agent auf den internen APIs: schreibt Tests, repariert Pipelines, prüft Merge Requests</li>
         </ul>
         <ul class="station__list" lang="en">
-          <li>Designing, structuring and maintaining the automated test cases in Robot Framework</li>
-          <li>Building and stabilising the GitLab test infrastructure for the company's development teams</li>
-          <li>Migration of the repositories and their pipelines from Azure DevOps to GitLab CI</li>
-          <li>Development of shared GitLab CI/CD components that make linters and a test run mandatory before every merge</li>
-          <li>Implementation of a knowledge agent in the company's own chatbot for recurring questions from onboarding and daily work</li>
-          <li>Design and development of an AI agent on the internal APIs: writes tests in Robot Framework and as unit tests, fixes failing pipelines with a commit or a proposed change, and reviews merge requests with an approval recommendation</li>
+          <li>Automated test cases in Robot Framework: design, structure, upkeep</li>
+          <li>GitLab test infrastructure for the development teams, built and stabilised</li>
+          <li>Migration of repositories and pipelines from Azure DevOps to GitLab CI</li>
+          <li>Shared CI/CD components: linters and tests mandatory before every merge</li>
+          <li>Knowledge agent in the in-house chatbot for onboarding and everyday questions</li>
+          <li>AI agent on the internal APIs: writes tests, fixes pipelines, reviews merge requests</li>
         </ul>
+        </div>
 
         <ul class="tags"><li>Python</li><li>Robot Framework</li><li>GitLab CI</li><li>Angular</li><li>Spring Boot</li><li>Jira &amp; Xray</li></ul>
       </div>
@@ -197,57 +201,61 @@
           <span lang="en">Validating ECU software on site with the client, from test specification through to the pipeline.</span>
         </p>
 
+        <div class="einsatz">
         <p class="engagement"><span lang="de">Sportwagenhersteller — 01 bis 07/2026</span><span lang="en">Sports car manufacturer — 01 to 07/2026</span></p>
         <ul class="station__list" lang="de">
-          <li>Aufbau einer Continuous-Testing-Pipeline, die bei jeder Softwareabgabe automatisch anläuft</li>
-          <li>Zusammenführung der Testausführung über Abteilungsgrenzen hinweg</li>
+          <li>Continuous-Testing-Pipeline, die bei jeder Softwareabgabe automatisch anläuft</li>
+          <li>Testausführung über Abteilungsgrenzen hinweg zusammengeführt</li>
           <li>Testdurchführung auf Fahrzeug-, SiL- und HiL-Ebene</li>
-          <li>Review von Testfallspezifikationen und Bewertung der technischen Umsetzbarkeit</li>
-          <li>Beratung zu Teststrategie und Testarchitektur, Einarbeitung der Anwender in ecu.test und test.guide</li>
+          <li>Review von Testspezifikationen, Beratung zu Teststrategie und Testarchitektur</li>
+          <li>Einarbeitung der Anwender in ecu.test und test.guide</li>
         </ul>
         <ul class="station__list" lang="en">
-          <li>Building a continuous testing pipeline that starts automatically on every software delivery</li>
-          <li>Consolidating test execution across department boundaries</li>
+          <li>Continuous testing pipeline that runs on every software delivery</li>
+          <li>Test execution consolidated across departments</li>
           <li>Test execution at vehicle, SiL and HiL level</li>
-          <li>Reviewing test case specifications and assessing technical feasibility</li>
-          <li>Consulting on test strategy and test architecture, onboarding users to ecu.test and test.guide</li>
+          <li>Reviewing test specifications, advising on test strategy and architecture</li>
+          <li>Onboarding users to ecu.test and test.guide</li>
         </ul>
+        </div>
 
+        <div class="einsatz">
         <p class="engagement"><span lang="de">Antriebsentwicklung, deutscher Premium-Hersteller — 10/2021 bis 12/2025</span><span lang="en">Powertrain development, German premium manufacturer — 10/2021 to 12/2025</span></p>
         <ul class="station__list" lang="de">
           <li>Absicherung der Steuergeräte-Software an XIL-Prüfständen und im Fahrzeug</li>
-          <li>Spezifikation, Automatisierung und Auswertung der Tests mit ecu.test und test.guide</li>
-          <li>Analyse und Bewertung von Systemfunktionen und Betriebsstrategien im Antriebsstrang</li>
-          <li>Automatisierung der Testvorbereitung: Testobjekte bereitstellen, Steuergeräte flashen, Testdaten zusammenführen</li>
-          <li>Aufbau der CI/CD-Pipelines für die Testausführung in Jenkins und GitHub Actions</li>
-          <li>Analyse von Logs und Traces bei Abweichungen am Prüfstand und im Fahrzeug</li>
-          <li>Fahrberechtigung des Herstellers für Prototypenfahrzeuge, Stufen B0 bis B2 (2023), für Tests im Fahrzeug</li>
+          <li>Tests mit ecu.test und test.guide spezifiziert, automatisiert und ausgewertet</li>
+          <li>Systemfunktionen und Betriebsstrategien im Antriebsstrang analysiert und bewertet</li>
+          <li>Testvorbereitung automatisiert: Testobjekte, Flashen, Testdaten</li>
+          <li>CI/CD-Pipelines für die Testausführung in Jenkins und GitHub Actions</li>
+          <li>Log- und Trace-Analyse bei Abweichungen am Prüfstand und im Fahrzeug</li>
+          <li>Fahrberechtigung für Prototypenfahrzeuge, Stufen B0 bis B2 (2023)</li>
           <li>Testberatung und Schulung des Kundenteams vor Ort</li>
         </ul>
         <ul class="station__list" lang="en">
-          <li>Validation of ECU software on XIL test benches and in the vehicle</li>
-          <li>Specification, automation and evaluation of the tests with ecu.test and test.guide</li>
-          <li>Analysis and assessment of powertrain system functions and operating strategies</li>
-          <li>Automating test preparation: providing test objects, flashing ECUs, assembling test data</li>
-          <li>Building the CI/CD pipelines for test execution in Jenkins and GitHub Actions</li>
-          <li>Log and trace analysis when results deviate on the test bench and in the vehicle</li>
-          <li>Manufacturer's driving authorisation for prototype vehicles, levels B0 to B2 (2023), for in-vehicle testing</li>
-          <li>Test consulting and on-site training for the client's team</li>
+          <li>ECU software validation on XIL test benches and in the vehicle</li>
+          <li>Tests specified, automated and evaluated with ecu.test and test.guide</li>
+          <li>Powertrain system functions and operating strategies analysed and assessed</li>
+          <li>Automated test preparation: test objects, flashing, test data</li>
+          <li>CI/CD pipelines for test execution in Jenkins and GitHub Actions</li>
+          <li>Log and trace analysis for deviations on the bench and in the vehicle</li>
+          <li>Driving authorisation for prototype vehicles, levels B0 to B2 (2023)</li>
+          <li>Test consulting and on-site training for the client’s team</li>
         </ul>
+        </div>
 
+        <div class="einsatz">
         <p class="engagement"><span lang="de">Praktikum und Bachelorarbeit, Test &amp; Absicherung — 04 bis 09/2021</span><span lang="en">Internship and bachelor thesis, test &amp; validation — 04 to 09/2021</span></p>
         <ul class="station__list" lang="de">
-          <li>Testfallentwicklung mit ecu.test</li>
-          <li>Betreuung von Hardware-in-the-Loop-Prüfständen</li>
+          <li>Testfallentwicklung mit ecu.test, Betreuung von HiL-Prüfständen</li>
           <li>Prozessautomatisierung mit Python</li>
-          <li>Bachelorarbeit: Konzeption, Evaluierung und Entwicklung einer Datenbank zur automatisierten Bewertung von Fehlerspeichereinträgen</li>
+          <li>Bachelorarbeit: Datenbank zur automatisierten Bewertung von Fehlerspeichereinträgen</li>
         </ul>
         <ul class="station__list" lang="en">
-          <li>Test case development with ecu.test</li>
-          <li>Looking after hardware-in-the-loop test benches</li>
+          <li>Test case development with ecu.test, looking after HiL test benches</li>
           <li>Process automation with Python</li>
-          <li>Bachelor thesis: design, evaluation and implementation of a database for the automated assessment of ECU fault-memory entries</li>
+          <li>Bachelor thesis: database for automated assessment of ECU fault-memory entries</li>
         </ul>
+        </div>
 
         <ul class="tags"><li>ecu.test</li><li>test.guide</li><li>Jenkins</li><li>GitHub Actions</li><li>Python</li><li>HiL / XIL</li></ul>
       </div>
@@ -454,6 +462,6 @@
   <span><span lang="de">Stand: Oktober 2026</span><span lang="en">Last updated: October 2026</span></span>
 </footer>
 
-<script src="assets/app.js?v=5f0c9320" defer></script>
+<script src="assets/app.js?v=fe9556ef" defer></script>
 </body>
 </html>
