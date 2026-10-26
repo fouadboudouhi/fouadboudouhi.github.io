@@ -1,39 +1,61 @@
 # Persönliche Webseite — Fouad Boudouhi
 
 Statische Seite: HTML, CSS, etwas JavaScript. Kein Framework, kein Build-Schritt,
-keine Abhängigkeit von außen außer der Schrift (siehe unten).
+keine Abhängigkeit von außen; die Schrift liegt mit im Repository.
 
 ```
-index.html            die ganze Seite, Deutsch und Englisch
-impressum.html        Impressum
-datenschutz.html      Datenschutzerklärung
-assets/styles.css     alle Farb-, Abstands- und Schriftwerte einmal auf :root
-assets/app.js         Sprachumschaltung, Bewegung, Druckvorbereitung
-assets/og-image.png   Vorschaubild fürs Teilen, 1200x630
-entwuerfe/            vier verworfene Gestaltungsentwürfe, nicht verlinkt
+index.html                  die Startseite, Deutsch und Englisch in einer Datei
+agentische-entwicklung.html
+investment-plattform.html   die vier Projektseiten
+testautomatisierung.html
+porsche.html
+blog.html, blog/            Blog-Übersicht und die Beiträge (nur Deutsch)
+feed.xml, sitemap.xml       erzeugt aus blog.html, siehe unten
+impressum.html, datenschutz.html, 404.html
+assets/styles.css           alle Farb-, Abstands- und Schriftwerte einmal auf :root
+assets/app.js               Sprache, Hell/Dunkel, Pipeline-Schema, Befehlspalette, Bewegung
+assets/fonts/               Satoshi, selbst gehostet
+assets/thumbs/, assets/porsche/, assets/blog/   Bilder
+assets/og-image.png         Vorschaubild fürs Teilen, 1200x630
 ```
+
+Lokales Werkzeug liegt in `.claude/` und ist nicht Teil des Repositorys:
+`serve.py` (Vorschau-Server ohne Cache), `blog-feed.py` (Feed und Sitemap),
+`stempel.py` (Versionsstempel).
 
 ## Lokal ansehen
 
 ```bash
-python -m http.server 4173
+python -I .claude/serve.py 4173
 ```
 
-Dann http://localhost:4173 öffnen.
+Dann http://localhost:4173 öffnen. Ohne das Skript tut es auch `python -m http.server 4173`,
+dann aber mit Browser-Cache.
 
 ## Gestaltung
 
-Dunkel, monochrom, eine einzige Schriftfamilie (**Satoshi**), **keine Akzentfarbe**.
-Getrennt wird durch Abstand und Haarlinien, nicht durch Kästen. **Dunkel ist der
-Standard**; ein Schalter neben DE/EN stellt auf hell um (`data-theme="light"` auf
-`<html>`, gemerkt unter `fb-theme`). Die Systemeinstellung wird bewusst nicht ausgewertet.
-Alle Farben beider Fassungen stehen als Variablen auf `:root`.
+**Dunkel ist der Standard**; ein Schalter neben DE/EN stellt auf hell um
+(`data-theme="light"` auf `<html>`, gemerkt unter `fb-theme`). Die Systemeinstellung
+wird bewusst nicht ausgewertet. Eine Textschrift (**Satoshi**) und eine Monospace für
+alles, was Meta ist: Rubriken, Daten, Tags, Kopfzeile. **Eine Akzentfarbe** (Bernstein),
+sparsam gesetzt: Rubriken, der gefüllte Knopf, die aktive Sprache, Projektlinks,
+Listenpunkte. Text, Hintergrund und Haarlinien bleiben monochrom. Getrennt wird durch
+Abstand und Haarlinien; Karten nur dort, wo mehrere gleichartige Dinge nebeneinanderstehen
+(Schwerpunkte, Fähigkeiten, Projekte). Alle Farben beider Fassungen stehen als Variablen
+auf `:root`.
 
-Bewegung: Abschnitte steigen beim Scrollen ein, die Kennzahlen zählen hoch,
-Trennlinien zeichnen sich von links nach rechts, ein schwacher Lichtschein folgt
-dem Zeiger, die Kopfzeile bekommt beim Scrollen eine Trennlinie. Alles respektiert
-`prefers-reduced-motion`, und ohne JavaScript ist der Inhalt trotzdem sichtbar
-(die Animation hängt an einer `js`-Klasse, die das Skript selbst setzt).
+**Zwei Sprachen in einer Datei:** Jeder Text steht als Paar `<span lang="de">` /
+`<span lang="en">`, das CSS blendet die jeweils andere aus (`data-lang` auf `<html>`,
+gemerkt unter `fb-lang`). Auch erzeugte Texte aus `app.js` tragen beide Fassungen, damit
+der Wechsel ohne Neuladen klappt. Die Blogbeiträge gibt es nur auf Deutsch.
+
+**Bewegung:** Abschnitte steigen beim Scrollen ein (der Hero nicht, der steht sofort),
+Kennzahlen zählen hoch, Trennlinien zeichnen sich von links nach rechts, die Zeitleiste
+wächst beim Lesen mit, das Pipeline-Schema im Hero schickt simulierte Tickets durch vier
+Stufen. Alles respektiert `prefers-reduced-motion`, und ohne JavaScript ist der Inhalt
+trotzdem sichtbar (die Animation hängt an einer `js`-Klasse, die das Skript selbst setzt).
+
+**Befehlspalette:** Strg+K bzw. ⌘K springt zu Abschnitten, Projekten und Kontakt.
 
 ## Aufbau
 
@@ -41,54 +63,39 @@ dem Zeiger, die Kopfzeile bekommt beim Scrollen eine Trennlinie. Alles respektie
 Hero · 01 Schwerpunkte · 02 Werdegang · 03 Fähigkeiten · 04 Projekte · 05 Kontakt
 Projektseiten: agentische-entwicklung.html (Ablauf + Messung), investment-plattform.html,
 testautomatisierung.html, porsche.html
+Blog: blog.html, Beiträge in blog/
 ```
 
-## Unter eine eigene Domain bringen
+## Neuer Blogbeitrag
 
-### 1. Domain
-
-`fouad-boudouhi.de` oder `.dev` bei einem Registrar deiner Wahl (INWX, Netcup,
-Namecheap, Cloudflare Registrar). Rund 10–20 € im Jahr.
-Hinweis: Ob ein Impressum nötig ist, hängt nicht von der Endung ab, sondern
-davon, ob die Seite geschäftsmäßig ist (§ 5 DDG). Eine Seite, die beruflich
-präsentiert und Bewerbungen beiliegt, gilt in der Regel als geschäftsmäßig.
-Soll die private Adresse nicht öffentlich stehen: Impressumsservice mit
-ladungsfähiger c/o-Adresse. Ein Postfach reicht nicht.
-
-### 2. Hosting — drei Wege, alle kostenlos
-
-**Cloudflare Pages** (Empfehlung)
+1. Datei in `blog/` anlegen, am einfachsten eine bestehende kopieren; `canonical`,
+   `og:*` und `description` im `<head>` anpassen.
+2. Eintrag oben in der Liste in `blog.html` ergänzen (`data-datum` im ISO-Format).
+3. Feed und Sitemap neu bauen und beides mit committen:
 
 ```bash
-npx wrangler pages deploy . --project-name fouad-boudouhi
+python -I .claude/blog-feed.py
 ```
 
-Danach im Dashboard unter *Workers & Pages → Projekt → Custom domains* die Domain
-eintragen. Liegt die Domain bei Cloudflare, ist das ein Klick; sonst einen CNAME
-auf `<projekt>.pages.dev` setzen.
+## Versionsstempel
 
-**GitHub Pages**
+`styles.css` und `app.js` sind als `?v=<Stempel>` eingebunden, damit der Browser nach
+einer Änderung nicht die alte Datei aus dem Cache nimmt. Nach jeder Änderung an einer
+der beiden Dateien:
 
 ```bash
-git init && git add . && git commit -m "Persönliche Webseite"
-gh repo create fouad-boudouhi.de --public --source=. --push
+python -I .claude/stempel.py
 ```
 
-Dann *Settings → Pages → Deploy from a branch → main / (root)*, die Domain unter
-*Custom domain* eintragen, eine Datei `CNAME` mit der Domain anlegen. Beim
-Registrar: `CNAME www → <user>.github.io`, für die nackte Domain die vier
-A-Records von GitHub (185.199.108–111.153).
+## Hosting
 
-**Netlify** — Ordner auf app.netlify.com/drop ziehen, Domain im Dashboard verbinden.
-
-### 3. Danach
-
-- HTTPS ist bei allen dreien automatisch.
-- Kein Build-Schritt heißt: eine Änderung an `index.html` ist nach dem nächsten
-  Deploy live.
+GitHub Pages aus dem Branch `main`, Verzeichnis `/`. Die Domain `fouad-boudouhi.de`
+liegt bei IONOS und zeigt per DNS auf GitHub Pages; HTTPS kommt von GitHub. Ein Push
+auf `main` ist nach wenigen Minuten live, es gibt keinen Build.
 
 ## Handy-Fassung
 
-`fouad-boudouhi-seite.html` ist die ganze Seite als eine Datei, mit eingebetteten
-Schriften, CSS und Skript. Funktioniert ohne Server und ohne Internet. Neu bauen nach
-jeder Änderung an `index.html`, `assets/styles.css` oder `assets/app.js`.
+`fouad-boudouhi-*.html` sind die Seiten als je eine Datei mit eingebetteten Schriften,
+CSS und Skript; sie funktionieren ohne Server und ohne Internet. Sie werden nicht im
+Repository geführt und müssen nach jeder Änderung an den Quellen neu gebaut werden,
+sonst sind sie veraltet.
