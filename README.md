@@ -49,8 +49,8 @@ der Wechsel ohne Neuladen klappt.
 
 **Bewegung:** Abschnitte steigen beim Scrollen ein (der Hero nicht, der steht sofort),
 Kennzahlen zählen hoch, Trennlinien zeichnen sich von links nach rechts, die Zeitleiste
-wächst beim Lesen mit, das Pipeline-Schema im Hero schickt simulierte Tickets durch vier
-Stufen. Alles respektiert `prefers-reduced-motion`, und ohne JavaScript ist der Inhalt
+wächst beim Lesen mit, das Pipeline-Schema im Hero schickt simulierte Tickets durch die sechs
+Stufen des Prozesses. Alles respektiert `prefers-reduced-motion`, und ohne JavaScript ist der Inhalt
 trotzdem sichtbar (die Animation hängt an einer `js`-Klasse, die das Skript selbst setzt).
 
 **Befehlspalette:** Strg+K bzw. ⌘K springt zu Abschnitten, Projekten und Kontakt.

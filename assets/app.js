@@ -45,7 +45,6 @@
     var btn = ev.target.closest ? ev.target.closest("[data-set-lang]") : null;
     if (!btn) return;
     setzeSprache(btn.getAttribute("data-set-lang"), true);
-    if (typeof zeichne === "function") zeichne();
   });
 
   // Beide Fassungen in einem String: die [lang]-Regel im CSS blendet die andere aus,
@@ -61,6 +60,9 @@
   function setzeThema(hell, merken) {
     if (hell) root.setAttribute("data-theme", "light");
     else root.removeAttribute("data-theme");
+    // Browserleiste auf dem Handy folgt dem Hintergrund.
+    var farbe = document.querySelector('meta[name="theme-color"]');
+    if (farbe) farbe.setAttribute("content", getComputedStyle(root).getPropertyValue("--bg").trim() || (hell ? "#f6f5f2" : "#0e1117"));
     var knoepfe = document.querySelectorAll("[data-toggle-theme]");
     for (var i = 0; i < knoepfe.length; i++) {
       knoepfe[i].setAttribute("aria-pressed", hell ? "true" : "false");
@@ -90,13 +92,13 @@
   var pipeWurzel = document.querySelector("[data-pipeline]");
   if (pipeWurzel) (function () {
     var t = zwei;
-    var STUFEN = [["Plan", "Plan"], ["Umsetzung", "Build"], ["Review", "Review"], ["Merge", "Merge"]];
+    var STUFEN = [["Ticket", "Ticket"], ["Plan", "Plan"], ["Umsetzung", "Build"], ["Review", "Review"], ["Sicherheit", "Security"], ["Abnahme", "Sign-off"]];
     pipeWurzel.innerHTML =
       '<div class="pipe">' +
       '<div class="pipe__kopf"><b>' + t("agentische Pipeline", "agentic pipeline") + '</b><span>' + t("simuliert", "simulated") + '</span></div>' +
       '<div class="pipe__stufen">' + STUFEN.map(function (s) { return '<div class="pipe__stufe"><span class="pipe__dot"></span>' + t(s[0], s[1]) + '</div>'; }).join("") + '</div>' +
       '<div class="pipe__bahn"></div><div class="pipe__log"></div>' +
-      '<div class="pipe__fuss">' + t("Schema des Ablaufs aus Projekt 01 · Zahlen sind erfunden", "Schematic of the flow from project 01 · numbers are made up") +
+      '<div class="pipe__fuss">' + t("Schema des Ablaufs aus Projekt 01 · Freigabe und Abnahme durch Menschen · Zahlen sind erfunden", "Schematic of the flow from project 01 · humans approve and sign off · numbers are made up") +
       (sparsam ? "" : ' · <b>' + t("Klick wirft ein Ticket ein", "click to add a ticket") + '</b>') + '</div></div>';
     var bahn = pipeWurzel.querySelector(".pipe__bahn"), log = pipeWurzel.querySelector(".pipe__log"),
         stufen = pipeWurzel.querySelectorAll(".pipe__stufe"), nr = 400 + Math.floor(Math.random() * 90), zeilen = [];
@@ -123,8 +125,8 @@
       if (i >= 0) { stufen[i].classList.add("aktiv"); if (klasse) stufen[i].classList.add(klasse); }
     }
     if (sparsam) {
-      [0, 2, 3].forEach(function (i, k) { var el = document.createElement("div"); el.className = "pipe__ticket"; el.dataset.spur = 0; el.innerHTML = "<span>#" + (nr + k) + "</span>"; bahn.appendChild(el); setze(el, i); });
-      melde("#" + (nr + 2) + " → Merge: <i>" + t("gemergt", "merged") + "</i>"); return;
+      [0, 3, 5].forEach(function (i, k) { var el = document.createElement("div"); el.className = "pipe__ticket"; el.dataset.spur = 0; el.innerHTML = "<span>#" + (nr + k) + "</span>"; bahn.appendChild(el); setze(el, i); });
+      melde("#" + (nr + 2) + " → " + t("Abnahme", "Sign-off") + ": <i>" + t("gemergt", "merged") + "</i>"); return;
     }
     var aktiv = 0;
     function lauf(vonHand) {
@@ -134,18 +136,19 @@
       var id = "#" + (nr++), el = document.createElement("div"), rueck = Math.random() < (vonHand ? 0.4 : 0.28);
       el.className = "pipe__ticket" + (vonHand ? " hand" : ""); el.dataset.spur = freieSpur(); el.innerHTML = "<span>" + id + "</span>"; bahn.appendChild(el); setze(el, 0);
       if (vonHand) melde(id + " → " + t("eingeworfen", "added"));
-      var plan = [0, 1, 2].concat(rueck ? [1, 2, 3] : [3]), k = 0;
+      // Sechs Stufen wie in Projekt 01; gut jedes vierte Ticket geht aus dem Review zurueck in die Umsetzung.
+      var plan = rueck ? [0, 1, 2, 3, 2, 3, 4, 5] : [0, 1, 2, 3, 4, 5], k = 0;
       function schritt() {
-        var i = plan[k];
+        var i = plan[k], text;
         setze(el, i); markiere(i);
-        var zurueck = rueck && k === 3;
-        el.classList.toggle("rueck", zurueck);
-        if (i === 2 && zurueck) melde(id + " → Review: <i>" + t("Änderung angefordert", "changes requested") + "</i>");
-        else if (i === 2 && k === 2 && rueck) melde(id + " → Review: " + t("läuft", "running"));
-        else if (i === 2) melde(id + " → Review: <i>ok</i>");
-        else if (i === 3) melde(id + " → Merge: <i>" + t("gemergt", "merged") + "</i>");
-        else if (i === 1) melde(id + " → " + t("Umsetzung", "Build") + ": " + t("Tests grün", "tests green"));
-        else melde(id + " → Plan: " + t("freigegeben", "approved"));
+        el.classList.toggle("rueck", rueck && (k === 3 || k === 4));
+        if (i === 0) text = "Ticket: " + t("angelegt", "created");
+        else if (i === 1) text = "Plan: " + t("freigegeben", "approved");
+        else if (i === 2) text = t("Umsetzung", "Build") + ": " + (k === 4 ? t("nachgebessert, Tests grün", "reworked, tests green") : t("Tests grün", "tests green"));
+        else if (i === 3) text = "Review: " + (rueck && k === 3 ? "<i>" + t("Änderung angefordert", "changes requested") + "</i>" : "<i>ok</i>");
+        else if (i === 4) text = t("Sicherheit", "Security") + ": " + t("geprüft", "checked");
+        else text = t("Abnahme", "Sign-off") + ": <i>" + t("gemergt", "merged") + "</i>";
+        melde(id + " → " + text);
         k++;
         if (k < plan.length) { window.setTimeout(schritt, 1150 + Math.random() * 350); }
         else { window.setTimeout(function () { el.classList.add("fertig"); markiere(-1); window.setTimeout(function () { el.remove(); aktiv--; ordne(); }, 450); }, 900); }
@@ -206,15 +209,15 @@
     ];
     var knopf = document.createElement("button");
     knopf.type = "button"; knopf.className = "palette-knopf"; knopf.setAttribute("data-palette", "");
-    knopf.innerHTML = '<span class="nur-breit">' + zwei("Springen", "Jump") + '</span><kbd>' + (navigator.platform.indexOf("Mac") === 0 ? "⌘" : zwei("Strg", "Ctrl")) + " K</kbd>";
+    knopf.innerHTML = '<span>' + zwei("Springen", "Jump") + '</span><kbd>' + (navigator.platform.indexOf("Mac") === 0 ? "⌘" : zwei("Strg", "Ctrl")) + " K</kbd>";
     nav.insertBefore(knopf, nav.querySelector(".langswitch"));
     var pal = document.createElement("div");
-    pal.className = "palette"; pal.setAttribute("role", "dialog"); pal.setAttribute("aria-label", t("Befehlspalette", "Command palette"));
+    pal.className = "palette"; pal.setAttribute("role", "dialog"); pal.setAttribute("aria-modal", "true"); pal.setAttribute("aria-label", t("Befehlspalette", "Command palette"));
     pal.innerHTML = '<div class="palette__box"><input class="palette__eingabe" type="text" autocomplete="off" spellcheck="false" placeholder="' +
       t("Wohin? Tippen zum Filtern …", "Where to? Type to filter …") + '"><ul class="palette__liste"></ul>' +
       '<div class="palette__fuss"><span><kbd>↑↓</kbd> ' + zwei("wählen", "choose") + '</span><span><kbd>↵</kbd> ' + zwei("öffnen", "open") + '</span><span><kbd>esc</kbd> ' + zwei("schließen", "close") + '</span></div></div>';
     document.body.appendChild(pal);
-    var eingabe = pal.querySelector(".palette__eingabe"), liste = pal.querySelector(".palette__liste"), treffer = [], index = 0;
+    var eingabe = pal.querySelector(".palette__eingabe"), liste = pal.querySelector(".palette__liste"), treffer = [], index = 0, zuletzt = null;
     function zeichneListe() {
       var de = istDe(), q = eingabe.value.trim().toLowerCase();
       treffer = EINTRAEGE.filter(function (e) { var name = de || !e[1] ? e[0] : e[1]; return !q || (name + " " + e[3]).toLowerCase().indexOf(q) >= 0; });
@@ -225,12 +228,13 @@
       }).join("");
     }
     function oeffne() {
+      zuletzt = document.activeElement;
       // Beschriftungen, die kein Markup tragen koennen, folgen der aktuellen Sprache.
       eingabe.placeholder = t("Wohin? Tippen zum Filtern …", "Where to? Type to filter …");
       pal.setAttribute("aria-label", t("Befehlspalette", "Command palette"));
       pal.classList.add("offen"); eingabe.value = ""; index = 0; zeichneListe(); eingabe.focus();
     }
-    function schliesse() { pal.classList.remove("offen"); }
+    function schliesse() { pal.classList.remove("offen"); if (zuletzt && zuletzt.focus) zuletzt.focus(); }
     function fuehreAus(e) {
       schliesse();
       if (e[2] === "!theme") { var b = document.querySelector("[data-toggle-theme]"); if (b) b.click(); return; }
