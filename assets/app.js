@@ -160,33 +160,6 @@
     pipeWurzel.addEventListener("click", function () { lauf(true); });
   })();
 
-  /* ------------------------------------------- Aufgaben einklappen */
-  // Mehr als vier Aufgaben je Einsatz: die ersten drei bleiben stehen, der
-  // Rest oeffnet sich auf Klick. Ohne JS und beim Drucken ist alles offen.
-  (function () {
-    var ZEIGE = 3;
-    document.querySelectorAll(".station__list").forEach(function (ul) {
-      var li = ul.querySelectorAll("li");
-      if (li.length <= ZEIGE + 1) return;
-      var en = ul.getAttribute("lang") === "en", rest = li.length - ZEIGE;
-      for (var i = ZEIGE; i < li.length; i++) li[i].classList.add("zu");
-      var k = document.createElement("li"), b = document.createElement("button");
-      k.className = "station__mehr"; b.type = "button"; b.setAttribute("aria-expanded", "false");
-      function beschrifte(offen) {
-        b.textContent = offen ? (en ? "\u2013 fewer" : "\u2013 weniger")
-                              : "+ " + rest + (en ? " more" : " weitere");
-      }
-      beschrifte(false); k.appendChild(b); ul.appendChild(k);
-      b.addEventListener("click", function () {
-        var offen = ul.classList.toggle("offen");
-        b.setAttribute("aria-expanded", offen ? "true" : "false"); beschrifte(offen);
-      });
-    });
-    window.addEventListener("beforeprint", function () {
-      document.querySelectorAll(".station__list").forEach(function (ul) { ul.classList.add("offen"); });
-    });
-  })();
-
   /* ------------------------------------------------ Befehlspalette */
   (function () {
     var nav = document.querySelector(".topbar__nav");
