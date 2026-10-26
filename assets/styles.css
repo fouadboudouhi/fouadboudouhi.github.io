@@ -285,7 +285,7 @@ section { padding-block: var(--block); }
 .station__ort { font-size: var(--fs-xs); color: var(--mut); margin-bottom: var(--sp-4); }
 .station__org a { color: var(--mut); border-bottom-color: var(--hair); }
 .station__org a:hover { color: var(--fg); border-bottom-color: var(--fg); }
-.station__org a::after { content: " ↗"; }
+.station__org a::after { content: " ↗"; }  /* geschuetztes Leerzeichen: der Pfeil bricht nie allein um */
 .station__kurz { font-size: var(--fs-md); color: var(--fg); margin-bottom: var(--sp-4); max-width: 42rem; }
 .station__list { font-size: var(--fs-md); max-width: 42rem; color: var(--mut-hell); list-style: none; padding-left: 0; }
 .station__list li { padding-left: 1.1em; position: relative; }
@@ -897,9 +897,9 @@ footer.footer, .chart text, .stufe__text, .badge, .projektseite__meta, .projekts
 .projektseite .abschnitt::before { content: "# "; color: var(--akzent); font-family: var(--f-mono); font-size: .8em; }
 /* Externe Links im Kontakt tragen denselben Pfeil wie im Werdegang. */
 .kontakt__links a[href^="http"]::after { content: " ↗"; }
-/* Stationskopf auf dem Handy: Firma und Ort in einer Zeile, die Mutter-
-   gesellschaft faellt weg; dazu die Zeitleiste mit Linie und Punkt wie auf dem
-   Desktop, damit der Text eine Kante hat. */
+/* Stationskopf auf dem Handy: Firma mit Pfeil in einer Zeile, der Ort darunter,
+   die Muttergesellschaft faellt weg; dazu die Zeitleiste mit Linie und Punkt wie
+   auf dem Desktop, damit der Text eine Kante hat. */
 @media (max-width: 53.98rem) {
   .station:not(.station--kompakt) { position: relative; padding-left: 1.4rem; --linie-farbe: color-mix(in srgb, var(--akzent) 70%, var(--hair-hell)); }
   .station:not(.station--kompakt)::before { content: ""; position: absolute; left: 5px; top: 0; bottom: 0; width: 1px;
@@ -909,9 +909,6 @@ footer.footer, .chart text, .stufe__text, .badge, .projektseite__meta, .projekts
     transition: background .4s var(--ease), border-color .4s var(--ease); }
   .station:not(.station--kompakt):first-of-type::after { top: .35em; }
   .station.erreicht::after { background: var(--akzent); border-color: var(--akzent); }
-  .station:not(.station--kompakt) .station__org, .station:not(.station--kompakt) .station__ort { display: inline; margin: 0; }
-  .station:not(.station--kompakt) .station__ort::before { content: " · "; }
-  .station:not(.station--kompakt) .station__ort + .station__kurz { margin-top: var(--sp-4); }
   .station__mutter { display: none; }
   .station__list { font-size: .95rem; line-height: 1.5; }
 }
