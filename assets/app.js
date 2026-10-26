@@ -48,6 +48,10 @@
     if (typeof zeichne === "function") zeichne();
   });
 
+  // Beide Fassungen in einem String: die [lang]-Regel im CSS blendet die andere aus,
+  // so wechseln auch erzeugte Texte sofort mit der Sprache, ohne neu zu zeichnen.
+  function zwei(d, e) { return '<span lang="de">' + d + '</span><span lang="en">' + e + '</span>'; }
+
   /* --------------------------------------------------------- Hell/Dunkel */
   // Standard ist dunkel. Das Kopf-Skript setzt data-theme vor dem ersten
   // Zeichnen aus dem Speicher; hier kommen nur Schalter und Merken dazu.
@@ -85,8 +89,7 @@
   // vieren kommt im Review zurueck. Zeigt in Sekunden, worum es auf der Seite geht.
   var pipeWurzel = document.querySelector("[data-pipeline]");
   if (pipeWurzel) (function () {
-    var de = (root.getAttribute("data-lang") || "de") === "de";
-    function t(d, e) { return de ? d : e; }
+    var t = zwei;
     var STUFEN = [["Plan", "Plan"], ["Umsetzung", "Build"], ["Review", "Review"], ["Merge", "Merge"]];
     pipeWurzel.innerHTML =
       '<div class="pipe">' +
@@ -185,35 +188,37 @@
   (function () {
     var nav = document.querySelector(".topbar__nav");
     if (!nav) return;
-    var de = (root.getAttribute("data-lang") || "de") === "de";
-    function t(d, e) { return de ? d : e; }
+    function istDe() { return (root.getAttribute("data-lang") || "de") === "de"; }
+    function t(d, e) { return istDe() ? d : e; }
     var aufIndex = /(^|\/)(index\.html)?$/.test(location.pathname);
-    var basis = aufIndex ? "" : "index.html";
+    // Blogbeitraege liegen einen Ordner tiefer, von dort fuehren die Pfade eine Ebene hoch.
+    var wurzel = /\/blog\//.test(location.pathname) ? "../" : "";
+    var basis = aufIndex ? "" : wurzel + "index.html";
     var EINTRAEGE = [
       ["Schwerpunkte", "Focus", basis + "#arbeit", "01"], ["Werdegang", "Career", basis + "#werdegang", "02"],
       ["Fähigkeiten", "Skills", basis + "#faehigkeiten", "03"], ["Projekte", "Projects", basis + "#projekte", "04"],
-      ["Kontakt", "Contact", basis + "#kontakt", "05"],
-      ["Agentischer Entwicklungsprozess im Team", "Agentic development process", "agentische-entwicklung.html", t("Projekt", "Project")],
-      ["Investment-Plattform für Immobilien", "Real estate investment platform", "investment-plattform.html", t("Projekt", "Project")],
-      ["Testautomatisierung für eine Übungsanwendung", "Test automation for a practice app", "testautomatisierung.html", t("Projekt", "Project")],
-      ["Porsche 911 Targa auf Elektroantrieb", "Porsche 911 Targa converted to electric", "porsche.html", t("Projekt", "Project")],
+      ["Kontakt", "Contact", basis + "#kontakt", "05"], ["Blog", "Blog", wurzel + "blog.html", "//"],
+      ["Agentischer Entwicklungsprozess im Team", "Agentic development process", wurzel + "agentische-entwicklung.html", zwei("Projekt", "Project")],
+      ["Investment-Plattform für Immobilien", "Real estate investment platform", wurzel + "investment-plattform.html", zwei("Projekt", "Project")],
+      ["Testautomatisierung für eine Übungsanwendung", "Test automation for a practice app", wurzel + "testautomatisierung.html", zwei("Projekt", "Project")],
+      ["Porsche 911 Targa auf Elektroantrieb", "Porsche 911 Targa converted to electric", wurzel + "porsche.html", zwei("Projekt", "Project")],
       ["E-Mail schreiben", "Send an email", "mailto:kontakt@fouad-boudouhi.de", "mailto"],
       ["LinkedIn", "LinkedIn", "https://www.linkedin.com/in/fouadboudouhi", "↗"], ["GitHub", "GitHub", "https://github.com/fouadboudouhi", "↗"],
-      [t("Hell/Dunkel umschalten", "Toggle light/dark"), null, "!theme", "⌘"], [t("Sprache wechseln", "Switch language"), null, "!lang", "⌘"]
+      ["Hell/Dunkel umschalten", "Toggle light/dark", "!theme", "⌘"], ["Sprache wechseln", "Switch language", "!lang", "⌘"]
     ];
     var knopf = document.createElement("button");
     knopf.type = "button"; knopf.className = "palette-knopf"; knopf.setAttribute("data-palette", "");
-    knopf.innerHTML = '<span class="nur-breit">' + t("Springen", "Jump") + '</span><kbd>' + (navigator.platform.indexOf("Mac") === 0 ? "⌘" : "Strg") + " K</kbd>";
+    knopf.innerHTML = '<span class="nur-breit">' + zwei("Springen", "Jump") + '</span><kbd>' + (navigator.platform.indexOf("Mac") === 0 ? "⌘" : zwei("Strg", "Ctrl")) + " K</kbd>";
     nav.insertBefore(knopf, nav.querySelector(".langswitch"));
     var pal = document.createElement("div");
     pal.className = "palette"; pal.setAttribute("role", "dialog"); pal.setAttribute("aria-label", t("Befehlspalette", "Command palette"));
     pal.innerHTML = '<div class="palette__box"><input class="palette__eingabe" type="text" autocomplete="off" spellcheck="false" placeholder="' +
       t("Wohin? Tippen zum Filtern …", "Where to? Type to filter …") + '"><ul class="palette__liste"></ul>' +
-      '<div class="palette__fuss"><span><kbd>↑↓</kbd> ' + t("wählen", "choose") + '</span><span><kbd>↵</kbd> ' + t("öffnen", "open") + '</span><span><kbd>esc</kbd> ' + t("schließen", "close") + '</span></div></div>';
+      '<div class="palette__fuss"><span><kbd>↑↓</kbd> ' + zwei("wählen", "choose") + '</span><span><kbd>↵</kbd> ' + zwei("öffnen", "open") + '</span><span><kbd>esc</kbd> ' + zwei("schließen", "close") + '</span></div></div>';
     document.body.appendChild(pal);
     var eingabe = pal.querySelector(".palette__eingabe"), liste = pal.querySelector(".palette__liste"), treffer = [], index = 0;
     function zeichneListe() {
-      var q = eingabe.value.trim().toLowerCase();
+      var de = istDe(), q = eingabe.value.trim().toLowerCase();
       treffer = EINTRAEGE.filter(function (e) { var name = de || !e[1] ? e[0] : e[1]; return !q || (name + " " + e[3]).toLowerCase().indexOf(q) >= 0; });
       index = Math.min(index, Math.max(treffer.length - 1, 0));
       liste.innerHTML = treffer.map(function (e, i) {
@@ -221,12 +226,17 @@
         return '<li' + (i === index ? ' class="aktiv"' : "") + '><button type="button" data-i="' + i + '"><span>' + name + '</span><small>' + e[3] + '</small></button></li>';
       }).join("");
     }
-    function oeffne() { pal.classList.add("offen"); eingabe.value = ""; index = 0; zeichneListe(); eingabe.focus(); }
+    function oeffne() {
+      // Beschriftungen, die kein Markup tragen koennen, folgen der aktuellen Sprache.
+      eingabe.placeholder = t("Wohin? Tippen zum Filtern …", "Where to? Type to filter …");
+      pal.setAttribute("aria-label", t("Befehlspalette", "Command palette"));
+      pal.classList.add("offen"); eingabe.value = ""; index = 0; zeichneListe(); eingabe.focus();
+    }
     function schliesse() { pal.classList.remove("offen"); }
     function fuehreAus(e) {
       schliesse();
       if (e[2] === "!theme") { var b = document.querySelector("[data-toggle-theme]"); if (b) b.click(); return; }
-      if (e[2] === "!lang") { var l = document.querySelector('[data-set-lang="' + (de ? "en" : "de") + '"]'); if (l) l.click(); return; }
+      if (e[2] === "!lang") { var l = document.querySelector('[data-set-lang="' + (istDe() ? "en" : "de") + '"]'); if (l) l.click(); return; }
       if (/^https?:/.test(e[2])) { window.open(e[2], "_blank", "noopener"); return; }
       location.href = e[2];
     }
