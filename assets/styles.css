@@ -918,3 +918,18 @@ footer.footer, .chart text, .flow text, .stufe__text, .badge, .projektseite__met
 .beitrag__autor { margin-top: var(--sp-7); padding-top: var(--sp-5); border-top: 1px solid var(--hair); font-family: var(--f-mono); font-size: .78rem; color: var(--mut); max-width: 40rem; }
 .beitrag__autor a { color: var(--mut-hell); }
 .beitrag__autor a:hover { color: var(--fg); }
+
+/* ------------------------------------------------------------------ Handy */
+/* Weniger Stapel im Hero: die Stack-Chips wiederholen Abschnitt 03 und fallen
+   auf dem Handy weg, die Statuszeile wird zur Liste ohne Trennpunkte, das
+   Pipeline-Schema bekommt Luft nach oben. */
+@media (max-width: 40rem) {
+  .stack { display: none; }
+  .status { flex-direction: column; gap: var(--sp-1); }
+  .status > span + span::before { content: none; margin: 0; }
+}
+@media (max-width: 64rem) { .pipeline { margin-top: var(--sp-6); } }
+/* Projektlinks brechen nicht mitten im Text um. */
+.projekt__link a { white-space: nowrap; }
+/* Solange die Rubrik keine eigene Spalte hat, gehoert sie dicht an ihre Ueberschrift. */
+@media (max-width: 59.98rem) { main > section.wrap:not(.hero) > .marke { margin-bottom: var(--sp-3); } }
