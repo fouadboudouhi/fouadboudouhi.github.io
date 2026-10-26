@@ -131,8 +131,8 @@
   <div class="prose" lang="de"><p>Die Agenten arbeiten in getrennten Rollen für Planung, Umsetzung und Review, mit definierten Übergaben dazwischen. An zwei Stellen steht ein Mensch im Ablauf: Riskante Änderungen gibt jemand aus dem Team frei, und gemergt wird erst nach einem menschlichen Review. Eine eigene Sicherheitsprüfung läuft vor der Abnahme. Die Regeln dafür habe ich aufgeschrieben und das Team darin eingearbeitet.</p></div>
   <div class="prose" lang="en"><p>The agents work in separate roles for planning, implementation and review, with defined handovers in between. A human is in the loop at two points: someone on the team approves risky changes, and nothing is merged without a human review. A dedicated security check runs before sign-off. I wrote the rules down and onboarded the team.</p></div>
 
-  <div class="prose" lang="de"><p>Gemessen habe ich an den gemergten Pull Requests des Repositories, ausgelesen aus GitHub. Vorher sind 27 Wochen mit 721 Pull Requests, nachher drei Wochen mit 407. Die Kennzahlen sind in beiden Zeiträumen dieselben: Pull Requests je Woche, Zeit bis zum Merge, Änderungswünsche und Nachbesserungsrunden je Pull Request, Bug-Tickets je Pull Request und die Größe der Änderungen.</p></div>
-  <div class="prose" lang="en"><p>I measured on the repository's merged pull requests, pulled from GitHub: 27 weeks and 721 pull requests before, three weeks and 407 after. The metrics are the same for both periods: pull requests per week, time to merge, change requests and rework rounds per pull request, bug tickets per pull request, and the size of the changes.</p></div>
+  <div class="prose" lang="de"><p>Gemessen habe ich an den gemergten Pull Requests des Repositories, ausgelesen aus GitHub. Vorher sind 27 Wochen mit 721 Pull Requests, nachher drei Wochen mit 407. Die Kennzahlen sind in beiden Zeiträumen dieselben: Pull Requests je Woche, Zeit bis zum Merge, Änderungswünsche und Nachbesserungsrunden je Pull Request und die Größe der Änderungen.</p></div>
+  <div class="prose" lang="en"><p>I measured on the repository's merged pull requests, pulled from GitHub: 27 weeks and 721 pull requests before, three weeks and 407 after. The metrics are the same for both periods: pull requests per week, time to merge, change requests and rework rounds per pull request, and the size of the changes.</p></div>
 
   <div class="zahlen">
     <div class="zahl auf"><span class="w" data-ziel="5.1" data-nk="1" data-pre="×"></span><span class="b"><span lang="de">Pull Requests je Woche</span><span lang="en">Pull requests per week</span></span></div>
@@ -205,14 +205,13 @@
       <tr><td><span lang="de">Median bis zum Merge</span><span lang="en">Median time to merge</span></td><td>1,8 h</td><td class="e">0,8 h</td></tr>
       <tr><td><span lang="de">Änderungswünsche je PR</span><span lang="en">Change requests per PR</span></td><td>0,43</td><td class="e">0,12</td></tr>
       <tr><td><span lang="de">Nachbesserungsrunden je PR</span><span lang="en">Rework rounds per PR</span></td><td>0,81</td><td class="e">0,40</td></tr>
-      <tr><td><span lang="de">Bug-Tickets je PR</span><span lang="en">Bug tickets per PR</span></td><td>0,39</td><td class="e">0,20</td></tr>
       <tr><td><span lang="de">PR-Größe, Median</span><span lang="en">PR size, median</span></td><td>522</td><td class="e"><span lang="de">578 Zeilen</span><span lang="en">578 lines</span></td></tr>
     </tbody>
   </table>
   </details>
 
-  <div class="prose" lang="de"><p>Der Durchsatz hat sich verfünffacht, und die Pull Requests brauchen weniger Korrekturen: 72 % weniger Änderungswünsche, halb so viele Nachbesserungsrunden und halb so viele Bug-Tickets je Pull Request. Die Gegenprobe ist die Größe der Änderungen. Sie liegt mit 578 Zeilen im Median leicht über den 522 von vorher. Der Durchsatz kommt also nicht daher, dass die Arbeit in mehr Stücke geschnitten wurde.</p></div>
-  <div class="prose" lang="en"><p>Throughput went up fivefold, and the pull requests need fewer corrections: 72 % fewer change requests, half the rework rounds and half the bug tickets per pull request. The counter-check is the size of the changes: a median of 578 lines, slightly above the 522 before. So the throughput did not come from slicing the work into smaller pieces.</p></div>
+  <div class="prose" lang="de"><p>Der Durchsatz hat sich verfünffacht, und die Pull Requests brauchen weniger Korrekturen: 72 % weniger Änderungswünsche und halb so viele Nachbesserungsrunden je Pull Request. Die Gegenprobe ist die Größe der Änderungen. Sie liegt mit 578 Zeilen im Median leicht über den 522 von vorher. Der Durchsatz kommt also nicht daher, dass die Arbeit in mehr Stücke geschnitten wurde.</p></div>
+  <div class="prose" lang="en"><p>Throughput went up fivefold, and the pull requests need fewer corrections: 72 % fewer change requests and half the rework rounds per pull request. The counter-check is the size of the changes: a median of 578 lines, slightly above the 522 before. So the throughput did not come from slicing the work into smaller pieces.</p></div>
 
   <div class="prose" lang="de"><p>Drei Wochen gegen 27 bleiben eine dünne Vergleichsbasis. In die drei Wochen fiel außerdem ein großes Vorhaben, das einen Teil des Sprungs erklären kann. Die Zahlen hier sind der Stand vom 09.10.2026.</p></div>
   <div class="prose" lang="en"><p>Three weeks against 27 is still a thin baseline. A large piece of work also fell into those three weeks, which may explain part of the jump. The figures here are as of 9 October 2026.</p></div>
