@@ -84,53 +84,29 @@
     </div>
   </dl>
 
+  <h2 class="abschnitt"><span lang="de">Der Ablauf</span><span lang="en">The process</span></h2>
   <div class="prose" lang="de"><p>Mit KI-Werkzeugen entwickelt hat das Team schon, bevor ich im Juli 2026 dazukam. Einen gemeinsamen Ablauf dafür gab es nicht. Ich habe deshalb den Weg vom Ticket bis zum Merge in sechs Stufen zerlegt und für jede festgelegt, was sie an die nächste übergibt. Das Produkt ist ein Testmanagement-Werkzeug, das Team besteht aus vier Entwicklern, der Code liegt in einem Repository.</p></div>
   <div class="prose" lang="en"><p>The team was already using AI tools when I joined in July 2026. It had no shared process for them. So I split the path from ticket to merge into six stages and defined what each one hands to the next. The product is a test management tool, the team is four developers, the code lives in one repository.</p></div>
 
-  <figure class="flow auf">
-  <svg viewBox="0 0 960 118" role="img" aria-labelledby="flow-titel">
-    <title id="flow-titel"><span lang="de">Ablauf: Ticket, Plan, Umsetzung, Review, Sicherheit, Abnahme</span><span lang="en">Flow: ticket, plan, build, review, security, sign-off</span></title>
-    <line class="bahn" x1="30" y1="46" x2="930" y2="46"/>
-  <g class="knoten" style="--i: 0">
-    <circle cx="30" cy="46" r="5"/>
-    <text x="30" y="76" text-anchor="middle" lang="de">Ticket</text>
-    <text x="30" y="76" text-anchor="middle" lang="en">Ticket</text>
-  </g>
-  <g class="knoten" style="--i: 1">
-    <circle cx="210" cy="46" r="5"/>
-    <text x="210" y="76" text-anchor="middle" lang="de">Plan</text>
-    <text x="210" y="76" text-anchor="middle" lang="en">Plan</text>
-  </g>
-  <g class="knoten" style="--i: 2">
-    <circle cx="390" cy="46" r="5"/>
-    <text x="390" y="76" text-anchor="middle" lang="de">Umsetzung</text>
-    <text x="390" y="76" text-anchor="middle" lang="en">Build</text>
-  </g>
-  <g class="knoten" style="--i: 3">
-    <circle cx="570" cy="46" r="5"/>
-    <text x="570" y="76" text-anchor="middle" lang="de">Review</text>
-    <text x="570" y="76" text-anchor="middle" lang="en">Review</text>
-  </g>
-  <g class="knoten" style="--i: 4">
-    <circle cx="750" cy="46" r="5"/>
-    <text x="750" y="76" text-anchor="middle" lang="de">Sicherheit</text>
-    <text x="750" y="76" text-anchor="middle" lang="en">Security</text>
-  </g>
-  <g class="knoten" style="--i: 5">
-    <circle cx="930" cy="46" r="5"/>
-    <text x="930" y="76" text-anchor="middle" lang="de">Abnahme</text>
-    <text x="930" y="76" text-anchor="middle" lang="en">Sign-off</text>
-  </g>
-  </svg>
+  <figure class="ablauf auf">
+    <ol class="ablauf__liste">
+      <li><b>Ticket</b><span><span lang="de">Aufgabe mit Ziel und Rahmen</span><span lang="en">Task with goal and scope</span></span></li>
+      <li class="mensch"><b>Plan</b><span><span lang="de">Umsetzungsplan; riskante Änderungen gibt ein Mensch frei</span><span lang="en">Implementation plan; a human approves risky changes</span></span></li>
+      <li><b><span lang="de">Umsetzung</span><span lang="en">Build</span></b><span><span lang="de">Code mit grünen Tests</span><span lang="en">Code with green tests</span></span></li>
+      <li><b>Review</b><span><span lang="de">Prüfergebnis: ok oder Änderungswunsch</span><span lang="en">Verdict: ok or change request</span></span></li>
+      <li><b><span lang="de">Sicherheit</span><span lang="en">Security</span></b><span><span lang="de">Sicherheitsprüfung bestanden</span><span lang="en">Security check passed</span></span></li>
+      <li class="mensch"><b><span lang="de">Abnahme</span><span lang="en">Sign-off</span></b><span><span lang="de">Ein Mensch prüft, nimmt ab und mergt</span><span lang="en">A human reviews, signs off and merges</span></span></li>
+    </ol>
     <figcaption>
-      <span lang="de">Schema. Jede Stufe übergibt der nächsten ein festgelegtes Ergebnis; ohne dieses Ergebnis startet die nächste nicht.</span>
-      <span lang="en">Schematic. Each stage hands the next a defined result; without it, the next stage does not start.</span>
+      <span lang="de">Jede Stufe übergibt der nächsten das genannte Ergebnis; ohne dieses Ergebnis startet die nächste nicht. Gefüllte Punkte: hier entscheidet ein Mensch.</span>
+      <span lang="en">Each stage hands the next the result named here; without it, the next stage does not start. Filled dots: a human decides here.</span>
     </figcaption>
   </figure>
 
   <div class="prose" lang="de"><p>Die Agenten arbeiten in getrennten Rollen für Planung, Umsetzung und Review, mit definierten Übergaben dazwischen. An zwei Stellen steht ein Mensch im Ablauf: Riskante Änderungen gibt jemand aus dem Team frei, und gemergt wird erst nach einem menschlichen Review. Eine eigene Sicherheitsprüfung läuft vor der Abnahme. Die Regeln dafür habe ich aufgeschrieben und das Team darin eingearbeitet.</p></div>
   <div class="prose" lang="en"><p>The agents work in separate roles for planning, implementation and review, with defined handovers in between. A human is in the loop at two points: someone on the team approves risky changes, and nothing is merged without a human review. A dedicated security check runs before sign-off. I wrote the rules down and onboarded the team.</p></div>
 
+  <h2 class="abschnitt"><span lang="de">Die Messung</span><span lang="en">The measurement</span></h2>
   <div class="prose" lang="de"><p>Gemessen habe ich an den gemergten Pull Requests des Repositories, ausgelesen aus GitHub. Vorher sind 27 Wochen mit 721 Pull Requests, nachher drei Wochen mit 407. Die Kennzahlen sind in beiden Zeiträumen dieselben: Pull Requests je Woche, Zeit bis zum Merge, Änderungswünsche und Nachbesserungsrunden je Pull Request und die Größe der Änderungen.</p></div>
   <div class="prose" lang="en"><p>I measured on the repository's merged pull requests, pulled from GitHub: 27 weeks and 721 pull requests before, three weeks and 407 after. The metrics are the same for both periods: pull requests per week, time to merge, change requests and rework rounds per pull request, and the size of the changes.</p></div>
 
@@ -213,6 +189,7 @@
   <div class="prose" lang="de"><p>Der Durchsatz hat sich verfünffacht, und die Pull Requests brauchen weniger Korrekturen: 72 % weniger Änderungswünsche und halb so viele Nachbesserungsrunden je Pull Request. Die Gegenprobe ist die Größe der Änderungen. Sie liegt mit 578 Zeilen im Median leicht über den 522 von vorher. Der Durchsatz kommt also nicht daher, dass die Arbeit in mehr Stücke geschnitten wurde.</p></div>
   <div class="prose" lang="en"><p>Throughput went up fivefold, and the pull requests need fewer corrections: 72 % fewer change requests and half the rework rounds per pull request. The counter-check is the size of the changes: a median of 578 lines, slightly above the 522 before. So the throughput did not come from slicing the work into smaller pieces.</p></div>
 
+  <h2 class="abschnitt"><span lang="de">Was die Zahlen nicht sagen</span><span lang="en">What the figures do not say</span></h2>
   <div class="prose" lang="de"><p>Drei Wochen gegen 27 bleiben eine dünne Vergleichsbasis. In die drei Wochen fiel außerdem ein großes Vorhaben, das einen Teil des Sprungs erklären kann. Die Zahlen hier sind der Stand vom 09.10.2026.</p></div>
   <div class="prose" lang="en"><p>Three weeks against 27 is still a thin baseline. A large piece of work also fell into those three weeks, which may explain part of the jump. The figures here are as of 9 October 2026.</p></div>
 

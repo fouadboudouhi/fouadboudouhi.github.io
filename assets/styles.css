@@ -452,31 +452,26 @@ footer.footer a:hover { color: var(--fg); }
   footer.footer { border-top: 1px solid #ccc; font-size: 8.5pt; }
 }
 
-/* ------------------------------------------------------- Verfahren, Schema */
-
-.flow { margin: 0 0 var(--sp-8); }
-.flow svg { width: 100%; height: auto; overflow: visible; }
-.flow .bahn { stroke: var(--hair-hell); stroke-width: 1; }
-.flow circle { fill: var(--bg); stroke: var(--fg); stroke-width: 1.5; }
-.flow text { font-family: var(--f); font-size: 15px; fill: var(--mut-hell); }
-.flow figcaption {
-  margin-top: var(--sp-6); font-size: var(--fs-xs); color: var(--mut); max-width: 44rem;
+/* ------------------------------------------------- Ablauf, sechs Stufen */
+/* Als HTML statt SVG: Name und Uebergabe je Stufe, lesbar auf jeder Breite.
+   Schmal untereinander an einer senkrechten Linie, breit nebeneinander an einer
+   waagerechten; gefuellte Punkte sind die Stufen, an denen ein Mensch entscheidet. */
+.ablauf { margin: 0 0 var(--sp-7); }
+.ablauf__liste { list-style: none; margin: 0; padding: 0 0 0 1.4rem; display: grid; gap: var(--sp-4); position: relative; }
+.ablauf__liste::before { content: ""; position: absolute; left: 5px; top: .4em; bottom: .4em; width: 1px; background: var(--hair-hell); }
+.ablauf__liste li { position: relative; margin: 0; }
+.ablauf__liste li::before { content: ""; position: absolute; left: -1.4rem; top: .3em; width: 11px; height: 11px; box-sizing: border-box;
+  border-radius: 50%; background: var(--bg); border: 1.5px solid var(--akzent); }
+.ablauf__liste li.mensch::before { background: var(--akzent); }
+.ablauf__liste b { display: block; font-weight: 500; font-size: var(--fs-md); color: var(--fg); }
+.ablauf__liste li > span { display: block; margin-top: .15rem; font-family: var(--f-mono); font-size: .74rem; line-height: 1.45; color: var(--mut); }
+.ablauf figcaption { margin-top: var(--sp-5); font-size: var(--fs-xs); color: var(--mut); max-width: 44rem; }
+@media (min-width: 54rem) {
+  .ablauf__liste { grid-template-columns: repeat(6, 1fr); gap: var(--sp-4); padding: 0; }
+  .ablauf__liste::before { left: 5px; right: 5px; top: 5px; bottom: auto; width: auto; height: 1px; }
+  .ablauf__liste li { padding-top: 1.3rem; }
+  .ablauf__liste li::before { left: 0; top: 0; }
 }
-
-/* Die Bahn zeichnet sich, danach erscheinen die Stufen nacheinander.
-   Das ist Gestaltung, kein Mitschnitt - der Hinweis steht in der Bildunterschrift. */
-.js .flow .bahn { stroke-dasharray: 900; stroke-dashoffset: 900; }
-.js .flow .knoten { opacity: 0; }
-.js .flow.da .bahn { animation: bahn 1.1s var(--ease) forwards; }
-.js .flow.da .knoten { animation: stufe .5s var(--ease) forwards; animation-delay: calc(.5s + var(--i) * .13s); }
-@keyframes bahn { to { stroke-dashoffset: 0; } }
-@keyframes stufe { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-
-@media (prefers-reduced-motion: reduce) {
-  .js .flow .bahn { stroke-dasharray: none; stroke-dashoffset: 0; }
-  .js .flow .knoten { opacity: 1; }
-}
-@media (max-width: 40rem) { .flow text { font-size: 22px; } }
 
 /* -------------------------------------------------- Wochendiagramm in 04 */
 
@@ -596,7 +591,6 @@ footer.footer a:hover { color: var(--fg); }
 /* ----------------------------------------------- Ablauf und Zahlen im Artikel */
 /* Die Projektseite ist schmaler als die Startseite; die SVG-Beschriftungen
    werden mitskaliert und brauchen deshalb groessere Ausgangswerte. */
-.projektseite .flow text { font-size: 20px; }
 .projektseite .chart .achse, .projektseite .chart .marke-text { font-size: 17px; }
 .projektseite .chart .wert { font-size: 20px; }
 .projektseite .zahlen { margin-bottom: var(--sp-7); }
@@ -679,7 +673,6 @@ a:hover { border-bottom-color: var(--akzent); }
 .chart .balken--neu rect { fill: var(--akzent); }
 .chart .balken:hover rect { fill: var(--akzent); }
 .chart .wert { fill: var(--akzent); }
-.flow circle { stroke: var(--akzent); }
 .zahl:first-child .w { color: var(--akzent); }
 .stufe:first-child .stufe__bar { background: var(--akzent); }
 .vier td.e { color: var(--akzent); }
@@ -702,9 +695,9 @@ a:hover { border-bottom-color: var(--akzent); }
 /* Mono fuer Meta */
 .marke, .station__when, .engagement, .gruppe, .tags, .status, .topbar__nav a, .langswitch button,
 .kennzahlen dt, .zahl .b, .level, .projekt__link, .station__org, .station__ort, .skills__group h3,
-footer.footer, .chart text, .flow text, .stufe__text, .badge, .projektseite__meta, .projektseite .back,
+footer.footer, .chart text, .stufe__text, .badge, .projektseite__meta, .projektseite .back,
 .pdf__hinweis, .tbl caption, .tbl th, .aufbau .rolle, .aufbau .rahmen-text, .bild figcaption,
-.flow figcaption, .chart figcaption, .stufen figcaption, .aufbau figcaption, .alle summary {
+.ablauf figcaption, .chart figcaption, .stufen figcaption, .aufbau figcaption, .alle summary {
   font-family: var(--f-mono); letter-spacing: 0; text-transform: none;
 }
 .marke { font-size: .78rem; }
@@ -790,15 +783,15 @@ footer.footer, .chart text, .flow text, .stufe__text, .badge, .projektseite__met
 }
 .pipe__kopf { display: flex; justify-content: space-between; margin-bottom: 1rem; }
 .pipe__kopf b { color: var(--mut-hell); font-weight: 500; }
-.pipe__stufen { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); margin-bottom: .6rem; }
-.pipe__stufen::before { content: ""; position: absolute; left: 12.5%; right: 12.5%; top: 6px; height: 1px; background: var(--hair-hell); }
-.pipe__stufe { position: relative; text-align: center; }
+.pipe__stufen { position: relative; display: grid; grid-template-columns: repeat(6, 1fr); margin-bottom: .6rem; }
+.pipe__stufen::before { content: ""; position: absolute; left: calc(100% / 12); right: calc(100% / 12); top: 6px; height: 1px; background: var(--hair-hell); }
+.pipe__stufe { position: relative; text-align: center; font-size: .64rem; }
 .pipe__dot { display: block; width: 13px; height: 13px; margin: 0 auto .45rem; border-radius: 50%; border: 1.5px solid var(--hair-hell); background: var(--bg); transition: border-color .3s, background .3s; }
 .pipe__stufe.aktiv .pipe__dot { border-color: var(--akzent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--akzent) 22%, transparent); }
 .pipe__stufe.ok .pipe__dot { border-color: var(--akzent); background: var(--akzent); }
 .pipe__bahn { position: relative; height: 1.9rem; margin-bottom: .8rem; transition: height .4s var(--ease); }
 .pipe__ticket {
-  position: absolute; top: 0; left: 0; width: 25%; display: flex; justify-content: center;
+  position: absolute; top: 0; left: 0; width: calc(100% / 6); display: flex; justify-content: center;
   transition: transform .55s var(--ease), opacity .4s var(--ease); will-change: transform;
 }
 .pipe__ticket span { border: 1px solid var(--hair-hell); border-radius: 5px; padding: .2rem .45rem; background: var(--bg); color: var(--fg); font-size: .7rem; white-space: nowrap; }
@@ -898,9 +891,23 @@ footer.footer, .chart text, .flow text, .stufe__text, .badge, .projektseite__met
   .stack { display: none; }
   .status { flex-direction: column; gap: var(--sp-1); }
   .status > span + span::before { content: none; margin: 0; }
+  .pipe__stufe { font-size: .56rem; }
 }
 @media (max-width: 64rem) { .pipeline { margin-top: var(--sp-6); } }
 /* Projektlinks brechen nicht mitten im Text um. */
 .projekt__link a { white-space: nowrap; }
 /* Solange die Rubrik keine eigene Spalte hat, gehoert sie dicht an ihre Ueberschrift. */
 @media (max-width: 59.98rem) { main > section.wrap:not(.hero) > .marke { margin-bottom: var(--sp-3); } }
+
+/* Zwischenueberschriften der Projektseiten, mit demselben #-Zeichen wie die
+   Einsaetze im Werdegang. */
+.projektseite .abschnitt { font-size: var(--fs-xl); font-weight: 500; letter-spacing: -.01em; margin: 0 0 var(--sp-4); max-width: 40rem; }
+.projektseite .abschnitt::before { content: "# "; color: var(--akzent); font-family: var(--f-mono); font-size: .8em; }
+/* Externe Links im Kontakt tragen denselben Pfeil wie im Werdegang. */
+.kontakt__links a[href^="http"]::after { content: " ↗"; }
+/* Stationskopf auf dem Handy: Firma und Ort in einer Zeile statt vier Zeilen Meta. */
+@media (max-width: 53.98rem) {
+  .station:not(.station--kompakt) .station__org, .station:not(.station--kompakt) .station__ort { display: inline; margin: 0; }
+  .station:not(.station--kompakt) .station__ort::before { content: " · "; }
+  .station:not(.station--kompakt) .station__ort + .station__kurz { margin-top: var(--sp-4); }
+}
