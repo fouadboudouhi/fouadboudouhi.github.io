@@ -191,17 +191,15 @@
     function istDe() { return (root.getAttribute("data-lang") || "de") === "de"; }
     function t(d, e) { return istDe() ? d : e; }
     var aufIndex = /(^|\/)(index\.html)?$/.test(location.pathname);
-    // Blogbeitraege liegen einen Ordner tiefer, von dort fuehren die Pfade eine Ebene hoch.
-    var wurzel = /\/blog\//.test(location.pathname) ? "../" : "";
-    var basis = aufIndex ? "" : wurzel + "index.html";
+    var basis = aufIndex ? "" : "index.html";
     var EINTRAEGE = [
       ["Schwerpunkte", "Focus", basis + "#arbeit", "01"], ["Werdegang", "Career", basis + "#werdegang", "02"],
       ["Fähigkeiten", "Skills", basis + "#faehigkeiten", "03"], ["Projekte", "Projects", basis + "#projekte", "04"],
-      ["Kontakt", "Contact", basis + "#kontakt", "05"], ["Blog", "Blog", wurzel + "blog.html", "//"],
-      ["Agentischer Entwicklungsprozess im Team", "Agentic development process", wurzel + "agentische-entwicklung.html", zwei("Projekt", "Project")],
-      ["Investment-Plattform für Immobilien", "Real estate investment platform", wurzel + "investment-plattform.html", zwei("Projekt", "Project")],
-      ["Testautomatisierung für eine Übungsanwendung", "Test automation for a practice app", wurzel + "testautomatisierung.html", zwei("Projekt", "Project")],
-      ["Porsche 911 Targa auf Elektroantrieb", "Porsche 911 Targa converted to electric", wurzel + "porsche.html", zwei("Projekt", "Project")],
+      ["Kontakt", "Contact", basis + "#kontakt", "05"],
+      ["Agentischer Entwicklungsprozess im Team", "Agentic development process", "agentische-entwicklung.html", zwei("Projekt", "Project")],
+      ["Investment-Plattform für Immobilien", "Real estate investment platform", "investment-plattform.html", zwei("Projekt", "Project")],
+      ["Testautomatisierung für eine Übungsanwendung", "Test automation for a practice app", "testautomatisierung.html", zwei("Projekt", "Project")],
+      ["Porsche 911 Targa auf Elektroantrieb", "Porsche 911 Targa converted to electric", "porsche.html", zwei("Projekt", "Project")],
       ["E-Mail schreiben", "Send an email", "mailto:kontakt@fouad-boudouhi.de", "mailto"],
       ["LinkedIn", "LinkedIn", "https://www.linkedin.com/in/fouadboudouhi", "↗"], ["GitHub", "GitHub", "https://github.com/fouadboudouhi", "↗"],
       ["Hell/Dunkel umschalten", "Toggle light/dark", "!theme", "⌘"], ["Sprache wechseln", "Switch language", "!lang", "⌘"]
