@@ -724,11 +724,6 @@ footer.footer, .chart text, .stufe__text, .badge, .projektseite__meta, .projekts
 }
 .btn { border-radius: 6px; padding: .65rem 1rem; font-family: var(--f-mono); font-size: .82rem; }
 
-/* Stack-Leiste unter der Statuszeile */
-.stack { display: flex; flex-wrap: wrap; gap: .4rem; margin: var(--sp-5) 0 0; padding: 0; list-style: none; max-width: 42rem; }
-.stack li { margin: 0; font-family: var(--f-mono); font-size: .74rem; color: var(--mut-hell); border: 1px solid var(--hair-hell);
-  background: var(--flaeche); border-radius: 6px; padding: .28rem .55rem; }
-.stack b { color: var(--akzent); font-weight: 500; margin-right: .35rem; }
 
 /* Schwerpunkte als drei Karten */
 @media (min-width: 54rem) { .reach { grid-template-columns: repeat(3, 1fr); gap: 1rem; counter-reset: reach; } }
@@ -841,7 +836,7 @@ footer.footer, .chart text, .stufe__text, .badge, .projektseite__meta, .projekts
 
 @media print {
   .js body::before, .pipeline, .palette, .palette-knopf, .tip, .topbar__name::after { display: none !important; }
-  .reach__item, .projekt, .skills__list li, .stack li { background: none; }
+  .reach__item, .projekt, .skills__list li { background: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .topbar__name::after { animation: none; }
@@ -876,11 +871,9 @@ footer.footer, .chart text, .stufe__text, .badge, .projektseite__meta, .projekts
 
 
 /* ------------------------------------------------------------------ Handy */
-/* Weniger Stapel im Hero: die Stack-Chips wiederholen Abschnitt 03 und fallen
-   auf dem Handy weg, die Statuszeile wird zur Liste ohne Trennpunkte, das
+/* Hero auf dem Handy: die Statuszeile wird zur Liste ohne Trennpunkte, das
    Pipeline-Schema bekommt Luft nach oben. */
 @media (max-width: 40rem) {
-  .stack { display: none; }
   .status { flex-direction: column; gap: var(--sp-1); }
   .status > span + span::before { content: none; margin: 0; }
   .pipe__stufe { font-size: .56rem; }
