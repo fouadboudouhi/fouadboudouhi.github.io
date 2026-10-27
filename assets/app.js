@@ -180,17 +180,24 @@
       ["LinkedIn", "LinkedIn", "https://www.linkedin.com/in/fouadboudouhi", "↗"], ["GitHub", "GitHub", "https://github.com/fouadboudouhi", "↗"],
       ["Hell/Dunkel umschalten", "Toggle light/dark", "!theme", "⌘"], ["Sprache wechseln", "Switch language", "!lang", "⌘"]
     ];
+    // Auf Unterseiten steht die Startseite selbst ganz oben: die Kopfzeile hat auf dem Handy keinen Textlink mehr dafuer.
+    if (!aufIndex) EINTRAEGE.unshift(["Startseite", "Home", "index.html", "←"]);
     var knopf = document.createElement("button");
     knopf.type = "button"; knopf.className = "palette-knopf"; knopf.setAttribute("data-palette", "");
-    knopf.innerHTML = '<span>' + zwei("Springen", "Jump") + '</span><kbd>' + (navigator.platform.indexOf("Mac") === 0 ? "⌘" : zwei("Strg", "Ctrl")) + " K</kbd>";
+    knopf.setAttribute("aria-haspopup", "dialog"); knopf.setAttribute("aria-expanded", "false");
+    // Breit zeigt das Tastenkuerzel; schmal (Handy, Tablet) heisst der Knopf "Menü", weil dort die Textlinks der Kopfzeile wegfallen.
+    knopf.innerHTML = '<span class="palette-knopf__breit">' + zwei("Springen", "Jump") + ' <kbd>' + (navigator.platform.indexOf("Mac") === 0 ? "⌘" : zwei("Strg", "Ctrl")) + ' K</kbd></span>' +
+      '<span class="palette-knopf__schmal">≡ ' + zwei("Menü", "Menu") + '</span>';
     nav.insertBefore(knopf, nav.querySelector(".langswitch"));
     var pal = document.createElement("div");
     pal.className = "palette"; pal.setAttribute("role", "dialog"); pal.setAttribute("aria-modal", "true"); pal.setAttribute("aria-label", t("Befehlspalette", "Command palette"));
-    pal.innerHTML = '<div class="palette__box"><input class="palette__eingabe" type="text" autocomplete="off" spellcheck="false" placeholder="' +
+    pal.innerHTML = '<div class="palette__box" tabindex="-1"><input class="palette__eingabe" type="text" autocomplete="off" spellcheck="false" placeholder="' +
       t("Wohin? Tippen zum Filtern …", "Where to? Type to filter …") + '"><ul class="palette__liste"></ul>' +
-      '<div class="palette__fuss"><span><kbd>↑↓</kbd> ' + zwei("wählen", "choose") + '</span><span><kbd>↵</kbd> ' + zwei("öffnen", "open") + '</span><span><kbd>esc</kbd> ' + zwei("schließen", "close") + '</span></div></div>';
+      '<div class="palette__fuss"><span class="palette__hinweis"><span><kbd>↑↓</kbd> ' + zwei("wählen", "choose") + '</span><span><kbd>↵</kbd> ' + zwei("öffnen", "open") + '</span><span><kbd>esc</kbd> ' + zwei("schließen", "close") + '</span></span>' +
+      '<button type="button" class="palette__zu">' + zwei("Schließen", "Close") + '</button></div></div>';
     document.body.appendChild(pal);
-    var eingabe = pal.querySelector(".palette__eingabe"), liste = pal.querySelector(".palette__liste"), treffer = [], index = 0, zuletzt = null;
+    var eingabe = pal.querySelector(".palette__eingabe"), liste = pal.querySelector(".palette__liste"), box = pal.querySelector(".palette__box"),
+        touch = window.matchMedia("(pointer: coarse)"), treffer = [], index = 0, zuletzt = null;
     function zeichneListe() {
       var de = istDe(), q = eingabe.value.trim().toLowerCase();
       treffer = EINTRAEGE.filter(function (e) { var name = de || !e[1] ? e[0] : e[1]; return !q || (name + " " + e[3]).toLowerCase().indexOf(q) >= 0; });
@@ -205,9 +212,15 @@
       // Beschriftungen, die kein Markup tragen koennen, folgen der aktuellen Sprache.
       eingabe.placeholder = t("Wohin? Tippen zum Filtern …", "Where to? Type to filter …");
       pal.setAttribute("aria-label", t("Befehlspalette", "Command palette"));
-      pal.classList.add("offen"); eingabe.value = ""; index = 0; zeichneListe(); eingabe.focus();
+      pal.classList.add("offen"); eingabe.value = ""; index = 0; zeichneListe();
+      // Auf Touch-Geraeten bekommt die Box den Fokus, nicht das Eingabefeld: die Bildschirmtastatur wuerde sonst die Liste verdecken.
+      if (touch.matches) box.focus(); else eingabe.focus();
+      knopf.setAttribute("aria-expanded", "true"); document.body.style.overflow = "hidden";
     }
-    function schliesse() { pal.classList.remove("offen"); if (zuletzt && zuletzt.focus) zuletzt.focus(); }
+    function schliesse() {
+      pal.classList.remove("offen"); knopf.setAttribute("aria-expanded", "false"); document.body.style.overflow = "";
+      if (zuletzt && zuletzt.focus) zuletzt.focus();
+    }
     function fuehreAus(e) {
       schliesse();
       if (e[2] === "!theme") { var b = document.querySelector("[data-toggle-theme]"); if (b) b.click(); return; }
@@ -217,7 +230,7 @@
     }
     knopf.addEventListener("click", oeffne);
     pal.addEventListener("click", function (ev) {
-      if (ev.target === pal) { schliesse(); return; }
+      if (ev.target === pal || (ev.target.closest && ev.target.closest(".palette__zu"))) { schliesse(); return; }
       var b = ev.target.closest ? ev.target.closest("button[data-i]") : null;
       if (b) fuehreAus(treffer[+b.getAttribute("data-i")]);
     });

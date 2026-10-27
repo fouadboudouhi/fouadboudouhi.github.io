@@ -809,7 +809,13 @@ footer.footer, .chart text, .stufe__text, .badge, .projektseite__meta, .projekts
 }
 .palette-knopf:hover { color: var(--fg); border-color: var(--mut); }
 .palette-knopf kbd { font: inherit; color: var(--mut); }
-@media (max-width: 52rem) { .palette-knopf { display: none; } }
+.palette-knopf__breit { display: inline-flex; align-items: center; gap: .4rem; }
+/* Unter 52rem fallen die Textlinks der Kopfzeile weg; der Knopf wird zum Menue. */
+.palette-knopf__schmal { display: none; }
+@media (max-width: 52rem) {
+  .palette-knopf__breit { display: none; }
+  .palette-knopf__schmal { display: inline; }
+}
 .palette { position: fixed; inset: 0; z-index: 60; display: none; align-items: flex-start; justify-content: center; padding: 12vh 1rem 2rem;
   background: color-mix(in srgb, var(--bg) 70%, transparent); backdrop-filter: blur(6px); }
 .palette.offen { display: flex; }
@@ -827,6 +833,18 @@ footer.footer, .chart text, .stufe__text, .badge, .projektseite__meta, .projekts
 .palette__liste li.aktiv button span::before { content: "› "; color: var(--akzent); }
 .palette__fuss { display: flex; gap: 1rem; padding: .5rem .9rem .7rem; font-size: .66rem; color: var(--mut); border-top: 1px solid var(--hair); }
 .palette kbd { font: inherit; border: 1px solid var(--hair-hell); border-radius: 4px; padding: 0 .3rem; }
+.palette__box:focus { outline: none; }
+.palette__hinweis { display: flex; gap: 1rem; }
+.palette__zu { display: none; margin-left: auto; font: inherit; color: var(--mut-hell); background: none;
+  border: 1px solid var(--hair-hell); border-radius: 6px; padding: .3rem .7rem; cursor: pointer; }
+/* Touch und schmale Bildschirme: groessere Ziele, Schliessen-Knopf statt Tastenhinweisen. */
+@media (hover: none), (max-width: 52rem) {
+  .palette { padding-top: 8vh; }
+  .palette__liste { max-height: 62vh; }
+  .palette__liste button { padding: .75rem .8rem; }
+  .palette__hinweis { display: none; }
+  .palette__zu { display: inline-block; }
+}
 
 /* ---------------------------------------------------------- Tooltip */
 .tip { position: fixed; z-index: 55; pointer-events: none; font-family: var(--f-mono); font-size: .72rem; color: var(--fg);
@@ -848,13 +866,14 @@ footer.footer, .chart text, .stufe__text, .badge, .projektseite__meta, .projekts
 /* Kopfzeile auf dem Handy: Name in einer Zeile, Navigation eng */
 .topbar__name { white-space: nowrap; }
 @media (max-width: 52rem) { .topbar__nav { gap: var(--sp-4); } .topbar__nav a { font-size: .74rem; } }
-/* Auf dem Handy muss der Hell/Dunkel-Schalter im Bild bleiben: ein Textlink weniger,
-   engere Luecken. Auf der Startseite faellt "Werdegang" weg (der Hero hat den Knopf),
-   auf Unterseiten "Kontakt" (der Rueckweg bleibt). */
+/* Auf dem Handy muss der Hell/Dunkel-Schalter im Bild bleiben: engere Luecken, und mit
+   JavaScript ersetzt der Menue-Knopf (die Palette) alle Textlinks. Ohne JavaScript bleibt
+   je ein Link: auf der Startseite "Kontakt", auf Unterseiten der Rueckweg. */
 @media (max-width: 40rem) {
   .topbar__nav { gap: var(--sp-3); }
   .langswitch { margin-left: 0; }
   .topbar__nav a[href="#werdegang"], .topbar__nav a[href$="index.html#kontakt"] { display: none; }
+  .js .topbar__nav > a { display: none; }
 }
 .status > span { white-space: nowrap; }
 
