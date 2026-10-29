@@ -85,3 +85,9 @@ auf `main` ist nach wenigen Minuten live, es gibt keinen Build.
 CSS und Skript; sie funktionieren ohne Server und ohne Internet. Sie werden nicht im
 Repository geführt und müssen nach jeder Änderung an den Quellen neu gebaut werden,
 sonst sind sie veraltet.
+
+## Lizenz
+
+Texte, Fotos und Bilder: alle Rechte vorbehalten. Der Code (HTML-Gerüst, `styles.css`,
+`app.js`) steht unter der MIT-Lizenz. Die Schrift Satoshi gehört der Indian Type Foundry
+(ITF Free Font License). Details in [`LICENSE`](LICENSE).
