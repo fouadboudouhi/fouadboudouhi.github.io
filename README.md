@@ -18,17 +18,17 @@ assets/thumbs/, assets/porsche/   Bilder
 assets/og-image.png         Vorschaubild fürs Teilen, 1200x630
 ```
 
-Lokales Werkzeug ist nicht Teil des Repositorys:
-`serve.py` (Vorschau-Server ohne Cache) und `stempel.py` (Versionsstempel).
+Zwei lokale Hilfsskripte sind nicht Teil des Repositorys: ein Vorschau-Server ohne Cache
+und ein Skript, das die Versionsstempel setzt.
 
 ## Lokal ansehen
 
 ```bash
-python -I serve.py 4173
+python -m http.server 4173
 ```
 
-Dann http://localhost:4173 öffnen. Ohne das Skript tut es auch `python -m http.server 4173`,
-dann aber mit Browser-Cache.
+Dann http://localhost:4173 öffnen. Der Browser-Cache kann dabei alte Fassungen zeigen,
+der lokale Vorschau-Server schaltet ihn ab.
 
 ## Gestaltung
 
@@ -67,11 +67,7 @@ testautomatisierung.html, porsche.html
 
 `styles.css` und `app.js` sind als `?v=<Stempel>` eingebunden, damit der Browser nach
 einer Änderung nicht die alte Datei aus dem Cache nimmt. Nach jeder Änderung an einer
-der beiden Dateien:
-
-```bash
-python -I stempel.py
-```
+der beiden Dateien das lokale Stempel-Skript laufen lassen.
 
 ## Hosting
 
