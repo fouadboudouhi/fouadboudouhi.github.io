@@ -6,7 +6,9 @@ keine Abhängigkeit von außen; die Schrift liegt mit im Repository.
 ```
 index.html                  die Startseite, Deutsch und Englisch in einer Datei
 agentische-entwicklung.html
-investment-plattform.html   die vier Projektseiten
+investment-plattform.html
+volumora.html               die sechs Projektseiten
+prepora.html
 testautomatisierung.html
 porsche.html
 sitemap.xml                 Liste der Seiten für Suchmaschinen
@@ -60,7 +62,7 @@ trotzdem sichtbar (die Animation hängt an einer `js`-Klasse, die das Skript sel
 ```
 Hero · 01 Schwerpunkte · 02 Werdegang · 03 Fähigkeiten · 04 Projekte · 05 Kontakt
 Projektseiten: agentische-entwicklung.html (Ablauf + Messung), investment-plattform.html,
-testautomatisierung.html, porsche.html
+volumora.html, prepora.html, testautomatisierung.html, porsche.html
 ```
 
 ## Versionsstempel

@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="de" data-lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Volumora, Trainings-App fürs Handy — Fouad Boudouhi</title>
+<meta name="description" content="Eine installierbare Trainings-App, seit September 2026 mit Agenten gebaut: 296 Übungen, ein Claude-Assistent mit 18 Werkzeugen, 126 automatische Tests und Fehlersuche im iOS-Simulator.">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0e1117">
+<!-- Vorschau beim Teilen -->
+<link rel="canonical" href="https://fouad-boudouhi.de/volumora.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://fouad-boudouhi.de/volumora.html">
+<meta property="og:site_name" content="Fouad Boudouhi">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="Volumora, Trainings-App fürs Handy — Fouad Boudouhi">
+<meta property="og:description" content="Mit Agenten gebaut und auf dem iPhone geprüft. 56 Pull Requests, 72 Playwright-Tests, 54 Unit-Tests, ein Claude-Assistent mit 18 Werkzeugen.">
+<meta property="og:image" content="https://fouad-boudouhi.de/assets/og/volumora.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Volumora, Trainings-App fürs Handy — Fouad Boudouhi">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b0b0c'/%3E%3Ctext x='16' y='22' font-family='system-ui,sans-serif' font-weight='500' font-size='15' fill='%23f4f2ee' text-anchor='middle'%3EFB%3C/text%3E%3C/svg%3E">
+<script>(function(d){d.classList.add("js");try{if(localStorage.getItem("fb-theme")==="light"){d.setAttribute("data-theme","light");var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content","#f6f5f2")}var l=localStorage.getItem("fb-lang")||(navigator.language||"de").slice(0,2);l=l==="en"?"en":"de";d.setAttribute("lang",l);d.setAttribute("data-lang",l)}catch(e){}})(document.documentElement)</script>
+<link rel="preload" href="assets/fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/satoshi-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/styles.css?v=a74c932e">
+</head>
+<body>
+
+<div id="schein"></div>
+
+<a class="skip-link" href="#main"><span lang="de">Zum Inhalt springen</span><span lang="en">Skip to content</span></a>
+
+<header class="topbar" id="kopf">
+  <div class="wrap topbar__inner">
+    <a class="topbar__name" href="index.html">Fouad Boudouhi</a>
+    <nav class="topbar__nav" aria-label="Hauptnavigation">
+      <a href="index.html#projekte"><span lang="de">Alle Projekte</span><span lang="en">All projects</span></a>
+      <span class="langswitch" role="group" aria-label="Sprache / Language">
+        <button type="button" data-set-lang="de" aria-pressed="true">DE</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </span>
+      <button type="button" class="themeswitch" data-toggle-theme aria-pressed="false" aria-label="Hell / Dunkel umschalten · Light / dark" title="Hell / Dunkel">
+        <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><circle cx="8" cy="8" r="6.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.6a6.4 6.4 0 0 1 0 12.8z" fill="currentColor"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap projektseite">
+
+  <a class="back" href="index.html#projekte">&larr; <span lang="de">zurück zur Startseite</span><span lang="en">back to the home page</span></a>
+
+  <h1>Volumora</h1>
+  <p class="projektseite__unter">
+    <span lang="de">Eine Trainings-App fürs Handy, mit Agenten gebaut und auf dem iPhone geprüft.</span>
+    <span lang="en">A workout app for the phone, built with agents and checked on the iPhone.</span>
+  </p>
+
+  <p class="projektseite__meta">
+    <span><span lang="de">seit 09/2026</span><span lang="en">since 09/2026</span></span>
+    <span><span lang="de">Eigenes Projekt</span><span lang="en">Own project</span></span>
+    <span>JavaScript</span>
+    <span>Playwright</span>
+    <span><a href="https://github.com/fouadboudouhi/volumora" rel="noopener"><span lang="de">Code auf GitHub</span><span lang="en">Code on GitHub</span></a></span>
+  </p>
+
+  <dl class="kennzahlen">
+    <div>
+      <dt><span lang="de">Umfang</span><span lang="en">Size</span></dt>
+      <dd><span lang="de">296 Übungen, Deutsch und Englisch, ohne Framework</span><span lang="en">296 exercises, German and English, no framework</span></dd>
+    </div>
+    <div>
+      <dt><span lang="de">Tests</span><span lang="en">Tests</span></dt>
+      <dd><span lang="de">72 Playwright-Tests, 54 Unit-Tests</span><span lang="en">72 Playwright tests, 54 unit tests</span></dd>
+    </div>
+    <div>
+      <dt><span lang="de">Zeitraum</span><span lang="en">Period</span></dt>
+      <dd><span lang="de">seit 27. September 2026, 154 Commits, 56 Pull Requests</span><span lang="en">since 27 September 2026, 154 commits, 56 pull requests</span></dd>
+    </div>
+    <div>
+      <dt><span lang="de">Betrieb</span><span lang="en">Operation</span></dt>
+      <dd><span lang="de">GitHub Pages, eigener Server auf einem Raspberry Pi</span><span lang="en">GitHub Pages, own server on a Raspberry Pi</span></dd>
+    </div>
+  </dl>
+
+  <h2 class="abschnitt"><span lang="de">Die App</span><span lang="en">The app</span></h2>
+  <div class="prose" lang="de"><p>Volumora ist eine Trainings-App fürs Handy: Pläne anlegen, im Studio Sätze abhaken, den Fortschritt sehen. Der Maßstab waren Hevy und Strong, die verbreiteten Apps dafür. Es gibt 296 Übungen mit Animationen, einen Assistenten für Pläne mit zwei bis sechs Trainingstagen, Aufwärmsätze und Steigerungsvorschläge, einen Pausentimer, der sich auch bei gesperrtem Handy per Push meldet, und Diagramme für Volumen, geschätztes Maximalgewicht und Körpergewicht. Wer von Hevy oder Strong kommt, nimmt seinen Verlauf als CSV mit. Volumora ist eine Web-App, die man auf dem Homescreen installiert. Sie läuft offline, kommt ohne Framework und ohne Build-Schritt aus, und jeder Merge auf den Hauptzweig ist sofort live.</p></div>
+  <div class="prose" lang="en"><p>Volumora is a workout app for the phone: create plans, tick off sets at the gym, see your progress. The yardstick was Hevy and Strong, the common apps for this. It has 296 exercises with animations, an assistant for plans with two to six training days, warm-up sets and progression suggestions, a rest timer that alerts you by push even on a locked phone, and charts for volume, estimated one-rep max and body weight. Anyone coming from Hevy or Strong brings their history along as CSV. Volumora is a web app you install on the home screen. It works offline, needs no framework and no build step, and every merge to the main branch is live straight away.</p></div>
+
+  <h2 class="abschnitt"><span lang="de">Wie sie gebaut wird</span><span lang="en">How it is built</span></h2>
+  <div class="prose" lang="de"><p>Gebaut habe ich sie mit Agenten, in Meilensteinen nach einem festen Plan: ein Branch je Meilenstein, ein Pull Request, die Pipeline muss grün sein, dann der Merge. So sind in gut fünf Wochen 56 Pull Requests zusammengekommen. Die Gestaltungsregeln stehen in einer eigenen Datei im Repository, damit jeder Agent an denselben Stil anschließt und die App nicht mit jeder Runde anders aussieht.</p></div>
+  <div class="prose" lang="en"><p>I built it with agents, in milestones following a fixed plan: one branch per milestone, one pull request, the pipeline has to be green, then the merge. That added up to 56 pull requests in just over five weeks. The design rules live in their own file in the repository, so every agent picks up the same style and the app does not look different after each round.</p></div>
+
+  <h2 class="abschnitt"><span lang="de">Wie getestet wird</span><span lang="en">How it is tested</span></h2>
+  <figure class="stufen auf">
+    <div class="stufe" style="--b: 28%"><span class="stufe__bar"></span><span class="stufe__text"><span lang="de"><b>Im Studio</b> — eigenes Training, Notizen werden zum nächsten Meilenstein</span><span lang="en"><b>At the gym</b> — my own training, notes become the next milestone</span></span></div>
+    <div class="stufe" style="--b: 44%"><span class="stufe__bar"></span><span class="stufe__text"><span lang="de"><b>iOS-Simulator</b> — die installierte App auf iOS 26.5, mit Xcode</span><span lang="en"><b>iOS simulator</b> — the installed app on iOS 26.5, with Xcode</span></span></div>
+    <div class="stufe" style="--b: 62%"><span class="stufe__bar"></span><span class="stufe__text"><span lang="de"><b>Playwright</b> — 72 Tests, die echte App in Chromium, mit Prüfung auf Barrierefreiheit</span><span lang="en"><b>Playwright</b> — 72 tests, the real app in Chromium, with an accessibility check</span></span></div>
+    <div class="stufe" style="--b: 82%"><span class="stufe__bar"></span><span class="stufe__text"><span lang="de"><b>Unit-Tests</b> — 54 für Rechnungen, Import, Assistent und Server</span><span lang="en"><b>Unit tests</b> — 54 for calculations, import, assistant and server</span></span></div>
+    <figcaption>
+      <span lang="de">Vier Ebenen. Unten die Menge, oben das Urteil: Je höher, desto weniger Läufe und desto mehr Kontext je Lauf.</span>
+      <span lang="en">Four levels. Volume at the bottom, judgement at the top: the higher the level, the fewer runs and the more context per run.</span>
+    </figcaption>
+  </figure>
+
+  <div class="prose" lang="de"><p>Jeder Pull Request läuft durch GitHub Actions. Die Unit-Tests prüfen die Teile ohne Oberfläche: Einheiten und Scheibenrechner, Steigerungsvorschläge, den Import aus Hevy und Strong, Sicherungen aus älteren Fassungen, die Werkzeuge des Assistenten und den Server. Die Playwright-Tests starten die echte App in Chromium und gehen die Abläufe durch, vom Training über den Plan-Editor bis zu Rückgängig, Offline-Start und einer axe-core-Prüfung auf Barrierefreiheit. Gemergt wird erst, wenn alles grün ist.</p></div>
+  <div class="prose" lang="en"><p>Every pull request runs through GitHub Actions. The unit tests cover the parts without a user interface: units and plate calculator, progression suggestions, the Hevy and Strong import, backups from older versions, the assistant’s tools and the server. The Playwright tests start the real app in Chromium and work through the flows, from a workout and the plan editor to undo, offline start and an axe-core accessibility check. Nothing is merged until everything is green.</p></div>
+
+  <h2 class="abschnitt"><span lang="de">Fehler, die nur das iPhone zeigt</span><span lang="en">Bugs only the iPhone shows</span></h2>
+  <div class="prose" lang="de"><p>Ein Teil der Fehler tritt nur in der installierten App auf dem iPhone auf. Auf meinem Handy lag ein schwarzer Balken unter der Tab-Leiste, und beim Scrollen schimmerte der Inhalt durch die Statusleiste; in Chromium war beides nicht zu sehen. Eine Diagnosezeile in den Einstellungen hat die echten Maße vom Gerät geliefert, im iOS-Simulator ließ sich der Fehler dann nachstellen. Die Ursache: Installierte Web-Apps legen die Seite unter die Statusleiste, zeichnen gescrollten Inhalt aber trotzdem hinein. Seitdem scrollt nicht mehr das Dokument, sondern der Container der App.</p></div>
+  <div class="prose" lang="en"><p>Some bugs only appear in the installed app on the iPhone. On my phone there was a black band under the tab bar, and when scrolling, the content showed through the status bar; neither was visible in Chromium. A diagnostics line in the settings delivered the real measurements from the device, and the iOS simulator then reproduced the bug. The cause: installed web apps lay the page out below the status bar but still paint scrolled content into it. Since then the app’s container scrolls instead of the document.</p></div>
+
+  <h2 class="abschnitt"><span lang="de">Claude in der App</span><span lang="en">Claude inside the app</span></h2>
+  <div class="prose" lang="de"><p>Ein Claude-Assistent hat einen eigenen Tab. Er hat 18 Werkzeuge und die Websuche: Er schlägt Trainingsdaten nach, legt Pläne an und ändert sie, passt Einstellungen und das laufende Training an. Jede Änderung steht im Chat und lässt sich dort rückgängig machen. Einen Plan löscht er nur nach einem Ja, und abgeschlossene Trainings kann kein Werkzeug ändern oder löschen. Sätze lassen sich auch einsprechen: Die Spracherkennung übernimmt das Gerät, ausgewertet wird in der App.</p></div>
+  <div class="prose" lang="en"><p>A Claude assistant has its own tab. It has 18 tools plus web search: it looks up training data, creates and changes plans, and adjusts settings and the running workout. Every change shows up in the chat and can be undone there. It deletes a plan only after a yes, and no tool can change or delete a finished workout. Sets can also be spoken: the device does the speech recognition, the app does the parsing.</p></div>
+
+  <h2 class="abschnitt"><span lang="de">Konten und Server</span><span lang="en">Accounts and server</span></h2>
+  <figure class="aufbau auf">
+    <svg viewBox="0 0 960 240" role="img" aria-labelledby="aufbau-titel">
+      <title id="aufbau-titel">Volumora und Prepora auf dem Handy, ein Server auf dem Raspberry Pi, dahinter Claude · Volumora and Prepora on the phone, one server on the Raspberry Pi, Claude behind it</title>
+      <defs>
+        <marker id="pfeil" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L8,4 L0,8 z"/></marker>
+      </defs>
+      <!-- Handy -->
+      <rect class="rahmen" x="20" y="20" width="280" height="210" rx="3"/>
+      <text class="rahmen-text" x="285" y="218" text-anchor="end" lang="de">Handy</text>
+      <text class="rahmen-text" x="285" y="218" text-anchor="end" lang="en">Phone</text>
+      <g class="kasten"><rect x="45" y="50" width="230" height="52" rx="3"/>
+        <text class="name" x="160" y="72" text-anchor="middle">Volumora</text>
+        <text class="rolle" x="160" y="91" text-anchor="middle">Training</text></g>
+      <g class="kasten"><rect x="45" y="130" width="230" height="52" rx="3"/>
+        <text class="name" x="160" y="152" text-anchor="middle">Prepora</text>
+        <text class="rolle" x="160" y="171" text-anchor="middle">Meal Prep</text></g>
+      <!-- Raspberry Pi -->
+      <rect class="rahmen" x="380" y="20" width="320" height="210" rx="3"/>
+      <text class="rahmen-text" x="685" y="218" text-anchor="end">Raspberry Pi</text>
+      <g class="kasten"><rect x="405" y="36" width="270" height="46" rx="3"/>
+        <text class="name" x="540" y="56" text-anchor="middle" lang="de">Konten und Daten</text>
+        <text class="name" x="540" y="56" text-anchor="middle" lang="en">Accounts and data</text>
+        <text class="rolle" x="540" y="73" text-anchor="middle" lang="de">je App ein eigener Platz</text>
+        <text class="rolle" x="540" y="73" text-anchor="middle" lang="en">a separate place per app</text></g>
+      <g class="kasten"><rect x="405" y="94" width="270" height="46" rx="3"/>
+        <text class="name" x="540" y="114" text-anchor="middle" lang="de">Push-Nachrichten</text>
+        <text class="name" x="540" y="114" text-anchor="middle" lang="en">Push messages</text>
+        <text class="rolle" x="540" y="131" text-anchor="middle" lang="de">auch bei gesperrtem Handy</text>
+        <text class="rolle" x="540" y="131" text-anchor="middle" lang="en">even on a locked phone</text></g>
+      <g class="kasten"><rect x="405" y="152" width="270" height="46" rx="3"/>
+        <text class="name" x="540" y="172" text-anchor="middle" lang="de">KI-Weiterleitung</text>
+        <text class="name" x="540" y="172" text-anchor="middle" lang="en">AI relay</text>
+        <text class="rolle" x="540" y="189" text-anchor="middle" lang="de">Monatsbudget je Konto</text>
+        <text class="rolle" x="540" y="189" text-anchor="middle" lang="en">monthly budget per account</text></g>
+      <!-- Claude -->
+      <g class="kasten"><rect x="760" y="152" width="180" height="46" rx="3"/>
+        <text class="name" x="850" y="172" text-anchor="middle">Claude API</text>
+        <text class="rolle" x="850" y="189" text-anchor="middle">Anthropic</text></g>
+      <!-- Pfeile -->
+      <path class="pfeil" d="M275,76 H380"/>
+      <path class="pfeil" d="M275,156 H380"/>
+      <path class="pfeil" d="M675,175 H760"/>
+    </svg>
+    <ul class="aufbau__liste">
+      <li lang="de"><b>Volumora</b> und <b>Prepora</b> laufen als installierte Web-Apps auf dem Handy.</li>
+      <li lang="en"><b>Volumora</b> and <b>Prepora</b> run as installed web apps on the phone.</li>
+      <li lang="de">Ein <b>Server auf dem Raspberry Pi</b> hält Konten und Daten, schickt Push-Nachrichten und leitet an Claude weiter.</li>
+      <li lang="en">A <b>server on the Raspberry Pi</b> holds accounts and data, sends push messages and relays to Claude.</li>
+      <li lang="de">Den Schlüssel für die <b>Claude API</b> kennt nur der Server.</li>
+      <li lang="en">Only the server knows the key for the <b>Claude API</b>.</li>
+    </ul>
+    <figcaption>
+      <span lang="de">Zwei Apps, ein Server. Das Handy spricht nie direkt mit Claude.</span>
+      <span lang="en">Two apps, one server. The phone never talks to Claude directly.</span>
+    </figcaption>
+  </figure>
+
+  <div class="prose" lang="de"><p>Seit November gibt es Konten. Ein kleiner Node-Server auf einem Raspberry Pi hält die Daten, leitet Anfragen an Claude mit einem Monatsbudget je Konto weiter und schickt Push-Nachrichten. Den Claude-Schlüssel kennt nur der Server, nicht das Handy. Ein Konto gibt es nur mit Einladung. Neue Fassungen holt sich der Server nach grüner Pipeline selbst und geht zurück, wenn die neue Fassung nicht startet. <a href="prepora.html">Prepora</a>, meine zweite App, nutzt dasselbe Konto und denselben Server.</p></div>
+  <div class="prose" lang="en"><p>Since November there are accounts. A small Node server on a Raspberry Pi holds the data, relays requests to Claude with a monthly budget per account and sends push messages. Only the server knows the Claude key, never the phone. Accounts are by invitation only. The server fetches new versions by itself after a green pipeline and rolls back if the new version does not start. <a href="prepora.html">Prepora</a>, my second app, uses the same account and the same server.</p></div>
+
+  <h2 class="abschnitt"><span lang="de">Stand</span><span lang="en">Status</span></h2>
+  <div class="prose" lang="de"><p>154 Commits und 56 Pull Requests zwischen dem 27. September und dem 3. November 2026. Ich trainiere selbst mit der App; Konten gibt es im kleinen Kreis mit Einladung. Der Code ist öffentlich unter MIT-Lizenz, die Übungsanimationen gehören ihren Rechteinhabern.</p></div>
+  <div class="prose" lang="en"><p>154 commits and 56 pull requests between 27 September and 3 November 2026. I train with the app myself; accounts are for a small circle, by invitation. The code is public under the MIT licence; the exercise animations belong to their rights holders.</p></div>
+
+</main>
+
+<footer class="wrap footer">
+  <span>&copy; 2026 Fouad Boudouhi ·
+    <a href="index.html"><span lang="de">Startseite</span><span lang="en">Home</span></a> ·
+    <a href="datenschutz.html"><span lang="de">Datenschutz</span><span lang="en">Privacy</span></a>
+  </span>
+  <span><span lang="de">Stand: November 2026</span><span lang="en">Last updated: November 2026</span></span>
+</footer>
+
+<script src="assets/app.js?v=e7313740" defer></script>
+</body>
+</html>

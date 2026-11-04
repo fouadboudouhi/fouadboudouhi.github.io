@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="de" data-lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prepora, Meal-Prep-App — Fouad Boudouhi</title>
+<meta name="description" content="Eine Meal-Prep-App, in zwei Tagen mit Agenten gebaut: Claude plant die Kochtage, der App-Code prüft Haltbarkeit, Nährwerte und Kalorienziel. 78 automatische Tests gegen einen nachgebauten Server und ein nachgebautes Claude.">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0e1117">
+<!-- Vorschau beim Teilen -->
+<link rel="canonical" href="https://fouad-boudouhi.de/prepora.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://fouad-boudouhi.de/prepora.html">
+<meta property="og:site_name" content="Fouad Boudouhi">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="Prepora, Meal-Prep-App — Fouad Boudouhi">
+<meta property="og:description" content="Einmal kochen, die ganze Woche essen. In zwei Tagen mit Agenten gebaut: Claude plant, der Code prüft. 11 Pull Requests, 78 automatische Tests.">
+<meta property="og:image" content="https://fouad-boudouhi.de/assets/og/prepora.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Prepora, Meal-Prep-App — Fouad Boudouhi">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b0b0c'/%3E%3Ctext x='16' y='22' font-family='system-ui,sans-serif' font-weight='500' font-size='15' fill='%23f4f2ee' text-anchor='middle'%3EFB%3C/text%3E%3C/svg%3E">
+<script>(function(d){d.classList.add("js");try{if(localStorage.getItem("fb-theme")==="light"){d.setAttribute("data-theme","light");var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content","#f6f5f2")}var l=localStorage.getItem("fb-lang")||(navigator.language||"de").slice(0,2);l=l==="en"?"en":"de";d.setAttribute("lang",l);d.setAttribute("data-lang",l)}catch(e){}})(document.documentElement)</script>
+<link rel="preload" href="assets/fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/satoshi-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/styles.css?v=a74c932e">
+</head>
+<body>
+
+<div id="schein"></div>
+
+<a class="skip-link" href="#main"><span lang="de">Zum Inhalt springen</span><span lang="en">Skip to content</span></a>
+
+<header class="topbar" id="kopf">
+  <div class="wrap topbar__inner">
+    <a class="topbar__name" href="index.html">Fouad Boudouhi</a>
+    <nav class="topbar__nav" aria-label="Hauptnavigation">
+      <a href="index.html#projekte"><span lang="de">Alle Projekte</span><span lang="en">All projects</span></a>
+      <span class="langswitch" role="group" aria-label="Sprache / Language">
+        <button type="button" data-set-lang="de" aria-pressed="true">DE</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </span>
+      <button type="button" class="themeswitch" data-toggle-theme aria-pressed="false" aria-label="Hell / Dunkel umschalten · Light / dark" title="Hell / Dunkel">
+        <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><circle cx="8" cy="8" r="6.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.6a6.4 6.4 0 0 1 0 12.8z" fill="currentColor"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap projektseite">
+
+  <a class="back" href="index.html#projekte">&larr; <span lang="de">zurück zur Startseite</span><span lang="en">back to the home page</span></a>
+
+  <h1>Prepora</h1>
+  <p class="projektseite__unter">
+    <span lang="de">Einmal kochen, die ganze Woche essen. In zwei Tagen mit Agenten gebaut.</span>
+    <span lang="en">Cook once, eat all week. Built with agents in two days.</span>
+  </p>
+
+  <p class="projektseite__meta">
+    <span>11/2026</span>
+    <span><span lang="de">Eigenes Projekt</span><span lang="en">Own project</span></span>
+    <span>JavaScript</span>
+    <span>Claude API</span>
+    <span><a href="https://github.com/fouadboudouhi/prepora" rel="noopener"><span lang="de">Code auf GitHub</span><span lang="en">Code on GitHub</span></a></span>
+  </p>
+
+  <dl class="kennzahlen">
+    <div>
+      <dt><span lang="de">Bereiche</span><span lang="en">Parts</span></dt>
+      <dd><span lang="de">Wochenplan, Einkauf, Kochmodus, Vorrat, Agent</span><span lang="en">Weekly plan, shopping, cook mode, stock, agent</span></dd>
+    </div>
+    <div>
+      <dt><span lang="de">Tests</span><span lang="en">Tests</span></dt>
+      <dd><span lang="de">37 Playwright-Tests, 41 Unit-Tests</span><span lang="en">37 Playwright tests, 41 unit tests</span></dd>
+    </div>
+    <div>
+      <dt><span lang="de">Zeitraum</span><span lang="en">Period</span></dt>
+      <dd><span lang="de">3. und 4. November 2026, 11 Pull Requests</span><span lang="en">3 and 4 November 2026, 11 pull requests</span></dd>
+    </div>
+    <div>
+      <dt><span lang="de">Betrieb</span><span lang="en">Operation</span></dt>
+      <dd><span lang="de">GitHub Pages, Konto und Server von Volumora</span><span lang="en">GitHub Pages, account and server from Volumora</span></dd>
+    </div>
+  </dl>
+
+  <h2 class="abschnitt"><span lang="de">Die Idee</span><span lang="en">The idea</span></h2>
+  <div class="prose" lang="de"><p>Prepora geht vom Kochtag aus, nicht vom einzelnen Rezept. Statt jeden Tag zu kochen, kocht man ein- oder zweimal pro Woche und isst den Rest der Woche aus Boxen. Die App plant dafür aus Ziel, Geschmack und verfügbarer Kochzeit die Woche, rechnet die Einkaufsliste in echten Packungsgrößen und führt mit mehreren Timern durch den Kochtag. Am Ende steht für jede Box fest, wann sie dran ist und ob sie in den Kühlschrank oder in den Tiefkühler kommt. Dazu kommen ein Tiefkühl-Vorrat, den der nächste Plan zuerst aufbraucht, ein Foto vom Kühlschrank als Grundlage für den nächsten Plan und ein Geschmack, den die App mit jedem Essen besser kennt.</p></div>
+  <div class="prose" lang="en"><p>Prepora starts from the cooking day, not from the single recipe. Instead of cooking every day, you cook once or twice a week and eat from boxes for the rest of it. The app plans the week from your goal, your taste and the time you have, works out the shopping list in real pack sizes and guides you through the cooking day with several timers. At the end, every box knows when it is due and whether it goes into the fridge or the freezer. On top of that come a freezer stock that the next plan uses up first, a photo of the fridge as the basis for the next plan, and a sense of taste the app learns with every meal.</p></div>
+
+  <h2 class="abschnitt"><span lang="de">Claude plant, der Code prüft</span><span lang="en">Claude plans, the code checks</span></h2>
+  <figure class="aufbau auf">
+    <svg viewBox="0 0 960 180" role="img" aria-labelledby="ablauf-titel">
+      <title id="ablauf-titel">Vom Profil über Claude und die Prüfung im Code zum Wochenplan · From the profile through Claude and the checks in code to the weekly plan</title>
+      <defs>
+        <marker id="pfeil" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L8,4 L0,8 z"/></marker>
+      </defs>
+      <g class="kasten"><rect x="15" y="40" width="210" height="52" rx="3"/>
+        <text class="name" x="120" y="62" text-anchor="middle" lang="de">Profil</text>
+        <text class="name" x="120" y="62" text-anchor="middle" lang="en">Profile</text>
+        <text class="rolle" x="120" y="81" text-anchor="middle" lang="de">Ziel, Geschmack, Zeit</text>
+        <text class="rolle" x="120" y="81" text-anchor="middle" lang="en">goal, taste, time</text></g>
+      <g class="kasten"><rect x="255" y="40" width="210" height="52" rx="3"/>
+        <text class="name" x="360" y="62" text-anchor="middle">Claude</text>
+        <text class="rolle" x="360" y="81" text-anchor="middle" lang="de">Gerichte und Mengen</text>
+        <text class="rolle" x="360" y="81" text-anchor="middle" lang="en">dishes and amounts</text></g>
+      <g class="kasten"><rect x="495" y="40" width="210" height="52" rx="3"/>
+        <text class="name" x="600" y="62" text-anchor="middle" lang="de">Prüfung im Code</text>
+        <text class="name" x="600" y="62" text-anchor="middle" lang="en">Checks in code</text>
+        <text class="rolle" x="600" y="81" text-anchor="middle" lang="de">Haltbarkeit, Nährwerte</text>
+        <text class="rolle" x="600" y="81" text-anchor="middle" lang="en">shelf life, nutrition</text></g>
+      <g class="kasten"><rect x="735" y="40" width="210" height="52" rx="3"/>
+        <text class="name" x="840" y="62" text-anchor="middle" lang="de">Wochenplan</text>
+        <text class="name" x="840" y="62" text-anchor="middle" lang="en">Weekly plan</text>
+        <text class="rolle" x="840" y="81" text-anchor="middle" lang="de">Einkauf, Kochtag, Boxen</text>
+        <text class="rolle" x="840" y="81" text-anchor="middle" lang="en">list, cook day, boxes</text></g>
+      <path class="pfeil" d="M225,66 H255"/>
+      <path class="pfeil" d="M465,66 H495"/>
+      <path class="pfeil" d="M705,66 H735"/>
+      <path class="pfeil" d="M600,92 V140 H360 V92"/>
+      <text class="rolle" x="480" y="162" text-anchor="middle" lang="de">was nicht passt, geht mit Grund zurück an Claude</text>
+      <text class="rolle" x="480" y="162" text-anchor="middle" lang="en">anything that fails goes back to Claude with the reason</text>
+    </svg>
+    <ul class="aufbau__liste">
+      <li lang="de">Aus dem <b>Profil</b> mit Ziel, Geschmack und Kochzeit macht <b>Claude</b> einen Vorschlag: Gerichte, Zutaten, Mengen.</li>
+      <li lang="en">From the <b>profile</b> with goal, taste and cooking time, <b>Claude</b> makes a proposal: dishes, ingredients, amounts.</li>
+      <li lang="de">Der <b>Code prüft</b> Haltbarkeit, Nährwerte und Kalorienziel; was nicht passt, geht zurück an Claude.</li>
+      <li lang="en">The <b>code checks</b> shelf life, nutrition and calorie target; anything that fails goes back to Claude.</li>
+      <li lang="de">Erst dann entstehen <b>Wochenplan</b>, Einkaufsliste, Kochtag und Boxen.</li>
+      <li lang="en">Only then do the <b>weekly plan</b>, shopping list, cooking day and boxes come about.</li>
+    </ul>
+    <figcaption>
+      <span lang="de">Claude macht Vorschläge, die Regeln stehen im Code. Was der Code selbst richten kann, richtet er; den Rest bekommt Claude zurück.</span>
+      <span lang="en">Claude makes suggestions, the rules live in the code. What the code can fix itself, it fixes; the rest goes back to Claude.</span>
+    </figcaption>
+  </figure>
+
+  <div class="prose" lang="de"><p>Claude liefert den Wochenplan in einem festen JSON-Format: Gerichte, Zutaten, Mengen, Kochtage. Bevor er gespeichert wird, prüft ihn die App. Gekochtes hält als Faustregel drei bis vier Tage im Kühlschrank; was später gegessen wird, verschiebt der Code in den Tiefkühler, und Claude kann ihn nicht davon abbringen. Fehlt eine Mahlzeit, ein Rezept oder der Tiefkühler, geht der Plan mit dem Grund zurück an Claude. Die Nährwerte rechnet die App aus einer eigenen Tabelle, nicht Claude; was die Tabelle nicht kennt, wird geschätzt und gekennzeichnet. Beim Abnehmen fällt das Kalorienziel nie unter den Ruhebedarf. Und beim Foto vom Gericht nennt die App keine Kalorienzahl, wenn sie nur geraten wäre.</p></div>
+  <div class="prose" lang="en"><p>Claude delivers the weekly plan in a fixed JSON format: dishes, ingredients, amounts, cooking days. Before it is saved, the app checks it. As a rule of thumb, cooked food keeps three to four days in the fridge; anything eaten later is moved to the freezer by the code, and Claude cannot talk it out of that. If a meal, a recipe or the freezer is missing, the plan goes back to Claude with the reason. The app works out nutrition from its own table, not Claude; whatever the table does not know is estimated and marked as such. When losing weight, the calorie target never drops below the resting need. And for a photo of a dish, the app gives no calorie number when it would only be a guess.</p></div>
+
+  <h2 class="abschnitt"><span lang="de">Ein Agent in der App</span><span lang="en">An agent inside the app</span></h2>
+  <div class="prose" lang="de"><p>Wie <a href="volumora.html">Volumora</a> hat Prepora einen Claude-Tab. Der Agent hat zwölf Werkzeuge: Er plant eine neue Woche nach Wunsch, tauscht einzelne Gerichte und ändert das Profil. Jeden Wert, den er an ein Werkzeug gibt, prüft der Code, und jeder Zug lässt sich mit einem Tipp zurücknehmen. Gesundheitsangaben aus dem Profil bekommt er nie zu sehen; die sind nur für die Einschätzung der Supplements da, und ein Test sichert das ab.</p></div>
+  <div class="prose" lang="en"><p>Like <a href="volumora.html">Volumora</a>, Prepora has a Claude tab. The agent has twelve tools: it plans a new week on request, swaps single dishes and changes the profile. The code checks every value it passes to a tool, and every turn can be taken back with one tap. It never sees the health notes from the profile; those are only for assessing supplements, and a test makes sure of it.</p></div>
+
+  <h2 class="abschnitt"><span lang="de">Wie getestet wird</span><span lang="en">How it is tested</span></h2>
+  <div class="prose" lang="de"><p>Die Unit-Tests prüfen die Rechnungen: Kalorienziel und Untergrenze, Haltbarkeit, Einkaufsmengen in ganzen Packungen, den Gewichtstrend. Die Playwright-Tests starten die App in Chromium gegen einen nachgebauten Server und ein nachgebautes Claude. So läuft jeder Ablauf reproduzierbar und ohne Kosten, vom ersten Tipp bis zur Woche mit Plan, Einkaufsliste, Kochtag, Boxen und Tiefkühler, und auch die Fehlerfälle lassen sich stellen: ein leeres Budget, ein abgelehnter Plan, ein Server, der eine Anmeldung nicht mehr kennt. Ein Test stellt sicher, dass Prepora die Daten von Volumora nur liest. Dazu kommt eine Fototour, in der Playwright jeden Bildschirm fotografiert; sie findet Gestaltungsfehler, die kein Test meldet.</p></div>
+  <div class="prose" lang="en"><p>The unit tests cover the calculations: calorie target and floor, shelf life, shopping amounts in whole packs, the weight trend. The Playwright tests start the app in Chromium against a stand-in server and a stand-in Claude. That way every flow runs reproducibly and at no cost, from the first tap to a week with plan, shopping list, cooking day, boxes and freezer, and the failure cases can be staged too: an empty budget, a rejected plan, a server that no longer knows a sign-in. One test makes sure Prepora only ever reads Volumora’s data. On top of that comes a photo tour in which Playwright captures every screen; it finds design flaws that no test reports.</p></div>
+
+  <h2 class="abschnitt"><span lang="de">Zusammen mit Volumora</span><span lang="en">Together with Volumora</span></h2>
+  <div class="prose" lang="de"><p>Prepora braucht kein eigenes Konto und keinen eigenen Server. Es meldet sich mit dem Volumora-Konto an und nutzt denselben Server auf dem Raspberry Pi, der dafür einen eigenen Datenplatz je App bekommen hat. Gewicht und Trainingshäufigkeit kommen aus Volumora und fließen in Kalorien und Eiweiß ein; alle zwei Wochen passt die App das Kalorienziel in kleinen Schritten an die echte Gewichtskurve an. Das Claude-Budget teilen sich beide Apps.</p></div>
+  <div class="prose" lang="en"><p>Prepora needs no account and no server of its own. It signs in with the Volumora account and uses the same server on the Raspberry Pi, which got a separate data place per app for it. Weight and training frequency come over from Volumora and feed into calories and protein; every two weeks the app adjusts the calorie target in small steps to the real weight curve. Both apps share the Claude budget.</p></div>
+
+  <h2 class="abschnitt"><span lang="de">Stand</span><span lang="en">Status</span></h2>
+  <div class="prose" lang="de"><p>Gebaut am 3. und 4. November 2026 in elf Pull Requests. Anmeldung und Claude über den Server laufen auf der echten Seite. Was nur ein echtes iPhone zeigen kann, etwa der Timer-Alarm per Push bei gesperrtem Bildschirm oder dass der Bildschirm beim Kochen anbleibt, steht noch aus. Der Code ist öffentlich unter MIT-Lizenz.</p></div>
+  <div class="prose" lang="en"><p>Built on 3 and 4 November 2026 in eleven pull requests. Sign-in and Claude through the server work on the live site. What only a real iPhone can show, such as the timer alarm by push on a locked screen or the screen staying on while cooking, is still to be checked. The code is public under the MIT licence.</p></div>
+
+</main>
+
+<footer class="wrap footer">
+  <span>&copy; 2026 Fouad Boudouhi ·
+    <a href="index.html"><span lang="de">Startseite</span><span lang="en">Home</span></a> ·
+    <a href="datenschutz.html"><span lang="de">Datenschutz</span><span lang="en">Privacy</span></a>
+  </span>
+  <span><span lang="de">Stand: November 2026</span><span lang="en">Last updated: November 2026</span></span>
+</footer>
+
+<script src="assets/app.js?v=e7313740" defer></script>
+</body>
+</html>

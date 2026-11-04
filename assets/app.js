@@ -174,6 +174,8 @@
       ["Kontakt", "Contact", basis + "#kontakt", "05"],
       ["Agentischer Entwicklungsprozess im Team", "Agentic development process", "agentische-entwicklung.html", zwei("Projekt", "Project")],
       ["Investment-Plattform für Immobilien", "Real estate investment platform", "investment-plattform.html", zwei("Projekt", "Project")],
+      ["Volumora, Trainings-App", "Volumora, workout app", "volumora.html", zwei("Projekt", "Project")],
+      ["Prepora, Meal-Prep-App", "Prepora, meal prep app", "prepora.html", zwei("Projekt", "Project")],
       ["Testautomatisierung für eine Übungsanwendung", "Test automation for a practice app", "testautomatisierung.html", zwei("Projekt", "Project")],
       ["Porsche 911 Targa auf Elektroantrieb", "Porsche 911 Targa converted to electric", "porsche.html", zwei("Projekt", "Project")],
       ["E-Mail schreiben", "Send an email", "mailto:kontakt@fouad-boudouhi.de", "mailto"],
